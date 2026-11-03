@@ -67,6 +67,7 @@ function Rail({ className, axis = "x" }) {
  */
 export default function Process({
   eyebrow = home.process.eyebrow,
+  title = home.process.title,
   background = "bg-white",
   className = "",
 }) {
@@ -77,7 +78,8 @@ export default function Process({
       <div className="shell">
         <SectionHeading
           prominent
-          title={eyebrow}
+          eyebrow={eyebrow}
+          title={title}
           lede={"A clear path from understanding your challenges to putting solutions into practice.\nWe assess, strategize and execute with your business goals at the centre."}
         />
 

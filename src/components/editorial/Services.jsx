@@ -16,7 +16,8 @@ export default function Services({ withCta = true, background = "bg-white" }) {
       <div className="mx-auto w-full max-w-[92rem] px-5 sm:px-8 lg:px-12">
         <SectionHeading
           prominent
-          title={home.services.eyebrow}
+          eyebrow={home.services.eyebrow}
+          title={home.services.title}
           lede={"Practical expertise to strengthen your people, processes and healthcare business.\nExplore solutions that simplify operations and support lasting growth."}
         />
 

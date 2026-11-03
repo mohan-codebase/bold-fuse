@@ -101,7 +101,8 @@ export default function EditorialHome() {
         <div className="shell">
           <SectionHeading
             prominent
-            title={home.clients.eyebrow}
+            eyebrow={home.clients.eyebrow}
+            title={home.clients.title}
             lede={"Relationships built through collaboration, practical support and shared progress.\nHear from the businesses and teams we have worked alongside."}
           />
           <ClientLoops clients={home.clients.items} quotes={home.clients.quotes} />
@@ -111,7 +112,8 @@ export default function EditorialHome() {
         <div className="shell">
           <SectionHeading
             prominent
-            title="Latest Blogs"
+            eyebrow={home.blog.eyebrow}
+            title={home.blog.title}
             lede={"Fresh perspectives on healthcare, leadership and business growth.\nExplore practical ideas to help you take your next step."}
           />
           <BlogLoop />

@@ -132,24 +132,6 @@ export function Footer() {
             ))}
           </div>
         </nav>
-        <nav
-          aria-label={footerContent.resources}
-          className="mt-6 rounded-xl border border-white/10 p-6"
-        >
-          <h2 className={titleClass}>{footerContent.resources}</h2>
-          <div className="grid gap-5 md:grid-cols-2">
-            {footerContent.articles.map((key) => (
-              <AppLink key={key} route={key} className={linkClass}>
-                {routes[key].label}
-                <ArrowUpRight
-                  size={17}
-                  className="shrink-0"
-                  aria-hidden="true"
-                />
-              </AppLink>
-            ))}
-          </div>
-        </nav>
         <div className="mt-8 flex flex-col justify-between gap-4 border-t border-white/10 py-6 text-xs text-white/65 sm:flex-row sm:items-center">
           <p>
             © {new Date().getFullYear()} {site.name}

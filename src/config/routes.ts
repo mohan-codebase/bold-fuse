@@ -7,7 +7,7 @@ export const routes = {
   about: {
     label: "About",
     path: "/about/",
-    status: "planned",
+    status: "built",
   },
   home: {
     label: "Home",
@@ -17,7 +17,7 @@ export const routes = {
   blogs: {
     label: "Blogs",
     path: "/blogs/",
-    status: "planned",
+    status: "built",
   },
   services: {
     label: "Services",
@@ -33,7 +33,7 @@ export const routes = {
   contact: {
     label: "Contact",
     path: "/contact/",
-    status: "planned",
+    status: "built",
   },
   mentalHealth: {
     label: "Mental health of Entrepreneurs: Tips to hold on",
