@@ -22,7 +22,7 @@ export const routes = {
   services: {
     label: "Services",
     path: "/services/",
-    status: "planned",
+    status: "built",
   },
   workplace: {
     label:
