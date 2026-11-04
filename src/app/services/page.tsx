@@ -17,11 +17,12 @@ import {
 } from "lucide-react";
 import { servicesContent } from "@/content/services";
 import { site } from "@/content/site";
+import CounsellingReadMoreModal from "@/components/CounsellingReadMoreModal";
 
 export const metadata: Metadata = {
   title: "Services | Boldfuse",
   description:
-    "Aiming for the bigger picture. Making businesses immune to the economic effects of the crisis. Comprehensive business automation, mental wellness, financial advisory, creative branding, process excellence, legal, and HR services.",
+    "Our Services. Comprehensive business automation, mental wellness, financial advisory, creative branding, process excellence, legal, and HR services.",
   alternates: { canonical: "/services/" },
 };
 
@@ -45,105 +46,42 @@ export default function ServicesPage() {
         {/* ========================================================= */}
         <section
           aria-labelledby="services-hero-heading"
-          className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-12 text-white sm:px-10 sm:py-16 lg:px-14 lg:py-20"
+          className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16"
         >
-          {/* Subtle flowing SVG background decoration - approved site direction */}
+          {/* Subtle flowing SVG background decoration - matching Contact page */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.30),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
           >
             <svg
-              viewBox="0 0 1200 480"
+              viewBox="0 0 1200 400"
               preserveAspectRatio="none"
-              focusable="false"
               className="absolute inset-0 h-full w-full text-accent-soft"
               fill="none"
             >
               <path
-                d="M620 520C830 490 800 300 1000 325S1170 180 1260 120"
+                d="M620 440C830 400 800 230 1000 255S1170 110 1260 50M710 440C900 410 850 295 1050 315S1210 180 1260 140"
                 stroke="currentColor"
                 strokeWidth="1"
-                opacity="0.14"
-              />
-              <path
-                d="M710 520C900 490 850 365 1050 385S1210 250 1260 210"
-                stroke="currentColor"
-                strokeWidth="1"
-                opacity="0.10"
+                opacity=".16"
               />
             </svg>
           </div>
 
-          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
-            {/* Left: Content & Stats */}
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase backdrop-blur-sm">
-                <span>{hero.eyebrow}</span>
-              </div>
+          <p className="text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase">
+            {hero.eyebrow}
+          </p>
 
-              <p className="mt-4 font-heading text-lg font-semibold tracking-wide text-accent-soft sm:text-xl">
-                {hero.tagline}
-              </p>
+          <h1
+            id="services-hero-heading"
+            className="mt-5 max-w-3xl font-heading text-4xl leading-tight font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+          >
+            Our Services
+          </h1>
 
-              <h1
-                id="services-hero-heading"
-                className="mt-3 font-heading text-4xl leading-[1.15] font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              >
-                {hero.title}
-              </h1>
-
-              <p className="mt-6 max-w-xl font-description text-base leading-relaxed font-medium text-white/80 sm:text-lg">
-                We empower visionary leaders and organizations with comprehensive,
-                pragmatic solutions that build resilience, streamline daily operations,
-                and drive sustainable business growth.
-              </p>
-
-              {/* Statistics Strip */}
-              <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/15 pt-8 sm:gap-6">
-                {hero.stats.map((stat, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-2xl border border-white/15 bg-white/5 p-4 sm:p-5 backdrop-blur-sm"
-                  >
-                    <div className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                      {stat.value}
-                    </div>
-                    <div className="mt-1 font-description text-xs font-semibold tracking-wide text-accent-soft uppercase sm:text-sm">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/contact/"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-forest transition-colors hover:bg-white/90"
-                >
-                  Schedule a Consultation
-                  <ArrowUpRight size={17} aria-hidden="true" />
-                </Link>
-                <a
-                  href={`tel:${site.telephone}`}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-                >
-                  <Phone size={16} aria-hidden="true" />
-                  {site.phone}
-                </a>
-              </div>
-            </div>
-
-            {/* Right: Hero Image */}
-            <div className="relative mx-auto w-full overflow-hidden rounded-3xl border border-white/20 bg-white/5 p-2.5 shadow-2xl backdrop-blur-sm lg:p-3">
-              <Image
-                src={hero.image}
-                alt={hero.imageAlt}
-                sizes="(min-width: 1024px) 480px, 92vw"
-                className="h-[360px] w-full rounded-2xl object-cover sm:h-[440px] lg:h-[500px]"
-                priority
-              />
-            </div>
-          </div>
+          <p className="mt-5 max-w-2xl font-description text-base leading-relaxed font-medium text-white/80 sm:text-lg">
+            We empower leaders with practical solutions that build resilience, streamline operations, and drive sustainable business growth.
+          </p>
         </section>
 
         {/* ========================================================= */}
@@ -251,9 +189,17 @@ export default function ServicesPage() {
                   {services[1].tagline}
                 </p>
 
-                <p className="mt-5 font-description text-base leading-[1.8] font-medium text-muted">
-                  {services[1].description}
-                </p>
+                {services[1].previewParagraphs && services[1].modalParagraphs ? (
+                  <CounsellingReadMoreModal
+                    tagline={services[1].tagline}
+                    previewParagraphs={services[1].previewParagraphs}
+                    paragraphs={services[1].modalParagraphs}
+                  />
+                ) : (
+                  <p className="mt-5 font-description text-base leading-[1.8] font-medium text-muted">
+                    {services[1].description}
+                  </p>
+                )}
 
                 {/* Sub-services pills */}
                 {services[1].offerings && (

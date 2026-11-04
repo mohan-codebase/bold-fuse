@@ -14,6 +14,9 @@ export interface ServiceItem {
   title: string;
   tagline: string;
   description: string;
+  previewDescription?: string;
+  previewParagraphs?: string[];
+  modalParagraphs?: string[];
   image: StaticImageData;
   imageAlt: string;
   offerings?: string[];
@@ -23,8 +26,8 @@ export interface ServiceItem {
 
 export const servicesContent = {
   hero: {
-    eyebrow: "Services",
-    title: "Aiming for the bigger picture",
+    eyebrow: "What we do",
+    title: "Our Services",
     tagline: "Making businesses immune to the economic effects of the crisis.",
     image: heroImage,
     imageAlt: "Chess piece and strategic roadmap representing business strategy and long-term vision",
@@ -56,6 +59,21 @@ export const servicesContent = {
       number: "02",
       title: "Wellness and Mental Health",
       tagline: "From stress to smile, there is just one station and it's boldfuse.",
+      previewDescription:
+        "We believe that mental well-being is the cornerstone of a fulfilling life, impacting both individuals and organizations alike. Our experienced team of therapists provides individualized counselling services tailored to your unique needs. Whether you're dealing with anxiety, depression, relationship issues, or other mental health concerns, we're here to support you on your journey to healing and self- discovery. Our therapists are licensed professionals with extensive training in evidence-based therapeutic modalities, including cognitive-behavioural therapy (CBT), mindfulness-based approaches, and more. We understand the importance of confidentiality and create a safe, non-judgmental space where you can freely express yourself and work towards positive change.",
+      previewParagraphs: [
+        "We believe that mental well-being is the cornerstone of a fulfilling life, impacting both individuals and organizations alike.",
+        "Our experienced team of therapists provides individualized counselling services tailored to your unique needs. Whether you're dealing with anxiety, depression, relationship issues, or other mental health concerns, we're here to support you on your journey to healing and self- discovery.",
+        "Our therapists are licensed professionals with extensive training in evidence-based therapeutic modalities, including cognitive-behavioural therapy (CBT), mindfulness-based approaches, and more. We understand the importance of confidentiality and create a safe, non-judgmental space where you can freely express yourself and work towards positive change.",
+      ],
+      modalParagraphs: [
+        "We believe that mental well-being is the cornerstone of a fulfilling life, impacting both individuals and organizations alike.",
+        "Our experienced team of therapists provides individualized counselling services tailored to your unique needs. Whether you're dealing with anxiety, depression, relationship issues, or other mental health concerns, we're here to support you on your journey to healing and self- discovery.",
+        "Our therapists are licensed professionals with extensive training in evidence-based therapeutic modalities, including cognitive-behavioural therapy (CBT), mindfulness-based approaches, and more. We understand the importance of confidentiality and create a safe, non-judgmental space where you can freely express yourself and work towards positive change.",
+        "In addition to individual therapy, we offer consulting services to promote organizational health and psychology within companies. By addressing workplace dynamics, improving communication, and fostering a culture of mental wellness, we help organizations thrive. Investing in the mental health of your employees not only enhances their well-being but also boosts productivity, reduces absenteeism, and creates a more positive work environment.",
+        "Led by our experienced facilitators, our workshops combine engaging activities, discussions, and exercises to help participants apply new skills in their personal and professional lives. Elevate your company's performance and culture with our organizational health and psychology services. From executive coaching to team-building workshops, we work closely with organizations to foster resilience, improve communication, and enhance employee well- being. Invest in your team's mental health, and watch your organization thrive.",
+        "Ready to prioritize your mental health? Take the first step towards a happier, healthier you by scheduling a consultation with one of our experienced therapists today. Your journey to wellness starts here.",
+      ],
       description:
         "We believe that mental well-being is the cornerstone of a fulfilling life, impacting both individuals and organizations alike. Our experienced team of therapists provides individualized counselling services tailored to your unique needs. Whether you're dealing with anxiety, depression, relationship issues, or other mental health concerns, we're here to support you on your journey to healing and self- discovery. Our therapists are licensed professionals with extensive training in evidence-based therapeutic modalities, including cognitive-behavioural therapy (CBT), mindfulness-based approaches, and more. We understand the importance of confidentiality and create a safe, non-judgmental space where you can freely express yourself and work towards positive change. In addition to individual therapy, we offer consulting services to promote organizational health and psychology within companies. By addressing workplace dynamics, improving communication, and fostering a culture of mental wellness, we help organizations thrive. Investing in the mental health of your employees not only enhances their well-being but also boosts productivity, reduces absenteeism, and creates a more positive work environment. Led by our experienced facilitators, our workshops combine engaging activities, discussions, and exercises to help participants apply new skills in their personal and professional lives. Elevate your company's performance and culture with our organizational health and psychology services. From executive coaching to team-building workshops, we work closely with organizations to foster resilience, improve communication, and enhance employee well- being. Invest in your team's mental health, and watch your organization thrive. Ready to prioritize your mental health? Take the first step towards a happier, healthier you by scheduling a consultation with one of our experienced therapists today. Your journey to wellness starts here.",
       offerings: [

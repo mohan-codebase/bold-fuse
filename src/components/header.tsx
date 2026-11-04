@@ -15,9 +15,11 @@ export function Header() {
   const header = useRef<HTMLElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
-  const dropdown = useRef<HTMLDetailsElement>(null);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [pastBanner, setPastBanner] = useState(false);
   const transparent = isHome && !pastBanner;
+
   useEffect(() => {
     const update = () => {
       setPastBanner(window.scrollY > 25);
@@ -33,6 +35,7 @@ export function Header() {
   const close = () => {
     dialog.current?.close();
     document.documentElement.classList.remove("menu-open");
+    setMobileServicesOpen(false);
     trigger.current?.focus();
   };
   useEffect(
@@ -74,56 +77,60 @@ export function Header() {
         <nav aria-label={ui.menu} className="hidden items-center gap-7 lg:flex">
           {navigation.map((key) =>
             key === "services" ? (
-              <details
+              <div
                 key={key}
-                ref={dropdown}
                 className="relative"
-                onPointerEnter={(event) => {
-                  if (event.pointerType === "mouse")
-                    event.currentTarget.open = true;
-                }}
-                onPointerLeave={(event) => {
-                  if (
-                    event.pointerType === "mouse" &&
-                    !event.currentTarget.contains(document.activeElement)
-                  )
-                    event.currentTarget.open = false;
-                }}
+                onPointerEnter={() => setServicesOpen(true)}
+                onPointerLeave={() => setServicesOpen(false)}
                 onKeyDown={(e) => {
-                  if (e.key === "Escape") {
-                    dropdown.current?.removeAttribute("open");
-                    dropdown.current?.querySelector("summary")?.focus();
-                  }
-                }}
-                onBlur={(e) => {
-                  if (!e.currentTarget.contains(e.relatedTarget))
-                    dropdown.current?.removeAttribute("open");
+                  if (e.key === "Escape") setServicesOpen(false);
                 }}
               >
-                <summary className="flex min-h-12 list-none items-center gap-2 text-[13px] font-semibold">
-                  {routes[key].label}
-                  <ChevronDown size={15} aria-hidden="true" />
-                </summary>
-                <div className="absolute top-full -left-6 w-80 rounded-2xl border border-brand-950/15 bg-white p-3 text-brand-950">
+                <div className="flex min-h-12 items-center gap-1.5">
                   <AppLink
                     route="services"
-                    className="block rounded-lg px-3 py-3 text-sm font-semibold"
-                    onClick={() => dropdown.current?.removeAttribute("open")}
+                    className="flex min-h-12 items-center text-[13px] font-semibold decoration-accent underline-offset-8 hover:underline"
+                    onClick={() => setServicesOpen(false)}
                   >
-                    {routes.services.label}
+                    {routes[key].label}
                   </AppLink>
+                  <button
+                    type="button"
+                    onClick={() => setServicesOpen((prev) => !prev)}
+                    className="flex items-center p-1 text-current/70 hover:text-current cursor-pointer transition-colors"
+                    aria-label="Toggle services menu"
+                    aria-expanded={servicesOpen}
+                  >
+                    <ChevronDown
+                      size={15}
+                      aria-hidden="true"
+                      className={cn(
+                        "transition-transform duration-200",
+                        servicesOpen && "rotate-180",
+                      )}
+                    />
+                  </button>
+                </div>
+                <div
+                  className={cn(
+                    "absolute top-full -left-6 w-80 rounded-2xl border border-brand-950/15 bg-white p-3 text-brand-950 shadow-xl transition-all duration-200 z-50",
+                    servicesOpen
+                      ? "opacity-100 visible pointer-events-auto translate-y-0"
+                      : "opacity-0 invisible pointer-events-none -translate-y-1",
+                  )}
+                >
                   {serviceNavigation.map((route) => (
                     <AppLink
                       key={route}
                       route={route}
                       className="block rounded-lg px-3 py-3 text-sm font-medium hover:bg-brand-50"
-                      onClick={() => dropdown.current?.removeAttribute("open")}
+                      onClick={() => setServicesOpen(false)}
                     >
                       {routes[route].label}
                     </AppLink>
                   ))}
                 </div>
-              </details>
+              </div>
             ) : (
               <AppLink
                 key={key}
@@ -204,27 +211,44 @@ export function Header() {
           <nav aria-label={ui.menu} className="flex flex-col py-3">
             {navigation.map((key) =>
               key === "services" ? (
-                <details
-                  key={key}
-                  className="border-b border-brand-950/10 py-4"
-                >
-                  <summary className="flex list-none items-center justify-between font-display text-lg font-medium">
-                    {routes[key].label}
-                    <ChevronDown />
-                  </summary>
-                  <div className="flex flex-col gap-1 pt-5">
-                    {["services", ...serviceNavigation].map((route) => (
-                      <AppLink
-                        key={route}
-                        route={route as "services"}
-                        className="py-3 text-base font-medium"
-                        onClick={close}
-                      >
-                        {routes[route as "services"].label}
-                      </AppLink>
-                    ))}
+                <div key={key} className="border-b border-brand-950/10 py-4">
+                  <div className="flex items-center justify-between">
+                    <AppLink
+                      route="services"
+                      className="font-display text-lg font-medium"
+                      onClick={close}
+                    >
+                      {routes[key].label}
+                    </AppLink>
+                    <button
+                      type="button"
+                      onClick={() => setMobileServicesOpen((prev) => !prev)}
+                      className="p-1 text-forest/70 hover:text-forest cursor-pointer"
+                      aria-label="Toggle services list"
+                    >
+                      <ChevronDown
+                        className={cn(
+                          "transition-transform duration-200",
+                          mobileServicesOpen && "rotate-180",
+                        )}
+                      />
+                    </button>
                   </div>
-                </details>
+                  {mobileServicesOpen && (
+                    <div className="flex flex-col gap-1 pt-4 pl-3">
+                      {serviceNavigation.map((route) => (
+                        <AppLink
+                          key={route}
+                          route={route}
+                          className="py-2.5 text-base font-medium text-forest/80 hover:text-forest"
+                          onClick={close}
+                        >
+                          {routes[route].label}
+                        </AppLink>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ) : (
                 <AppLink
                   key={key}
