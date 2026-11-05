@@ -43,7 +43,7 @@ export const routes = {
   "counselling-services": {
     label: "Counselling Services",
     path: "/counselling-services/",
-    status: "planned",
+    status: "built",
   },
   "anxiety-counselling": {
     label: "Anxiety Counselling",
@@ -163,17 +163,17 @@ export const routes = {
   therapy: {
     label: "Therapy",
     path: "/therapy/",
-    status: "planned",
+    status: "built",
   },
   parenting: {
     label: "Parenting",
     path: "/parenting/",
-    status: "planned",
+    status: "built",
   },
   "de-addiction-services": {
     label: "De-addiction Services",
     path: "/de-addiction-services/",
-    status: "planned",
+    status: "built",
   },
   "psychosis-treatment": {
     label: "Psychosis Treatment",

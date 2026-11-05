@@ -208,19 +208,45 @@ export default function ServicesPage() {
                       Specialized Offerings:
                     </p>
                     <div className="mt-3 flex flex-wrap gap-2.5">
-                      {services[1].offerings.map((item, idx) => (
-                        <span
-                          key={idx}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-line bg-cream/70 px-4 py-1.5 font-description text-sm font-semibold text-forest"
-                        >
-                          <CheckCircle2
-                            size={14}
-                            className="text-accent"
-                            aria-hidden="true"
-                          />
-                          {item}
-                        </span>
-                      ))}
+                      {services[1].offerings.map((item, idx) => {
+                        const offeringHref =
+                          item === "Counselling Services"
+                            ? "/counselling-services/"
+                            : item === "Therapy"
+                            ? "/therapy/"
+                            : item === "Parenting"
+                            ? "/parenting/"
+                            : item.toLowerCase() === "de-addiction services"
+                            ? "/de-addiction-services/"
+                            : null;
+
+                        return offeringHref ? (
+                          <Link
+                            key={idx}
+                            href={offeringHref}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-cream/70 px-4 py-1.5 font-description text-sm font-semibold text-forest transition-colors hover:bg-forest hover:text-white hover:border-forest"
+                          >
+                            <CheckCircle2
+                              size={14}
+                              className="text-accent"
+                              aria-hidden="true"
+                            />
+                            {item}
+                          </Link>
+                        ) : (
+                          <span
+                            key={idx}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-line bg-cream/70 px-4 py-1.5 font-description text-sm font-semibold text-forest"
+                          >
+                            <CheckCircle2
+                              size={14}
+                              className="text-accent"
+                              aria-hidden="true"
+                            />
+                            {item}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
