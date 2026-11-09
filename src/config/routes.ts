@@ -28,7 +28,7 @@ export const routes = {
     label:
       "Why do performing and outstanding employees leave the system sooner than the others?",
     path: "/why-do-performing-and-outstanding-employees-leave-the-system-sooner-than-the-others/",
-    status: "planned",
+    status: "built",
   },
   contact: {
     label: "Contact",
@@ -38,7 +38,7 @@ export const routes = {
   mentalHealth: {
     label: "Mental health of Entrepreneurs: Tips to hold on",
     path: "/mental-health-of-entrepreneurs/",
-    status: "planned",
+    status: "built",
   },
   "counselling-services": {
     label: "Counselling Services",

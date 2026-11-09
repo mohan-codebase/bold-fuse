@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { home } from "@/content/home";
+import { ArrowUpRight, Calendar, Clock } from "lucide-react";
+import { blogArticles, getReadingTime } from "@/content/blogs";
 import { routes } from "@/config/routes";
 
 export const metadata: Metadata = {
@@ -65,36 +65,58 @@ export default function BlogsPage() {
             </p>
           </div>
           <div className="mt-8 grid gap-6 md:grid-cols-2 lg:gap-8">
-            {home.blog.items.map((post) => (
+            {blogArticles.map((post) => (
               <article
-                key={post.route}
+                key={post.slug}
                 className="overflow-hidden rounded-3xl border border-[#dbe9e1] bg-white"
               >
-                <a
+                <Link
                   href={routes[post.route].path}
                   className="group flex h-full flex-col focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-forest"
                 >
                   <Image
                     src={post.image}
-                    alt=""
+                    alt={post.imageAlt}
                     sizes="(min-width: 768px) 50vw, 100vw"
                     className="aspect-[16/10] w-full object-cover"
                   />
                   <div className="flex flex-1 flex-col p-6 sm:p-8">
-                    <p className="text-xs font-semibold tracking-[0.16em] text-accent-ink uppercase">
-                      {post.category}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.16em] text-accent-ink uppercase">
+                      <span>{post.category}</span>
+                      <span
+                        aria-hidden="true"
+                        className="hidden text-muted/40 lg:inline"
+                      >
+                        •
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 text-muted">
+                        <Calendar size={13} aria-hidden="true" />
+                        <time dateTime={post.publishedISO}>
+                          {post.published}
+                        </time>
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="hidden text-muted/40 lg:inline"
+                      >
+                        •
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 text-muted">
+                        <Clock size={13} aria-hidden="true" />
+                        {getReadingTime(post)} min read
+                      </span>
+                    </div>
                     <h3 className="mt-4 font-heading text-2xl leading-snug font-bold text-forest group-hover:underline">
                       {post.title}
                     </h3>
-                    <p className="mt-4 font-description leading-relaxed text-muted">
+                    <p className="mt-4 font-description leading-relaxed font-medium text-muted">
                       {post.excerpt}
                     </p>
                     <span className="mt-auto inline-flex items-center gap-2 pt-7 text-sm font-semibold text-forest">
                       Read article <ArrowUpRight size={17} aria-hidden="true" />
                     </span>
                   </div>
-                </a>
+                </Link>
               </article>
             ))}
           </div>
