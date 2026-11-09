@@ -3,98 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { site } from "@/content/site";
-
-// Wellness images from local assets
-import anxietyImg from "@/assets/services/wellness-and-mental-health/anxiety-counselling.jpeg";
-import depressionImg from "@/assets/services/wellness-and-mental-health/depression-counselling.jpeg";
-import childImg from "@/assets/services/wellness-and-mental-health/child-and-adolescent-counselling.jpeg";
-import teenImg from "@/assets/services/wellness-and-mental-health/teen-counselling.jpeg";
-import parentingImg from "@/assets/services/wellness-and-mental-health/parenting.png";
-import traumaImg from "@/assets/services/wellness-and-mental-health/trauma-counselling.jpeg";
-import griefImg from "@/assets/services/wellness-and-mental-health/grief-and-loss-counselling.jpeg";
-import eatingImg from "@/assets/services/wellness-and-mental-health/eating-disorder-counselling.jpeg";
-import substanceImg from "@/assets/services/wellness-and-mental-health/substance-abuse-counselling.jpeg";
-import selfEsteemImg from "@/assets/services/wellness-and-mental-health/self-esteem-counselling.jpeg";
+import { counsellingDetails } from "@/content/counselling-details";
+import { routes } from "@/config/routes";
 
 export const metadata: Metadata = {
-  title: "Counselling Services - Boldfuse",
+  title: "Counselling Services",
   description:
     "We believe mental well-being is essential to a fulfilling life. Our experienced therapists provide personalized counselling tailored to individual and organizational needs.",
   alternates: { canonical: "/counselling-services/" },
 };
-
-const counsellingServices = [
-  {
-    title: "Anxiety Counselling",
-    description:
-      "Guidance and coping mechanisms for managing chronic worry, panic, and everyday stress through evidence-based therapeutic approaches.",
-    image: anxietyImg,
-    imageAlt: "Person finding calm and emotional relief through anxiety counselling",
-  },
-  {
-    title: "Depression Counselling",
-    description:
-      "Compassionate, structured support designed to help individuals navigate low moods, depressive symptoms, and emotional blockages.",
-    image: depressionImg,
-    imageAlt: "Supportive therapist helping a client work through depression in a bright room",
-  },
-  {
-    title: "Child and Adolescent Counselling",
-    description:
-      "Age-appropriate psychological and emotional support to help younger children navigate emotional, behavioral, or developmental challenges.",
-    image: childImg,
-    imageAlt: "Child engaging in a warm and supportive counselling session with a therapist",
-  },
-  {
-    title: "Teen Counselling",
-    description:
-      "A safe, non-judgmental space for adolescents dealing with academic pressure, identity shifts, peer pressure, and emotional wellbeing.",
-    image: teenImg,
-    imageAlt: "Teenager in a trusting and empathetic counselling session",
-  },
-  {
-    title: "Parenting Support",
-    description:
-      "Guidance and practical strategies to help parents navigate behavioral management, family dynamics, and the day-to-day journey of raising children.",
-    image: parentingImg,
-    imageAlt: "Parents receiving professional guidance in a parenting support session",
-  },
-  {
-    title: "Trauma Counselling",
-    description:
-      "Trauma-informed care and supportive processing mechanisms to help individuals heal from distressing or traumatic life events at their own pace.",
-    image: traumaImg,
-    imageAlt: "Therapist providing compassionate, trauma-informed mental health care",
-  },
-  {
-    title: "Grief and Loss Counselling",
-    description:
-      "Compassionate guidance and emotional support to help individuals process grief, navigate bereavement, and manage major life transitions.",
-    image: griefImg,
-    imageAlt: "Compassionate support for a person working through grief and loss",
-  },
-  {
-    title: "Eating Disorder Counselling",
-    description:
-      "Specialized therapy addressing complex relationships with food, body image, and self-worth through compassionate therapeutic modalities.",
-    image: eatingImg,
-    imageAlt: "Professional eating disorder counselling in a supportive environment",
-  },
-  {
-    title: "Substance Abuse Counselling",
-    description:
-      "Confidential, judgment-free support and personalized recovery planning to address substance dependency and build long-term wellness.",
-    image: substanceImg,
-    imageAlt: "Confidential substance abuse counselling and addiction recovery support",
-  },
-  {
-    title: "Self-Esteem Counselling",
-    description:
-      "Dedicated counselling to overcome self-doubt, challenge negative core beliefs, and cultivate genuine self-compassion and lasting confidence.",
-    image: selfEsteemImg,
-    imageAlt: "Person building confidence and self-worth through self-esteem counselling",
-  },
-];
 
 export default function CounsellingServicesPage() {
   return (
@@ -131,10 +48,7 @@ export default function CounsellingServicesPage() {
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex flex-wrap items-center gap-1.5 text-xs font-medium text-white/60">
               <li>
-                <Link
-                  href="/"
-                  className="transition-colors hover:text-white"
-                >
+                <Link href="/" className="transition-colors hover:text-white">
                   Home
                 </Link>
               </li>
@@ -163,7 +77,7 @@ export default function CounsellingServicesPage() {
               <li aria-hidden="true" className="text-white/40">
                 ›
               </li>
-              <li className="text-white/90 font-semibold" aria-current="page">
+              <li className="font-semibold text-white/90" aria-current="page">
                 Counselling Services
               </li>
             </ol>
@@ -207,16 +121,17 @@ export default function CounsellingServicesPage() {
             id="counselling-intro-heading"
             className="mt-3 font-heading text-2xl font-bold tracking-tight text-forest sm:text-3xl lg:text-4xl"
           >
-            From stress to smile, there is just one station and it&apos;s boldfuse.
+            From stress to smile, there is just one station and it&apos;s
+            boldfuse.
           </h2>
 
           <div className="mt-6 space-y-4 font-description text-base leading-[1.85] font-medium text-muted sm:text-lg">
             <p>
-              Whether you&apos;re dealing with anxiety, depression,
-              relationship issues, or other mental health concerns, we&apos;re
-              here to support you on your journey to healing and self-discovery.
-              Our therapists are licensed professionals with extensive training
-              in evidence-based therapeutic modalities, including
+              Whether you&apos;re dealing with anxiety, depression, relationship
+              issues, or other mental health concerns, we&apos;re here to
+              support you on your journey to healing and self-discovery. Our
+              therapists are licensed professionals with extensive training in
+              evidence-based therapeutic modalities, including
               cognitive-behavioural therapy (CBT), mindfulness-based approaches,
               and more. We understand the importance of confidentiality and
               create a safe, non-judgmental space where you can freely express
@@ -235,8 +150,8 @@ export default function CounsellingServicesPage() {
               Led by our experienced facilitators, our workshops combine
               engaging activities, discussions, and exercises to help
               participants apply new skills in their personal and professional
-              lives. Elevate your company&apos;s performance and culture with our
-              organizational health and psychology services.
+              lives. Elevate your company&apos;s performance and culture with
+              our organizational health and psychology services.
             </p>
           </div>
         </div>
@@ -249,7 +164,7 @@ export default function CounsellingServicesPage() {
         aria-label="Counselling service categories"
         className="shell pt-14 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28"
       >
-        <div className="border-b border-line pb-6 mb-10">
+        <div className="mb-10 border-b border-line pb-6">
           <div className="flex items-center gap-3">
             <span className="text-xs font-semibold tracking-[0.2em] text-accent-ink uppercase">
               Specialized Offerings
@@ -259,49 +174,59 @@ export default function CounsellingServicesPage() {
           <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-forest sm:text-4xl">
             Our Counselling Services
           </h2>
-          <p className="mt-2 font-description text-base font-medium text-muted max-w-2xl">
+          <p className="mt-2 max-w-2xl font-description text-base font-medium text-muted">
             Professional psychological and therapeutic support tailored for
             individuals, children, teens, and families.
           </p>
         </div>
 
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {counsellingServices.map((service, idx) => (
+          {counsellingDetails.map((service) => (
             <article
-              key={idx}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-[0_2px_8px_rgba(23,63,53,0.04),0_12px_24px_-16px_rgba(23,63,53,0.1)] transition-all duration-300 hover:shadow-[0_16px_36px_-12px_rgba(23,63,53,0.18)] hover:border-accent/40"
+              key={service.route}
+              className="flex flex-col overflow-hidden rounded-3xl border border-line bg-white"
             >
               {/* Image */}
-              <div className="relative overflow-hidden">
+              <Link
+                href={routes[service.route].path}
+                className="block focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-forest"
+              >
                 <Image
                   src={service.image}
                   alt={service.imageAlt}
                   sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 92vw"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="aspect-[16/10] w-full object-cover"
                 />
-              </div>
+              </Link>
 
               {/* Content */}
               <div className="flex flex-1 flex-col p-6 sm:p-7">
-                <h3 className="font-heading text-xl font-bold text-forest transition-colors group-hover:text-accent-ink">
-                  {service.title}
+                <h3 className="font-heading text-xl font-bold text-forest">
+                  <Link
+                    href={routes[service.route].path}
+                    className="hover:text-accent-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forest"
+                  >
+                    {service.cardTitle}
+                  </Link>
                 </h3>
 
-                <p className="mt-3 font-description text-sm leading-relaxed font-medium text-muted flex-1">
-                  {service.description}
+                <p className="mt-3 flex-1 font-description text-sm leading-relaxed font-medium text-muted">
+                  {service.cardText}
                 </p>
 
-                <div className="mt-6 pt-5 border-t border-line/60 flex items-center justify-between">
+                <div className="mt-6 flex items-center justify-between border-t border-line/60 pt-5">
                   <Link
-                    href={`/contact/?service=${encodeURIComponent(service.title)}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-forest uppercase tracking-wider transition-colors hover:text-accent-ink group-hover:text-accent-ink"
+                    href={routes[service.route].path}
+                    className="text-xs font-bold tracking-wider text-forest uppercase hover:text-accent-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forest"
+                  >
+                    Learn more
+                  </Link>
+                  <Link
+                    href={`/book-appointment/?service=${encodeURIComponent(service.cardTitle)}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-accent-ink uppercase hover:text-forest focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-ink"
                   >
                     Book Session
-                    <ArrowUpRight
-                      size={15}
-                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      aria-hidden="true"
-                    />
+                    <ArrowUpRight size={15} aria-hidden="true" />
                   </Link>
                 </div>
               </div>
@@ -349,7 +274,7 @@ export default function CounsellingServicesPage() {
             Let&apos;s fix the health-o-meter of your business.
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl font-description text-base font-medium leading-relaxed text-white/80 sm:text-lg">
+          <p className="mx-auto mt-5 max-w-2xl font-description text-base leading-relaxed font-medium text-white/80 sm:text-lg">
             Ready to prioritize your mental health? Take the first step towards
             a happier, healthier you by scheduling a consultation with one of
             our experienced therapists today. Your journey to wellness starts
