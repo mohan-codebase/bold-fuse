@@ -218,6 +218,10 @@ export default function ServicesPage() {
                             ? "/parenting/"
                             : item.toLowerCase() === "de-addiction services"
                             ? "/de-addiction-services/"
+                            : item.toLowerCase() === "psychosis treatment"
+                            ? "/psychosis-treatment/"
+                            : item.toLowerCase() === "psychological testing"
+                            ? "/psychological-testing/"
                             : null;
 
                         return offeringHref ? (

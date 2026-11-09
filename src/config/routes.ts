@@ -118,7 +118,7 @@ export const routes = {
   "psychological-testing": {
     label: "Psychological Testing",
     path: "/psychological-testing/",
-    status: "planned",
+    status: "built",
   },
   "couples-counselling-for-specific-issues": {
     label: "Couples counselling (for specific issues)",
@@ -178,7 +178,7 @@ export const routes = {
   "psychosis-treatment": {
     label: "Psychosis Treatment",
     path: "/psychosis-treatment/",
-    status: "planned",
+    status: "built",
   },
   "elementor-hf_header": {
     label: "Boldfuse",
