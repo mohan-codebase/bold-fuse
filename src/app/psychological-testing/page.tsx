@@ -5,11 +5,11 @@ import { ArrowUpRight, Phone } from "lucide-react";
 import { site } from "@/content/site";
 
 // Psychological testing images from local assets
-import personalityImg from "@/assets/services/psychological-testing/personality-assessments.png";
-import cognitiveImg from "@/assets/services/psychological-testing/cognitive-assessments.jpeg";
-import moodEmotionalImg from "@/assets/services/psychological-testing/mood-emotional-assessments.jpg";
-import behavioralClinicalImg from "@/assets/services/psychological-testing/behavioral-clinical-assessments.jpeg";
-import neuropsychologicalImg from "@/assets/services/psychological-testing/neuropsychological-assessments.jpg";
+import personalityImg from "@/assets/services/psychological-testing/personality-assessments.jpeg";
+import cognitiveImg from "@/assets/services/psychological-testing/cognitive-assessments-2.jpeg";
+import moodEmotionalImg from "@/assets/services/psychological-testing/mood-emotional-assessments-2.jpeg";
+import behavioralClinicalImg from "@/assets/services/psychological-testing/behavioral-clinical-assessments-1.jpeg";
+import neuropsychologicalImg from "@/assets/services/psychological-testing/neuropsychological-assessments-1.jpeg";
 
 export const metadata: Metadata = {
   title: "Psychological Testing - Boldfuse",

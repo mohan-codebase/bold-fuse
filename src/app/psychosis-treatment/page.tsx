@@ -5,13 +5,13 @@ import { ArrowUpRight, Phone } from "lucide-react";
 import { site } from "@/content/site";
 
 // Psychosis treatment images from local assets
-import medicationImg from "@/assets/services/psychosis-treatment/medication-template.png";
-import psychotherapyImg from "@/assets/services/psychosis-treatment/psychotherapy.png";
-import cognitiveImg from "@/assets/services/psychosis-treatment/cognitive-remediation-1.png";
-import socialSupportImg from "@/assets/services/psychosis-treatment/social-support-and-rehabilitation-1.png";
-import peerSupportImg from "@/assets/services/psychosis-treatment/peer-support-groups-1.png";
-import lifestyleImg from "@/assets/services/psychosis-treatment/lifestyle-changes.png";
-import holisticImg from "@/assets/services/psychosis-treatment/holistic-approaches.png";
+import medicationImg from "@/assets/services/psychosis-treatment/medication.jpeg";
+import psychotherapyImg from "@/assets/services/psychosis-treatment/psychotherapy.jpeg";
+import cognitiveImg from "@/assets/services/psychosis-treatment/cognitive-remediation.jpeg";
+import socialSupportImg from "@/assets/services/psychosis-treatment/social-support-and-rehabilitation-1.jpeg";
+import peerSupportImg from "@/assets/services/psychosis-treatment/peer-support-groups.jpeg";
+import lifestyleImg from "@/assets/services/psychosis-treatment/lifestyle-changes.jpeg";
+import holisticImg from "@/assets/services/psychosis-treatment/holistic-approaches.jpeg";
 
 export const metadata: Metadata = {
   title: "Psychosis Treatment - Boldfuse",
