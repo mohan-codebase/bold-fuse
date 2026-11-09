@@ -80,7 +80,7 @@ export const home = {
   },
   services: {
     eyebrow: "What we do",
-    title: "Dictate the trajectory of your business with our super skills",
+    title: "Our Superskills for your Business",
     items: [
       {
         title: "Business Automation",
@@ -129,7 +129,7 @@ export const home = {
       "To deliver pragmatic diverse solutions with effective restructuring strategies which sustain in the current and challenging environment",
   },
   clients: {
-    number: "30+",
+    number: "50+",
     eyebrow: "Testimonials",
     title: "What client say about us",
     label: "Our clients",

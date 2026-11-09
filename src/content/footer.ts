@@ -10,9 +10,7 @@ export const footerContent = {
   backToTop: "Back to top",
   sections: [
     { label: "About us", id: "about" },
-    { label: "Capabilities", id: "capabilities" },
     { label: "Our values", id: "values" },
-    { label: "Our process", id: "process" },
     { label: "Vision & mission", id: "experience" },
     { label: "Our clients", id: "clients" },
     { label: "Testimonials", id: "testimonials" },

@@ -8,6 +8,18 @@ import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 import Button from "./Button";
 
 export default function About() {
+  const tiles = [
+    {
+      title: home.experience.visionTitle,
+      text: home.experience.vision,
+    },
+    {
+      title: home.experience.missionTitle,
+      text: home.experience.mission,
+    },
+    ...about.pillars,
+  ];
+
   return (
     <section
       id="about"
@@ -21,7 +33,7 @@ export default function About() {
               src={aboutImage}
               alt={about.imageAlt}
               sizes="(min-width:1280px) 480px, (min-width:1024px) 42vw, 90vw"
-              className="aspect-[3/4] w-full rounded-2xl object-cover sm:aspect-[4/3] lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
+              className="aspect-[4/3] w-full rounded-2xl object-cover lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
             />
           </Reveal>
           <div>
@@ -49,35 +61,37 @@ export default function About() {
                 </Button>
               </div>
             </Reveal>
-            <div
-              id="experience"
-              className="mt-8 grid gap-6 border-t border-line pt-7 sm:grid-cols-[0.8fr_1.2fr] sm:gap-7"
-            >
-              <div>
-                <h3 className="text-lg text-forest">
-                  {home.experience.visionTitle}
-                </h3>
-                <p className="mt-2 font-description text-sm leading-relaxed text-muted">
-                  {home.experience.vision}
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg text-forest">
-                  {home.experience.missionTitle}
-                </h3>
-                <p className="mt-2 font-description text-sm leading-relaxed text-muted">
-                  {home.experience.mission}
-                </p>
-              </div>
-            </div>
           </div>
         </div>
-        <RevealGroup className="mt-10 grid gap-7 border-t border-line pt-8 sm:grid-cols-3 sm:gap-8 lg:mt-12">
-          {about.pillars.map((pillar) => (
-            <RevealItem key={pillar.title}>
-              <h3 className="text-lg text-forest">{pillar.title}</h3>
-              <p className="mt-3 font-description text-sm leading-relaxed text-muted">
-                {pillar.text}
+        <RevealGroup
+          id="experience"
+          className="mt-10 grid gap-4 border-t border-line pt-8 sm:grid-cols-2 lg:mt-12 lg:grid-cols-5 lg:gap-5"
+        >
+          {tiles.map((tile) => (
+            <RevealItem
+              key={tile.title}
+              className="relative isolate flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-5 sm:p-6"
+            >
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_100%_100%,rgba(169,233,217,0.22),transparent_65%)]"
+              >
+                <svg
+                  viewBox="0 0 300 200"
+                  preserveAspectRatio="none"
+                  className="absolute inset-0 h-full w-full text-accent"
+                  fill="none"
+                >
+                  <path
+                    d="M60 220C160 205 140 120 230 135S295 75 330 40"
+                    stroke="currentColor"
+                    opacity="0.12"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-lg text-forest">{tile.title}</h3>
+              <p className="mt-2.5 font-description text-sm font-medium leading-relaxed text-muted">
+                {tile.text}
               </p>
             </RevealItem>
           ))}

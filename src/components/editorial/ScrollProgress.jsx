@@ -1,9 +1,8 @@
 "use client";
-import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
 
 /** Hairline accent bar across the top of the viewport tracking page progress. */
 export default function ScrollProgress() {
-  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 120,
@@ -11,12 +10,10 @@ export default function ScrollProgress() {
     restDelta: 0.001,
   });
 
-  if (reduced) return null;
-
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-accent"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-accent motion-reduce:hidden"
       style={{ scaleX }}
     />
   );

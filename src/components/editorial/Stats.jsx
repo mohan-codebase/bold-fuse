@@ -1,11 +1,11 @@
 "use client";
 
-import { Briefcase, LayoutGrid, TrendingUp, Users } from "lucide-react";
+import { Briefcase, MapPin, TrendingUp, Users } from "lucide-react";
 import { stats } from "@/content/editorial/data";
 import CountUp from "./CountUp";
 import { RevealGroup, RevealItem } from "./Reveal";
 
-const icons = [Briefcase, TrendingUp, Users, LayoutGrid];
+const icons = [Briefcase, TrendingUp, Users, MapPin];
 
 export default function Stats() {
   return (

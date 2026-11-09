@@ -29,7 +29,7 @@ export const ui = {
     explore: "Find what you need",
     jumps: [
       { label: "Our services", id: "services" },
-      { label: "Our process", id: "process" },
+      { label: "About us", id: "about" },
       { label: "Our clients", id: "clients" },
       { label: "From our blog", id: "blog" },
     ],
