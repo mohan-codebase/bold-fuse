@@ -10,6 +10,12 @@ const config: NextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
   images: { dangerouslyAllowSVG: false },
+  async redirects() {
+    return [
+      { source: "/home1/", destination: "/", permanent: true },
+      { source: "/home2/", destination: "/", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

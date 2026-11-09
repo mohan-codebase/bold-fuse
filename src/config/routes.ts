@@ -48,7 +48,7 @@ export const routes = {
   "anxiety-counselling": {
     label: "Anxiety Counselling",
     path: "/anxiety-counselling/",
-    status: "planned",
+    status: "built",
   },
   home1: {
     label: "Home1",
@@ -63,57 +63,57 @@ export const routes = {
   "house-of-bold": {
     label: "House of Bold",
     path: "/house-of-bold/",
-    status: "planned",
+    status: "built",
   },
   "depression-counselling": {
     label: "Depression Counselling",
     path: "/depression-counselling/",
-    status: "planned",
+    status: "built",
   },
   "child-counselling": {
     label: "Child Counselling",
     path: "/child-counselling/",
-    status: "planned",
+    status: "built",
   },
   "teen-counselling": {
     label: "Teen Counselling",
     path: "/teen-counselling/",
-    status: "planned",
+    status: "built",
   },
   "parenting-support": {
     label: "Parenting Support",
     path: "/parenting-support/",
-    status: "planned",
+    status: "built",
   },
   "trauma-counselling": {
     label: "Trauma Counselling",
     path: "/trauma-counselling/",
-    status: "planned",
+    status: "built",
   },
   "grief-and-loss-counselling": {
     label: "Grief and Loss Counselling",
     path: "/grief-and-loss-counselling/",
-    status: "planned",
+    status: "built",
   },
   "eating-disorder-counselling": {
     label: "Eating Disorder Counselling",
     path: "/eating-disorder-counselling/",
-    status: "planned",
+    status: "built",
   },
   "substance-abuse-counselling": {
     label: "Substance Abuse Counselling",
     path: "/substance-abuse-counselling/",
-    status: "planned",
+    status: "built",
   },
   "self-esteem-counselling": {
     label: "Self-Esteem Counselling",
     path: "/self-esteem-counselling/",
-    status: "planned",
+    status: "built",
   },
   "stress-management-counselling": {
     label: "Stress Management Counselling",
     path: "/stress-management-counselling/",
-    status: "planned",
+    status: "built",
   },
   "psychological-testing": {
     label: "Psychological Testing",
@@ -123,42 +123,42 @@ export const routes = {
   "couples-counselling-for-specific-issues": {
     label: "Couples counselling (for specific issues)",
     path: "/couples-counselling-for-specific-issues/",
-    status: "planned",
+    status: "built",
   },
   "book-appointment": {
     label: "Book an Appointment",
     path: "/book-appointment/",
-    status: "planned",
+    status: "built",
   },
   "my-bookings": {
     label: "My Bookings",
     path: "/my-bookings/",
-    status: "planned",
+    status: "built",
   },
   "cancel-appointment": {
     label: "Appointment canceled",
     path: "/cancel-appointment/",
-    status: "planned",
+    status: "built",
   },
   "thank-you": {
     label: "Thank you",
     path: "/thank-you/",
-    status: "planned",
+    status: "built",
   },
   "appointment-cancellation-confirmation": {
     label: "Appointment cancellation confirmation",
     path: "/appointment-cancellation-confirmation/",
-    status: "planned",
+    status: "built",
   },
   "cancel-payment": {
     label: "Cancel Payment",
     path: "/cancel-payment/",
-    status: "planned",
+    status: "built",
   },
   "hello-marshmellowww": {
     label: "Hello @ Marshmellowww",
     path: "/hello-marshmellowww/",
-    status: "planned",
+    status: "built",
   },
   therapy: {
     label: "Therapy",
