@@ -7,6 +7,7 @@ import { ui } from "@/content/ui";
 import { siteUrl } from "@/config/site";
 import "./globals.css";
 import Experience from "@/components/editorial/Experience";
+import { ContactModal } from "@/components/ContactModal";
 const inter = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -119,6 +120,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <ContactModal />
         </Experience>
         <script
           type="application/ld+json"

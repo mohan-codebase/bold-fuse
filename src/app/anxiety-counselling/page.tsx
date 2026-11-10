@@ -5,9 +5,16 @@ import {
   getCounsellingByRoute,
 } from "@/content/counselling-details";
 import { routes } from "@/config/routes";
+import anxietyDetailImg from "@/assets/services/wellness-and-mental-health/anxiety-counselling-detail.jpeg";
 
 const route = "anxiety-counselling";
-const detail = getCounsellingByRoute(route);
+const baseDetail = getCounsellingByRoute(route);
+const detail = {
+  ...baseDetail,
+  image: anxietyDetailImg,
+  imageAlt:
+    "Therapist speaking with compassionate understanding to a client seeking relief from anxiety",
+};
 
 export const metadata: Metadata = {
   title: detail.title,

@@ -10,8 +10,8 @@ import griefImg from "@/assets/services/wellness-and-mental-health/grief-and-los
 import eatingImg from "@/assets/services/wellness-and-mental-health/eating-disorder-counselling.jpeg";
 import substanceImg from "@/assets/services/wellness-and-mental-health/substance-abuse-counselling.jpeg";
 import selfEsteemImg from "@/assets/services/wellness-and-mental-health/self-esteem-counselling.jpeg";
-import stressImg from "@/assets/services/wellness-and-mental-health/stress-management-counselling.png";
-import couplesImg from "@/assets/services/wellness-and-mental-health/couples-counselling.jpg";
+import stressImg from "@/assets/services/wellness-and-mental-health/stress-management-counselling-new.jpeg";
+import couplesImg from "@/assets/services/wellness-and-mental-health/couples-counselling-1.jpeg";
 
 export type DetailBullet = { title: string; text: string };
 export type DetailSection = {

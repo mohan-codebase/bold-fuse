@@ -68,18 +68,21 @@ export default function BlogsPage() {
             {blogArticles.map((post) => (
               <article
                 key={post.slug}
-                className="overflow-hidden rounded-3xl border border-[#dbe9e1] bg-white"
+                className="overflow-hidden rounded-3xl border border-line bg-white"
               >
                 <Link
                   href={routes[post.route].path}
                   className="group flex h-full flex-col focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-forest"
                 >
-                  <Image
-                    src={post.image}
-                    alt={post.imageAlt}
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="aspect-[16/10] w-full object-cover"
-                  />
+                  {/* Image Frame */}
+                  <div className="border-b border-line rounded-b-3xl p-3.5 sm:p-4">
+                    <Image
+                      src={post.image}
+                      alt={post.imageAlt}
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="aspect-[16/10] w-full rounded-2xl object-cover"
+                    />
+                  </div>
                   <div className="flex flex-1 flex-col p-6 sm:p-8">
                     <div className="flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.16em] text-accent-ink uppercase">
                       <span>{post.category}</span>

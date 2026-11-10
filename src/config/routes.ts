@@ -278,7 +278,7 @@ export const routes = {
   privacy: {
     label: "Privacy Policy",
     path: "/privacy-policy/",
-    status: "planned",
+    status: "built",
   },
   terms: {
     label: "Terms & Conditions",

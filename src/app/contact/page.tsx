@@ -26,7 +26,7 @@ const details = [
     icon: MapPin,
     label: "Visit us",
     value: "Lanco hills road, Gachibowli, Hyd 500089",
-    href: "https://maps.google.com/?q=Lanco+hills+road,+Gachibowli,+Hyderabad+500089",
+    href: "https://www.google.com/maps/search/?api=1&query=Lanco%20Hills%20Road%2C%20Gachibowli%2C%20Hyderabad%20500089"
   },
 ];
 
