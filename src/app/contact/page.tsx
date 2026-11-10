@@ -30,6 +30,11 @@ const details = [
   },
 ];
 
+const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+const mapEmbedUrl = googleMapsApiKey
+  ? `https://www.google.com/maps/embed/v1/place?key=${googleMapsApiKey}&q=Lanco+Hills+Road,+Gachibowli,+Hyderabad+500089`
+  : "https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1sLanco+Hills+Road,+Gachibowli,+Hyderabad+500089";
+
 export default function ContactPage() {
   return (
     <main id="main-content" className="bg-white">
@@ -154,14 +159,19 @@ export default function ContactPage() {
             </p>
           </div>
           <div className="relative overflow-hidden rounded-3xl border border-[#dbe9e1]">
-            <iframe
-              title="Map showing Lanco Hills Road, Hyderabad"
-              src="https://maps.google.com/maps?q=Lanco%20Hills%20Road%2C%20Hyderabad%2C%20Telangana&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              className="block h-[350px] w-full border-0 sm:h-[480px] lg:h-[520px]"
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+            <div className="h-[350px] w-full sm:h-[480px] lg:h-[520px]">
+              <iframe
+                title="Map showing Lanco Hills Road, Gachibowli, Hyderabad"
+                src={mapEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ width: "100%", height: "100%" }}
+                className="block h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
             <div className="relative isolate overflow-hidden bg-forest px-6 py-7 text-white sm:px-8 lg:absolute lg:right-6 lg:bottom-6 lg:w-[360px] lg:rounded-2xl">
               <div
                 aria-hidden="true"
