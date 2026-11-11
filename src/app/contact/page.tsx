@@ -13,8 +13,8 @@ const details = [
   {
     icon: Phone,
     label: "Call us",
-    value: "+91-9515017555",
-    href: "tel:+919515017555",
+    value: "+91-9000120291",
+    href: "tel:+919000120291",
   },
   {
     icon: Mail,

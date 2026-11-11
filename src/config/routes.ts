@@ -256,12 +256,12 @@ export const routes = {
     status: "planned",
   },
   service3: {
-    label: "Brand/Digital Management",
+    label: "Digital Marketing / Creative Branding and PR",
     path: "/services/#branddigitalmanagement",
     status: "planned",
   },
   service4: {
-    label: "Operational Excellence",
+    label: "Business Process Excellence",
     path: "/services/#operationalexcellence",
     status: "planned",
   },
@@ -271,7 +271,7 @@ export const routes = {
     status: "planned",
   },
   service6: {
-    label: "People/Learning Management",
+    label: "People Management / HR",
     path: "/services/#peoplelearningmanagement",
     status: "planned",
   },
@@ -295,11 +295,11 @@ export const navigation: RouteKey[] = [
   "contact",
 ];
 export const serviceNavigation: RouteKey[] = [
-  "service0",
+  "service6",
   "service1",
-  "service2",
   "service3",
+  "service0",
+  "service2",
   "service4",
   "service5",
-  "service6",
 ];

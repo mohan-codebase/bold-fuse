@@ -1,8 +1,8 @@
 export const site = {
   name: "Boldfuse",
   tagline: "Helping Doctors Build The Best Healthcare",
-  phone: "+91 8341410810",
-  telephone: "+918341410810",
+  phone: "+91 9000120291",
+  telephone: "+919000120291",
   email: "info@boldfuse.in",
   address: "Lanco hills road, Gachibowli, Hyd 500089",
   socials: [
