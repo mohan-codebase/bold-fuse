@@ -2,7 +2,7 @@ import { chromium } from "playwright";
 import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
-import { routes, indexablePaths, noIndexPaths } from "../src/config/routes.ts";
+import { routes, indexablePaths, noIndexPaths, serviceNavigation } from "../src/config/routes.ts";
 const base = process.env.TEST_BASE_URL || "http://localhost:3000";
 await mkdir("test-results", { recursive: true });
 const browser = await chromium.launch();
@@ -10,6 +10,11 @@ try {
   const context = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
     reducedMotion: "reduce",
+  });
+  // Keep external map availability out of application regression checks.
+  // The browser still enforces our production CSP before this response is used.
+  await context.route(/^https:\/\/(?:www\.google\.com|maps\.google\.com)\/maps(?:\/|\?)/, async (route) => {
+    await route.fulfill({ status: 200, contentType: "text/html", body: '<!doctype html><html lang="en"><head><title>Map preview fixture</title></head><body><p>External map preview</p></body></html>' });
   });
   const page = await context.newPage();
   page.setDefaultTimeout(15000);
@@ -138,7 +143,7 @@ try {
   await page.keyboard.press("Tab");
   assert.equal(
     await page.locator(":focus").getAttribute("href"),
-    routes.service0.path,
+    routes[serviceNavigation[0]].path,
   );
   await page.keyboard.press("Escape");
   assert.equal(await desktopToggle.getAttribute("aria-expanded"), "false");

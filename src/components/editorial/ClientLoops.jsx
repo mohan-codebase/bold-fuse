@@ -2,39 +2,58 @@ import Image from "next/image";
 import { Quote } from "lucide-react";
 
 export default function ClientLoops({ clients, quotes }) {
-  const rows = [clients.slice(0, Math.ceil(clients.length / 2)), clients.slice(Math.ceil(clients.length / 2))];
-
   return (
-    <div className="mt-10">
-      <div className="space-y-4" aria-label="Our clients">
-        {rows.map((row, index) => (
-          <div className="client-loop" key={index} tabIndex={0} role="region" aria-label={`Client logos, row ${index + 1}`}>
-            <div className={`client-loop-track ${index === 1 ? "client-loop-reverse" : ""}`}>
-              {[0, 1].map((copy) => (
-                <div className="client-loop-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
-                  {row.map((client) => (
-                    <div key={client.name} className="flex h-28 w-44 shrink-0 items-center justify-center rounded-xl border border-line bg-white p-5 sm:w-52">
-                      <Image src={client.image} alt={copy === 1 ? "" : client.name} sizes="170px" className="max-h-20 w-auto max-w-full object-contain" />
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+    <div className="mt-8 sm:mt-10 lg:mt-12">
+      {/* 1. Clients: Static Logo Collage */}
+      <div
+        className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6 lg:gap-4"
+        aria-label="Our client logos"
+      >
+        {clients.map((client) => (
+          <div
+            key={client.name}
+            className="flex h-24 items-center justify-center rounded-2xl border border-line/80 bg-white p-4 shadow-xs transition-colors duration-200 hover:border-accent/40 sm:h-28 sm:p-5"
+          >
+            <Image
+              src={client.image}
+              alt={client.name}
+              sizes="(min-width: 1024px) 160px, (min-width: 640px) 200px, 150px"
+              className="max-h-12 w-auto max-w-[85%] object-contain sm:max-h-14"
+            />
           </div>
         ))}
       </div>
-      <div id="testimonials" className="client-loop mt-10" tabIndex={0} role="region" aria-label="Client testimonials">
-        <div className="client-loop-track testimonial-loop-track">
-          {[0, 1].map((copy) => (
-            <div className="client-loop-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
-              {quotes.map((quote) => (
-                <figure key={quote.name} className="testimonial-loop-card rounded-2xl border border-line bg-white p-7 sm:p-8">
-                  <Quote className="text-accent" size={32} strokeWidth={1.3} aria-hidden="true" />
-                  <blockquote className="mt-5 font-description text-lg leading-relaxed text-forest">“{quote.text}”</blockquote>
-                  <figcaption className="eyebrow mt-7 flex items-center gap-3"><span className="h-px w-8 bg-accent" />{quote.name}</figcaption>
-                </figure>
-              ))}
-            </div>
+
+      {/* 2. Testimonials: All 4 Cards in the Same Row on Desktop */}
+      <div
+        id="testimonials"
+        className="mt-8 sm:mt-10 lg:mt-12"
+        aria-label="Client testimonials"
+      >
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3.5 lg:grid-cols-4 lg:gap-3.5">
+          {quotes.map((quote) => (
+            <figure
+              key={quote.name}
+              className="flex flex-col justify-between rounded-xl border border-line/80 bg-white p-3 shadow-xs transition-colors duration-200 hover:border-accent/40 sm:rounded-2xl sm:p-3.5"
+            >
+              <div>
+                <Quote
+                  className="text-accent shrink-0"
+                  size={16}
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
+                <blockquote className="mt-2 font-description text-[11px] leading-relaxed font-medium text-forest sm:text-xs">
+                  “{quote.text}”
+                </blockquote>
+              </div>
+              <figcaption className="mt-3 flex items-center gap-1.5">
+                <span className="h-0.5 w-3 bg-accent shrink-0" aria-hidden="true" />
+                <span className="font-heading text-[10px] font-bold tracking-wider text-accent-ink uppercase sm:text-[11px]">
+                  {quote.name}
+                </span>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>

@@ -24,7 +24,8 @@ export default function Experience({ children }) {
         anchors: { offset: -96 },
         prevent: (node) =>
           node.tagName === "DIALOG" ||
-          document.documentElement.classList.contains("menu-open"),
+          document.documentElement.classList.contains("menu-open") ||
+          document.documentElement.classList.contains("modal-open"),
       }}
     >
       {children}

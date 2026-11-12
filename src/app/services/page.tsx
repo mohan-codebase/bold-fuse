@@ -90,7 +90,7 @@ export default function ServicesPage() {
         {/* ========================================================= */}
         <div className="pt-16 sm:pt-20 lg:pt-28 space-y-20 sm:space-y-24 lg:space-y-32">
           {/* ------------------------------------------------------- */}
-          {/* SERVICE 01: BUSINESS AUTOMATION                         */}
+          {/* SERVICE 01: PEOPLE MANAGEMENT / HR                      */}
           {/* ------------------------------------------------------- */}
           <section
             id={services[0].id}
@@ -125,19 +125,43 @@ export default function ServicesPage() {
                   {services[0].description}
                 </p>
 
+                {/* 16 HR Capability Areas Grid */}
+                {services[0].offerings && (
+                  <div className="mt-8">
+                    <p className="text-xs font-semibold tracking-wider text-forest uppercase">
+                      HR & People Competencies:
+                    </p>
+                    <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                      {services[0].offerings.map((item, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 rounded-xl border border-line bg-cream/50 px-3.5 py-2 font-description text-sm font-semibold text-forest"
+                        >
+                          <CheckCircle2
+                            size={15}
+                            className="shrink-0 text-accent"
+                            aria-hidden="true"
+                          />
+                          <span className="truncate">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
-                    Automate Your Business
+                    Empower Your Workforce
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </Link>
                 </div>
               </div>
 
               {/* Image Right */}
-              <div className="relative overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm">
+              <div className="relative overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm lg:-translate-y-10">
                 <Image
                   src={services[0].image}
                   alt={services[0].imageAlt}
@@ -310,7 +334,7 @@ export default function ServicesPage() {
           </section>
 
           {/* ------------------------------------------------------- */}
-          {/* SERVICE 03: FINANCE AND ADVISORY SERVICES               */}
+          {/* SERVICE 03: DIGITAL MARKETING / CREATIVE BRANDING AND PR */}
           {/* ------------------------------------------------------- */}
           <section
             id={services[2].id}
@@ -345,12 +369,22 @@ export default function ServicesPage() {
                   {services[2].description}
                 </p>
 
+                {/* Sub-brand highlight */}
+                {services[2].subBrand && (
+                  <div className="mt-6 inline-flex items-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 shadow-xs">
+                    <Sparkles size={18} className="text-accent" aria-hidden="true" />
+                    <span className="font-heading text-base font-bold text-forest">
+                      {services[2].subBrand}
+                    </span>
+                  </div>
+                )}
+
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
-                    Consult Our Financial Advisors
+                    Build Your Brand
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </Link>
                 </div>
@@ -369,7 +403,7 @@ export default function ServicesPage() {
           </section>
 
           {/* ------------------------------------------------------- */}
-          {/* SERVICE 04: CREATIVE BRANDING AND PR                    */}
+          {/* SERVICE 04: BUSINESS AUTOMATION                         */}
           {/* ------------------------------------------------------- */}
           <section
             id={services[3].id}
@@ -414,22 +448,12 @@ export default function ServicesPage() {
                   {services[3].description}
                 </p>
 
-                {/* Sub-brand highlight */}
-                {services[3].subBrand && (
-                  <div className="mt-6 inline-flex items-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 shadow-xs">
-                    <Sparkles size={18} className="text-accent" aria-hidden="true" />
-                    <span className="font-heading text-base font-bold text-forest">
-                      {services[3].subBrand}
-                    </span>
-                  </div>
-                )}
-
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
-                    Build Your Brand
+                    Automate Your Business
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </Link>
                 </div>
@@ -478,7 +502,7 @@ export default function ServicesPage() {
           </section>
 
           {/* ------------------------------------------------------- */}
-          {/* SERVICE 05: BUSINESS PROCESS TRANSFORMATION             */}
+          {/* SERVICE 05: FINANCE AND ADVISORY SERVICES               */}
           {/* ------------------------------------------------------- */}
           <section
             id={services[4].id}
@@ -513,34 +537,12 @@ export default function ServicesPage() {
                   {services[4].description}
                 </p>
 
-                {/* Four Transformation Pillars */}
-                {services[4].pillars && (
-                  <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                    {services[4].pillars.map((pillar, idx) => (
-                      <div
-                        key={idx}
-                        className="rounded-2xl border border-line bg-white p-5 shadow-xs"
-                      >
-                        <div className="flex items-center gap-2 text-forest">
-                          <CheckCircle2 size={18} className="text-accent" aria-hidden="true" />
-                          <h4 className="font-heading text-base font-bold">
-                            {pillar.title}
-                          </h4>
-                        </div>
-                        <p className="mt-2 font-description text-sm leading-relaxed font-medium text-muted">
-                          {pillar.text}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
-                    Transform Your Operations
+                    Consult Our Financial Advisors
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </Link>
                 </div>
@@ -559,7 +561,7 @@ export default function ServicesPage() {
           </section>
 
           {/* ------------------------------------------------------- */}
-          {/* SERVICE 06: LEGAL AND ADVISORY SERVICES                 */}
+          {/* SERVICE 06: BUSINESS PROCESS EXCELLENCE                 */}
           {/* ------------------------------------------------------- */}
           <section
             id={services[5].id}
@@ -604,12 +606,34 @@ export default function ServicesPage() {
                   {services[5].description}
                 </p>
 
+                {/* Four Transformation Pillars */}
+                {services[5].pillars && (
+                  <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                    {services[5].pillars.map((pillar, idx) => (
+                      <div
+                        key={idx}
+                        className="rounded-2xl border border-line bg-white p-5 shadow-xs"
+                      >
+                        <div className="flex items-center gap-2 text-forest">
+                          <CheckCircle2 size={18} className="text-accent" aria-hidden="true" />
+                          <h4 className="font-heading text-base font-bold">
+                            {pillar.title}
+                          </h4>
+                        </div>
+                        <p className="mt-2 font-description text-sm leading-relaxed font-medium text-muted">
+                          {pillar.text}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
-                    Speak with Legal Advisors
+                    Transform Your Operations
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </Link>
                 </div>
@@ -618,7 +642,7 @@ export default function ServicesPage() {
           </section>
 
           {/* ------------------------------------------------------- */}
-          {/* SERVICE 07: PEOPLE MANAGEMENT / HR                      */}
+          {/* SERVICE 07: LEGAL AND ADVISORY SERVICES                 */}
           {/* ------------------------------------------------------- */}
           <section
             id={services[6].id}
@@ -653,36 +677,12 @@ export default function ServicesPage() {
                   {services[6].description}
                 </p>
 
-                {/* 16 HR Capability Areas Grid */}
-                {services[6].offerings && (
-                  <div className="mt-8">
-                    <p className="text-xs font-semibold tracking-wider text-forest uppercase">
-                      HR & People Competencies:
-                    </p>
-                    <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                      {services[6].offerings.map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center gap-2 rounded-xl border border-line bg-white px-3.5 py-2 font-description text-sm font-semibold text-forest"
-                        >
-                          <CheckCircle2
-                            size={15}
-                            className="shrink-0 text-accent"
-                            aria-hidden="true"
-                          />
-                          <span className="truncate">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
-                    Empower Your Workforce
+                    Speak with Legal Advisors
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </Link>
                 </div>

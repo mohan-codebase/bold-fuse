@@ -32,7 +32,7 @@ Set `NEXT_PUBLIC_SITE_URL=https://boldfuse.in` before building. For a different 
 
 Verify the homepage, /about/, /services/, /contact/ and /book-appointment/. Check a service selection and the email/WhatsApp handoff without sending a test enquiry to the business. Confirm the map, images, HTTPS, canonical URLs, /robots.txt and /sitemap.xml. An unknown path should return the custom 404. Review the new privacy and terms copy before launch.
 
-Contact and booking forms prepare email/WhatsApp enquiries; they do not automatically book appointments or take payments. The latest local Lighthouse measurement was 95 performance and 100 for the other categories, but the simulated 2.92-second LCP still exceeds the separate 2.5-second benchmark.
+The contact page and booking form prepare email/WhatsApp enquiries. The shared contact modal submits validated enquiries to the server log via `/api/contact`. These flows do not automatically book appointments or take payments. The latest local Lighthouse measurement was 95 performance and 100 for the other categories, but the simulated 2.92-second LCP still exceeds the separate 2.5-second benchmark.
 
 ## Hostinger references
 

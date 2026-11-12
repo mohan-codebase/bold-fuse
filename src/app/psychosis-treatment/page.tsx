@@ -6,13 +6,13 @@ import { ArrowUpRight, Phone } from "lucide-react";
 import { site } from "@/content/site";
 
 // Psychosis treatment images from local assets
-import medicationImg from "@/assets/services/psychosis-treatment/medication-template.png";
-import psychotherapyImg from "@/assets/services/psychosis-treatment/psychotherapy.png";
-import cognitiveImg from "@/assets/services/psychosis-treatment/cognitive-remediation-1.png";
-import socialSupportImg from "@/assets/services/psychosis-treatment/social-support-and-rehabilitation-1.png";
-import peerSupportImg from "@/assets/services/psychosis-treatment/peer-support-groups-1.png";
-import lifestyleImg from "@/assets/services/psychosis-treatment/lifestyle-changes.png";
-import holisticImg from "@/assets/services/psychosis-treatment/holistic-approaches.png";
+import medicationImg from "@/assets/services/psychosis-treatment/medication.jpeg";
+import psychotherapyImg from "@/assets/services/psychosis-treatment/psychotherapy.jpeg";
+import cognitiveImg from "@/assets/services/psychosis-treatment/cognitive-remediation.jpeg";
+import socialSupportImg from "@/assets/services/psychosis-treatment/social-support-and-rehabilitation-1.jpeg";
+import peerSupportImg from "@/assets/services/psychosis-treatment/peer-support-groups.jpeg";
+import lifestyleImg from "@/assets/services/psychosis-treatment/lifestyle-changes.jpeg";
+import holisticImg from "@/assets/services/psychosis-treatment/holistic-approaches.jpeg";
 
 export const metadata: Metadata = pageMetadata({
   title: "Psychosis Treatment",
@@ -246,13 +246,13 @@ export default function PsychosisTreatmentPage() {
               key={idx}
               className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-[0_2px_8px_rgba(23,63,53,0.04),0_12px_24px_-16px_rgba(23,63,53,0.1)] transition-all duration-300 hover:shadow-[0_16px_36px_-12px_rgba(23,63,53,0.18)] hover:border-accent/40"
             >
-              {/* Image */}
-              <div className="relative overflow-hidden">
+              {/* Image Frame */}
+              <div className="border-b border-line rounded-b-3xl p-3.5 sm:p-4">
                 <Image
                   src={treatment.image}
                   alt={treatment.imageAlt}
                   sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 92vw"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="aspect-[16/10] w-full rounded-2xl object-cover"
                 />
               </div>
 

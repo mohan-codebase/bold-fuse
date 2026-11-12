@@ -187,16 +187,16 @@ export default function CounsellingServicesPage() {
               key={service.route}
               className="flex flex-col overflow-hidden rounded-3xl border border-line bg-white"
             >
-              {/* Image */}
+              {/* Image Frame */}
               <Link
                 href={routes[service.route].path}
-                className="block focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-forest"
+                className="block border-b border-line rounded-b-3xl p-3.5 sm:p-4 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-forest"
               >
                 <Image
                   src={service.image}
                   alt={service.imageAlt}
                   sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 92vw"
-                  className="aspect-[16/10] w-full object-cover"
+                  className="aspect-[16/10] w-full rounded-2xl object-cover"
                 />
               </Link>
 

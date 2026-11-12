@@ -98,7 +98,7 @@ export const home = {
         route: "service2",
       },
       {
-        title: "Creative Branding and PR",
+        title: "Digital Marketing / Creative Branding and PR",
         text: "Change in lifestyle of your customers needs to be balanced with change in your selling experience too. Take a step forward towards your customers who are not roaming through the market but sitting in their homes and scrolling over their digital devices. Amp up your marketing and sales technique by reaching your customers in the digital world.",
         route: "service3",
       },
@@ -113,7 +113,7 @@ export const home = {
         route: "service5",
       },
       {
-        title: "People/Learning Management",
+        title: "People Management / HR",
         text: "When people behind your business climb the ladder of growth and success, they carry your business with them to those heights. Accelerating the potential of your employees makes your company strong and prepared for anything that comes next. We help to make your employees as invested in your company as you are.",
         route: "service6",
       },
@@ -215,6 +215,14 @@ export const home = {
       {
         name: "Ambus",
         text: "Raising a startup became so easy for us with the help of the Bold Fuse team. They strategized every move and within days we were up and running at full pace. Thanks for giving us this amazing kickstart.",
+      },
+      {
+        name: "James Anderson",
+        text: "Bold Fuse helped us streamline our business operations and improve the way our team works. Their innovative approach and continuous support made our digital transformation much easier. Truly appreciate their dedication and expertise.",
+      },
+      {
+        name: "Emily Thompson",
+        text: "Working with Bold Fuse has been a great experience. Their team understood our business needs and delivered practical solutions that improved our efficiency. Their professionalism, creativity, and commitment are truly impressive.",
       },
     ],
   },

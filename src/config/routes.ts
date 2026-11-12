@@ -256,12 +256,12 @@ export const routes = {
     status: "built",
   },
   service3: {
-    label: "Brand/Digital Management",
+    label: "Digital Marketing / Creative Branding and PR",
     path: "/services/#branddigitalmanagement",
     status: "built",
   },
   service4: {
-    label: "Operational Excellence",
+    label: "Business Process Excellence",
     path: "/services/#operationalexcellence",
     status: "built",
   },
@@ -271,7 +271,7 @@ export const routes = {
     status: "built",
   },
   service6: {
-    label: "People/Learning Management",
+    label: "People Management / HR",
     path: "/services/#peoplelearningmanagement",
     status: "built",
   },
@@ -295,13 +295,13 @@ export const navigation: RouteKey[] = [
   "contact",
 ];
 export const serviceNavigation: RouteKey[] = [
-  "service0",
+  "service6",
   "service1",
-  "service2",
   "service3",
+  "service0",
+  "service2",
   "service4",
   "service5",
-  "service6",
 ];
 
 // Utility pages describe a handoff to the team, not an indexed service offering.

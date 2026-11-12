@@ -6,9 +6,16 @@ import {
   getCounsellingByRoute,
 } from "@/content/counselling-details";
 import { routes } from "@/config/routes";
+import parentingDetailImg from "@/assets/services/wellness-and-mental-health/parenting-support-detail.jpeg";
 
 const route = "parenting-support";
-const detail = getCounsellingByRoute(route);
+const baseDetail = getCounsellingByRoute(route);
+const detail = {
+  ...baseDetail,
+  image: parentingDetailImg,
+  imageAlt:
+    "Indian parents smiling and happily playing with building blocks with their young son at home",
+};
 
 export const metadata: Metadata = pageMetadata({
   title: detail.title,

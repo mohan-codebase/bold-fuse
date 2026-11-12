@@ -270,13 +270,13 @@ export default function ParentingPage() {
               key={idx}
               className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-[0_2px_8px_rgba(23,63,53,0.04),0_12px_24px_-16px_rgba(23,63,53,0.1)] transition-all duration-300 hover:shadow-[0_16px_36px_-12px_rgba(23,63,53,0.18)] hover:border-accent/40"
             >
-              {/* Image */}
-              <div className="relative overflow-hidden">
+              {/* Image Frame */}
+              <div className="border-b border-line rounded-b-3xl p-3.5 sm:p-4">
                 <Image
                   src={technique.image}
                   alt={technique.imageAlt}
                   sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 92vw"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="aspect-[16/10] w-full rounded-2xl object-cover"
                 />
               </div>
 

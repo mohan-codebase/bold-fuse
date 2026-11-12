@@ -83,27 +83,27 @@ export default function Services({ withCta = true, background = "bg-white" }) {
               </div>
             </div>
 
-            <RevealGroup as="ul" className="flex flex-col" stagger={0.06} amount={0.12}>
+            <RevealGroup as="ul" className="flex flex-col gap-2.5 sm:gap-3" stagger={0.06} amount={0.12}>
               {items.map((service, index) => (
                 <RevealItem
                   as="li"
                   key={service.slug}
                   y={16}
-                  className="border-b border-white/15 last:border-0"
+                  className="w-full"
                 >
                   <Link
                     href={service.path}
-                    className="group flex min-h-16 items-center gap-4 py-3 text-white hover:text-accent-soft sm:gap-5"
+                    className="group flex min-h-[3.25rem] w-full items-center gap-3.5 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2.5 text-white transition-colors duration-200 hover:border-accent-soft/50 hover:bg-white/[0.08] hover:text-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-soft focus-visible:ring-offset-2 focus-visible:ring-offset-forest sm:min-h-[3.5rem] sm:gap-4 sm:px-5 sm:py-3"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 font-heading text-sm font-bold text-accent-soft tabular-nums">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 font-heading text-xs font-bold text-accent-soft tabular-nums transition-colors duration-200 group-hover:border-accent-soft/40 group-hover:bg-accent-soft/10 sm:h-10 sm:w-10 sm:text-sm">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="grow text-base font-semibold leading-snug sm:text-lg">
+                    <span className="grow text-sm font-semibold leading-snug sm:text-base lg:text-[1.0625rem]">
                       {service.title}
                     </span>
                     <span
                       aria-hidden="true"
-                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/90 transition-colors duration-200 group-hover:border-accent-soft/40 group-hover:bg-accent-soft/10 group-hover:text-accent-soft sm:h-9 sm:w-9"
                     >
                       <ArrowUpRight size={16} />
                     </span>

@@ -6,11 +6,11 @@ import { ArrowUpRight, Phone } from "lucide-react";
 import { site } from "@/content/site";
 
 // Psychological testing images from local assets
-import personalityImg from "@/assets/services/psychological-testing/personality-assessments.png";
-import cognitiveImg from "@/assets/services/psychological-testing/cognitive-assessments.jpeg";
-import moodEmotionalImg from "@/assets/services/psychological-testing/mood-emotional-assessments.jpg";
-import behavioralClinicalImg from "@/assets/services/psychological-testing/behavioral-clinical-assessments.jpeg";
-import neuropsychologicalImg from "@/assets/services/psychological-testing/neuropsychological-assessments.jpg";
+import personalityImg from "@/assets/services/psychological-testing/personality-assessments.jpeg";
+import cognitiveImg from "@/assets/services/psychological-testing/cognitive-assessments-2.jpeg";
+import moodEmotionalImg from "@/assets/services/psychological-testing/mood-emotional-assessments-2.jpeg";
+import behavioralClinicalImg from "@/assets/services/psychological-testing/behavioral-clinical-assessments-1.jpeg";
+import neuropsychologicalImg from "@/assets/services/psychological-testing/neuropsychological-assessments-1.jpeg";
 
 export const metadata: Metadata = pageMetadata({
   title: "Psychological Testing",
@@ -228,13 +228,13 @@ export default function PsychologicalTestingPage() {
               key={idx}
               className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-[0_2px_8px_rgba(23,63,53,0.04),0_12px_24px_-16px_rgba(23,63,53,0.1)] transition-all duration-300 hover:shadow-[0_16px_36px_-12px_rgba(23,63,53,0.18)] hover:border-accent/40"
             >
-              {/* Image */}
-              <div className="relative overflow-hidden">
+              {/* Image Frame */}
+              <div className="border-b border-line rounded-b-3xl p-3.5 sm:p-4">
                 <Image
                   src={assessment.image}
                   alt={assessment.imageAlt}
                   sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 92vw"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="aspect-[16/10] w-full rounded-2xl object-cover"
                 />
               </div>
 

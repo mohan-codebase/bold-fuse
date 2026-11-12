@@ -6,9 +6,16 @@ import {
   getCounsellingByRoute,
 } from "@/content/counselling-details";
 import { routes } from "@/config/routes";
+import griefDetailImg from "@/assets/services/wellness-and-mental-health/grief-and-loss-counselling-detail.jpeg";
 
 const route = "grief-and-loss-counselling";
-const detail = getCounsellingByRoute(route);
+const baseDetail = getCounsellingByRoute(route);
+const detail = {
+  ...baseDetail,
+  image: griefDetailImg,
+  imageAlt:
+    "Compassionate counsellor in a purple saree listening attentively to a grieving client during a grief and loss session",
+};
 
 export const metadata: Metadata = pageMetadata({
   title: detail.title,

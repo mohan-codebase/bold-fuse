@@ -32,7 +32,7 @@ Before switching the domain, confirm the production origin, HTTPS, email address
 ## Implemented behavior
 
 - Homepage, company, service, counselling, brand, article, contact and appointment pages are implemented. Privacy and terms pages are linked from the footer.
-- Contact prepares a message in the visitor's email app. Appointment enquiries open WhatsApp, with email and phone alternatives. There is no automatic booking, payment processing, customer account database or outbound email service.
+- The contact page prepares an email in the visitor’s email app. The shared contact modal submits to `/api/contact`, which validates enquiries and records them in server logs; it does not send outbound email or store them in a customer database. Appointment enquiries open WhatsApp, with email and phone alternatives. There is no automatic booking or payment processing.
 - Booking, cancellation and payment support pages do not confirm transactions. Utility status pages use `noindex` and are excluded from the sitemap.
 - `/home1/` and `/home2/` permanently redirect to `/`. Legacy WordPress taxonomy, author and template URLs marked `planned` return the custom 404 and are not linked in navigation.
 - Canonical URLs and social previews describe each page; the sitemap includes unique indexable pages and excludes fragment-only service links.
