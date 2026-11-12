@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,12 +12,12 @@ import moodEmotionalImg from "@/assets/services/psychological-testing/mood-emoti
 import behavioralClinicalImg from "@/assets/services/psychological-testing/behavioral-clinical-assessments.jpeg";
 import neuropsychologicalImg from "@/assets/services/psychological-testing/neuropsychological-assessments.jpg";
 
-export const metadata: Metadata = {
-  title: "Psychological Testing - Boldfuse",
+export const metadata: Metadata = pageMetadata({
+  title: "Psychological Testing",
   description:
     "Comprehensive, standardized psychological assessments administered by qualified therapists to provide diagnostic clarity and personalized guidance.",
   alternates: { canonical: "/psychological-testing/" },
-};
+});
 
 const psychologicalAssessments = [
   {

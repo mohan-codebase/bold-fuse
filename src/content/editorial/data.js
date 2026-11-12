@@ -8,7 +8,7 @@ import serviceImage6 from "@/assets/services/people-learning-v1.webp";
 import { home } from "@/content/home";
 import { site as brand } from "@/content/site";
 import { routes } from "@/config/routes";
-import banner from "@/assets/banner-healthcare-team-v2.jpg";
+import banner from "@/assets/banner-healthcare-team-v2.avif";
 
 // The reference supplies presentation; business content stays Boldfuse's.
 export const site = {

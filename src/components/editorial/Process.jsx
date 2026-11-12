@@ -1,7 +1,8 @@
 "use client";
 import { home } from "@/content/home";
 import { ClipboardList, RefreshCcw, Rocket, Search } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { processSteps } from "@/content/editorial/data";
 import { EASE, viewportOnce } from "@/lib/editorial/motion";
 import SectionHeading from "./SectionHeading";

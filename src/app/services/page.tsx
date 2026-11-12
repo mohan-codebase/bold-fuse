@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,12 +20,12 @@ import { servicesContent } from "@/content/services";
 import { site } from "@/content/site";
 import CounsellingReadMoreModal from "@/components/CounsellingReadMoreModal";
 
-export const metadata: Metadata = {
-  title: "Services | Boldfuse",
+export const metadata: Metadata = pageMetadata({
+  title: "Services",
   description:
     "Our Services. Comprehensive business automation, mental wellness, financial advisory, creative branding, process excellence, legal, and HR services.",
   alternates: { canonical: "/services/" },
-};
+});
 
 const itCategoryIcons = [
   Code2,
@@ -100,7 +101,7 @@ export default function ServicesPage() {
               {/* Text Left */}
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink/30 sm:text-5xl">
+                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink sm:text-5xl">
                     {services[0].number}
                   </span>
                   <div className="h-0.5 w-10 bg-accent/40" />
@@ -127,7 +128,7 @@ export default function ServicesPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
                     Automate Your Business
                     <ArrowUpRight size={17} aria-hidden="true" />
@@ -169,7 +170,7 @@ export default function ServicesPage() {
               {/* Text Right */}
               <div className="order-1 lg:order-2">
                 <div className="flex items-center gap-3">
-                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink/30 sm:text-5xl">
+                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink sm:text-5xl">
                     {services[1].number}
                   </span>
                   <div className="h-0.5 w-10 bg-accent/40" />
@@ -228,7 +229,7 @@ export default function ServicesPage() {
                           <Link
                             key={idx}
                             href={offeringHref}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-cream/70 px-4 py-1.5 font-description text-sm font-semibold text-forest transition-colors hover:bg-forest hover:text-white hover:border-forest"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-white px-4 py-1.5 font-description text-sm font-semibold text-forest hover:bg-forest hover:text-white hover:border-forest"
                           >
                             <CheckCircle2
                               size={14}
@@ -240,7 +241,7 @@ export default function ServicesPage() {
                         ) : (
                           <span
                             key={idx}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-line bg-cream/70 px-4 py-1.5 font-description text-sm font-semibold text-forest"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-4 py-1.5 font-description text-sm font-semibold text-forest"
                           >
                             <CheckCircle2
                               size={14}
@@ -258,7 +259,7 @@ export default function ServicesPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
                     Book a Consultation
                     <ArrowUpRight size={17} aria-hidden="true" />
@@ -300,7 +301,7 @@ export default function ServicesPage() {
             <div className="mt-6 flex justify-center">
               <Link
                 href={midCtas.cta1.link}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest transition-colors hover:bg-white/90"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest hover:bg-white/90"
               >
                 {midCtas.cta1.buttonText}
                 <ArrowUpRight size={17} aria-hidden="true" />
@@ -320,7 +321,7 @@ export default function ServicesPage() {
               {/* Text Left */}
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink/30 sm:text-5xl">
+                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink sm:text-5xl">
                     {services[2].number}
                   </span>
                   <div className="h-0.5 w-10 bg-accent/40" />
@@ -347,7 +348,7 @@ export default function ServicesPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
                     Consult Our Financial Advisors
                     <ArrowUpRight size={17} aria-hidden="true" />
@@ -389,7 +390,7 @@ export default function ServicesPage() {
               {/* Text Right */}
               <div className="order-1 lg:order-2">
                 <div className="flex items-center gap-3">
-                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink/30 sm:text-5xl">
+                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink sm:text-5xl">
                     {services[3].number}
                   </span>
                   <div className="h-0.5 w-10 bg-accent/40" />
@@ -426,7 +427,7 @@ export default function ServicesPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
                     Build Your Brand
                     <ArrowUpRight size={17} aria-hidden="true" />
@@ -468,7 +469,7 @@ export default function ServicesPage() {
             <div className="mt-6 flex justify-center">
               <Link
                 href={midCtas.cta2.link}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest transition-colors hover:bg-white/90"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest hover:bg-white/90"
               >
                 {midCtas.cta2.buttonText}
                 <ArrowUpRight size={17} aria-hidden="true" />
@@ -488,7 +489,7 @@ export default function ServicesPage() {
               {/* Text Left */}
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink/30 sm:text-5xl">
+                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink sm:text-5xl">
                     {services[4].number}
                   </span>
                   <div className="h-0.5 w-10 bg-accent/40" />
@@ -537,7 +538,7 @@ export default function ServicesPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
                     Transform Your Operations
                     <ArrowUpRight size={17} aria-hidden="true" />
@@ -579,7 +580,7 @@ export default function ServicesPage() {
               {/* Text Right */}
               <div className="order-1 lg:order-2">
                 <div className="flex items-center gap-3">
-                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink/30 sm:text-5xl">
+                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink sm:text-5xl">
                     {services[5].number}
                   </span>
                   <div className="h-0.5 w-10 bg-accent/40" />
@@ -606,7 +607,7 @@ export default function ServicesPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
                     Speak with Legal Advisors
                     <ArrowUpRight size={17} aria-hidden="true" />
@@ -628,7 +629,7 @@ export default function ServicesPage() {
               {/* Text Left */}
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink/30 sm:text-5xl">
+                  <span className="font-heading text-4xl font-extrabold tracking-tight text-accent-ink sm:text-5xl">
                     {services[6].number}
                   </span>
                   <div className="h-0.5 w-10 bg-accent/40" />
@@ -662,7 +663,7 @@ export default function ServicesPage() {
                       {services[6].offerings.map((item, idx) => (
                         <div
                           key={idx}
-                          className="flex items-center gap-2 rounded-xl border border-line bg-cream/50 px-3.5 py-2 font-description text-sm font-semibold text-forest"
+                          className="flex items-center gap-2 rounded-xl border border-line bg-white px-3.5 py-2 font-description text-sm font-semibold text-forest"
                         >
                           <CheckCircle2
                             size={15}
@@ -679,7 +680,7 @@ export default function ServicesPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     href="/contact/"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
                     Empower Your Workforce
                     <ArrowUpRight size={17} aria-hidden="true" />
@@ -744,7 +745,7 @@ export default function ServicesPage() {
           </div>
 
           {/* "What We Do" card */}
-          <div className="mt-8 rounded-3xl border border-line bg-cream/40 p-6 sm:p-10 lg:p-12">
+          <div className="mt-8 rounded-3xl border border-line bg-white p-6 sm:p-10 lg:p-12">
             <div className="flex items-center gap-2.5 text-accent-ink">
               <Users2 size={22} aria-hidden="true" />
               <h3 className="font-heading text-2xl font-bold text-forest">
@@ -776,7 +777,7 @@ export default function ServicesPage() {
                 return (
                   <div
                     key={idx}
-                    className="flex flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-xs transition-colors hover:border-accent/40"
+                    className="flex flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-xs hover:border-accent/40"
                   >
                     <div>
                       <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-forest/5 text-forest">
@@ -810,7 +811,7 @@ export default function ServicesPage() {
                   {itRecruitment.locations.items.map((loc, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-4 rounded-2xl border border-line bg-cream/40 p-4"
+                      className="flex items-start gap-4 rounded-2xl border border-line bg-white p-4"
                     >
                       <span className="text-3xl" role="img" aria-label={loc.country}>
                         {loc.flag}
@@ -830,7 +831,7 @@ export default function ServicesPage() {
             </div>
 
             {/* How to Apply */}
-            <div className="flex flex-col justify-between rounded-3xl border border-line bg-cream/40 p-6 sm:p-8 shadow-xs">
+            <div className="flex flex-col justify-between rounded-3xl border border-line bg-white p-6 sm:p-8 shadow-xs">
               <div>
                 <div className="flex items-center gap-2.5 text-accent-ink">
                   <Mail size={22} aria-hidden="true" />
@@ -874,7 +875,7 @@ export default function ServicesPage() {
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
                   href={`mailto:${itRecruitment.howToApply.email}?subject=Application for IT Position - Boldfuse`}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                 >
                   <Mail size={16} aria-hidden="true" />
                   Send Your Resume
@@ -883,7 +884,7 @@ export default function ServicesPage() {
                   href={itRecruitment.howToApply.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold text-forest transition-colors hover:bg-forest/5"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold text-forest hover:bg-forest/5"
                 >
                   LinkedIn Updates
                   <ArrowUpRight size={16} aria-hidden="true" />
@@ -936,14 +937,14 @@ export default function ServicesPage() {
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <Link
                     href={raiseTheBar.ctaLink}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest transition-colors hover:bg-white/90"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest hover:bg-white/90"
                   >
                     {raiseTheBar.ctaText}
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </Link>
                   <a
                     href={`tel:${site.telephone}`}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white hover:bg-white/10"
                   >
                     <Phone size={16} aria-hidden="true" />
                     Call {site.telephone}

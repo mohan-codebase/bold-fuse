@@ -58,7 +58,7 @@ export default function CounsellingReadMoreModal({
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="inline-flex items-center justify-center rounded-full border border-forest bg-white px-7 py-2.5 text-sm font-semibold text-forest transition-colors hover:bg-forest hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 cursor-pointer"
+          className="inline-flex cursor-pointer items-center justify-center rounded-full border border-forest bg-white px-7 py-2.5 text-sm font-semibold text-forest hover:bg-forest hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
           aria-haspopup="dialog"
           aria-expanded={isOpen}
         >
@@ -102,7 +102,7 @@ export default function CounsellingReadMoreModal({
                   </p>
                   <h3
                     id="counselling-modal-heading"
-                    className="mt-1 font-heading text-xl font-bold leading-snug text-forest sm:text-2xl"
+                    className="mt-1 font-heading text-xl leading-snug font-bold text-forest sm:text-2xl"
                   >
                     {tagline}
                   </h3>
@@ -110,7 +110,7 @@ export default function CounsellingReadMoreModal({
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="rounded-full p-2 text-forest/70 hover:bg-cream hover:text-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest cursor-pointer transition-colors shrink-0"
+                  className="shrink-0 cursor-pointer rounded-full p-2 text-forest/70 hover:bg-white hover:text-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
                   aria-label="Close modal"
                 >
                   <X size={20} aria-hidden="true" />
@@ -130,7 +130,7 @@ export default function CounsellingReadMoreModal({
                   <Link
                     href="/contact/"
                     onClick={() => setIsOpen(false)}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
                   >
                     Book a Consultation
                     <ArrowUpRight size={17} aria-hidden="true" />
@@ -138,7 +138,7 @@ export default function CounsellingReadMoreModal({
                   <button
                     type="button"
                     onClick={() => setIsOpen(false)}
-                    className="inline-flex min-h-12 items-center justify-center rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold text-forest transition-colors hover:bg-cream cursor-pointer"
+                    className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold text-forest hover:bg-white"
                   >
                     Close
                   </button>
@@ -151,4 +151,3 @@ export default function CounsellingReadMoreModal({
     </>
   );
 }
-

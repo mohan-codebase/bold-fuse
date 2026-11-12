@@ -1,14 +1,14 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { CircleCheck } from "lucide-react";
 import UtilityPage from "@/components/booking/UtilityPage";
 import { routes } from "@/config/routes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Thank you",
-  description:
-    "Your Boldfuse appointment request has been received. Our team will confirm your slot shortly.",
+  description: "Contact our team to confirm your Boldfuse appointment request.",
   alternates: { canonical: routes["thank-you"].path },
-};
+});
 
 export default function Page() {
   return (
@@ -18,8 +18,8 @@ export default function Page() {
       heading="Thank you"
       icon={CircleCheck}
       message={[
-        "Your appointment has been booked successfully!",
-        "We have sent your booking information to your email address. Our team will confirm your date and time shortly.",
+        "Please confirm your appointment with our team.",
+        "Sending a WhatsApp message or email starts an appointment enquiry. Your date and time are confirmed only when our team replies.",
       ]}
       actions={[
         {

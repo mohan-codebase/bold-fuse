@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import {
   Gem,
@@ -12,12 +13,12 @@ import BrandPage from "@/components/editorial/BrandPage";
 import heroImage from "@/assets/brands/house-of-bold-hero.png";
 import { routes } from "@/config/routes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "House of Bold",
   description:
     "House of Bold is Boldfuse's women's development club — workshops, community, mentorship and advocacy to empower women to pursue their dreams boldly.",
   alternates: { canonical: routes["house-of-bold"].path },
-};
+});
 
 export default function Page() {
   return (

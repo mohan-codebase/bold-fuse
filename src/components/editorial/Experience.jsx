@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ReactLenis } from "lenis/react";
-import { useReducedMotion } from "motion/react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { ArrowUp, Phone } from "lucide-react";
 import { site } from "@/content/site";
 import CustomCursor from "./CustomCursor";

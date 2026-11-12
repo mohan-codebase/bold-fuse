@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,12 +17,12 @@ import effectiveCommunicationImg from "@/assets/services/parenting/effective-com
 import qualityTimeImg from "@/assets/services/parenting/quality-time-together.jpeg";
 import adaptabilityImg from "@/assets/services/parenting/adaptability.jpeg";
 
-export const metadata: Metadata = {
-  title: "Parenting - Boldfuse",
+export const metadata: Metadata = pageMetadata({
+  title: "Parenting",
   description:
     "Parenting techniques are tools and strategies that parents can use to effectively guide, support, and nurture their children’s development.",
   alternates: { canonical: "/parenting/" },
-};
+});
 
 const parentingTechniques = [
   {

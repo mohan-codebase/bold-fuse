@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,12 +6,12 @@ import { ArrowUpRight, Calendar, Clock } from "lucide-react";
 import { blogArticles, getReadingTime } from "@/content/blogs";
 import { routes } from "@/config/routes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Blogs",
   description:
     "Explore Boldfuse articles on workplace culture, mental health and business growth.",
   alternates: { canonical: "/blogs/" },
-};
+});
 
 export default function BlogsPage() {
   return (

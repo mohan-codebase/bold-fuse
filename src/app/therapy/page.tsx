@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,12 +19,12 @@ import musicImg from "@/assets/services/therapy/music-therapy.jpeg";
 import animalImg from "@/assets/services/therapy/animal-assisted-therapy.jpeg";
 import experientialImg from "@/assets/services/therapy/experiential-therapy.jpeg";
 
-export const metadata: Metadata = {
-  title: "Therapy - Boldfuse",
+export const metadata: Metadata = pageMetadata({
+  title: "Therapy",
   description:
     "Therapy techniques are tools and strategies that parents can use to effectively guide, support, and nurture their children’s development.",
   alternates: { canonical: "/therapy/" },
-};
+});
 
 const therapyTechniques = [
   {

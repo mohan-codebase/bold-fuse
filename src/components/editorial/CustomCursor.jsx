@@ -1,11 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useReducedMotion,
-} from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 /**
  * Interactive selector elements that trigger pointer expand state.

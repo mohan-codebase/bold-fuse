@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { site } from "@/content/site";
 import { ArrowUpRight } from "lucide-react";
 
 const field =
@@ -12,7 +13,7 @@ export default function ContactForm() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone")}\n\nMessage:\n${data.get("message")}`;
-    window.location.href = `mailto:info@boldfuse.in?subject=${encodeURIComponent("Enquiry from Boldfuse website")}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Enquiry from Boldfuse website")}&body=${encodeURIComponent(body)}`;
     setOpened(true);
   }
   return (

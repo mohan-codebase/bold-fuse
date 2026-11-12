@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import {
   BookOpen,
@@ -14,12 +15,12 @@ import BrandPage from "@/components/editorial/BrandPage";
 import heroImage from "@/assets/brands/marshmellowww-talking.png";
 import { routes } from "@/config/routes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Hello @ Marshmellowww",
   description:
     "Hello @ Marshmellowww is Boldfuse's podcast and channel for women — interviews, personal growth, career guidance, entrepreneurship, wellness and financial literacy.",
   alternates: { canonical: routes["hello-marshmellowww"].path },
-};
+});
 
 export default function Page() {
   return (

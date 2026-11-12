@@ -9,26 +9,27 @@ import "./globals.css";
 import Experience from "@/components/editorial/Experience";
 const inter = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["500", "600"],
   display: "swap",
   variable: "--font-roboto",
   preload: false,
 });
 const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["500"],
   display: "swap",
   variable: "--font-raleway",
+  preload: false,
 });
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["700"],
   display: "swap",
   variable: "--font-manrope",
 });
 const nunito = Nunito_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["500"],
   display: "swap",
   variable: "--font-nunito",
 });

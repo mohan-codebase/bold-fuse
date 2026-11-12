@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,12 +7,12 @@ import { site } from "@/content/site";
 import { counsellingDetails } from "@/content/counselling-details";
 import { routes } from "@/config/routes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Counselling Services",
   description:
     "We believe mental well-being is essential to a fulfilling life. Our experienced therapists provide personalized counselling tailored to individual and organizational needs.",
   alternates: { canonical: "/counselling-services/" },
-};
+});
 
 export default function CounsellingServicesPage() {
   return (

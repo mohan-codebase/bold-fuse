@@ -136,7 +136,7 @@ export const routes = {
     status: "built",
   },
   "cancel-appointment": {
-    label: "Appointment canceled",
+    label: "Cancel an Appointment",
     path: "/cancel-appointment/",
     status: "built",
   },
@@ -243,47 +243,47 @@ export const routes = {
   service0: {
     label: "Business Automation",
     path: "/services/#businessautomation",
-    status: "planned",
+    status: "built",
   },
   service1: {
     label: "Wellness and Mental Health",
     path: "/services/#healthwellness",
-    status: "planned",
+    status: "built",
   },
   service2: {
     label: "Finance and Advisory Services",
     path: "/services/#financialmanagement",
-    status: "planned",
+    status: "built",
   },
   service3: {
     label: "Brand/Digital Management",
     path: "/services/#branddigitalmanagement",
-    status: "planned",
+    status: "built",
   },
   service4: {
     label: "Operational Excellence",
     path: "/services/#operationalexcellence",
-    status: "planned",
+    status: "built",
   },
   service5: {
     label: "Legal and Advisory Services",
     path: "/services/#legalservices",
-    status: "planned",
+    status: "built",
   },
   service6: {
     label: "People/Learning Management",
     path: "/services/#peoplelearningmanagement",
-    status: "planned",
+    status: "built",
   },
   privacy: {
     label: "Privacy Policy",
     path: "/privacy-policy/",
-    status: "planned",
+    status: "built",
   },
   terms: {
     label: "Terms & Conditions",
     path: "/terms-and-conditions/",
-    status: "planned",
+    status: "built",
   },
 } as const satisfies Record<string, Route>;
 export type RouteKey = keyof typeof routes;
@@ -302,4 +302,23 @@ export const serviceNavigation: RouteKey[] = [
   "service4",
   "service5",
   "service6",
+];
+
+// Utility pages describe a handoff to the team, not an indexed service offering.
+export const noIndexPaths: readonly string[] = [
+  routes["my-bookings"].path,
+  routes["thank-you"].path,
+  routes["cancel-appointment"].path,
+  routes["appointment-cancellation-confirmation"].path,
+  routes["cancel-payment"].path,
+];
+export const indexablePaths = [
+  ...new Set(
+    Object.values(routes)
+      .filter(
+        (route) =>
+          route.status === "built" && !noIndexPaths.includes(route.path),
+      )
+      .map((route) => route.path.split("#")[0]),
+  ),
 ];

@@ -34,7 +34,9 @@ export default function BookingForm({
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [service, setService] = useState(initialService);
+  const [service, setService] = useState(
+    services.includes(initialService) ? initialService : "",
+  );
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [message, setMessage] = useState("");

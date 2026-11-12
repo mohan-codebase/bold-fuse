@@ -1,26 +1,26 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { CircleX } from "lucide-react";
 import UtilityPage from "@/components/booking/UtilityPage";
 import { site } from "@/content/site";
 import { routes } from "@/config/routes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Cancel Payment",
-  description:
-    "Your Boldfuse payment did not go through. No amount has been charged — try again or contact us.",
+  description: "Contact Boldfuse for help with appointment payment questions.",
   alternates: { canonical: routes["cancel-payment"].path },
-};
+});
 
 export default function Page() {
   return (
     <UtilityPage
       eyebrow="Appointments"
       title="Cancel Payment"
-      heading="Payment canceled"
+      heading="Payment support"
       icon={CircleX}
       message={[
-        "Sorry! Something went wrong. Your payment has failed.",
-        "No amount has been charged. You can try again or continue without payment — your appointment request is still with us and our team will be in touch.",
+        "This website does not process online payments.",
+        "If you have a payment question about an appointment arranged with our team, contact us to check its status.",
       ]}
       actions={[
         {

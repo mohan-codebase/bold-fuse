@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,12 +14,12 @@ import peerSupportImg from "@/assets/services/psychosis-treatment/peer-support-g
 import lifestyleImg from "@/assets/services/psychosis-treatment/lifestyle-changes.png";
 import holisticImg from "@/assets/services/psychosis-treatment/holistic-approaches.png";
 
-export const metadata: Metadata = {
-  title: "Psychosis Treatment - Boldfuse",
+export const metadata: Metadata = pageMetadata({
+  title: "Psychosis Treatment",
   description:
     "Comprehensive, compassionate treatments and interventions for psychosis, tailored to each individual's needs in consultation with qualified healthcare professionals.",
   alternates: { canonical: "/psychosis-treatment/" },
-};
+});
 
 const psychosisTreatments = [
   {

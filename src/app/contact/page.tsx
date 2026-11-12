@@ -1,31 +1,33 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { site } from "@/content/site";
 import ContactForm from "./ContactForm";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact us",
   description:
     "Get in touch with Boldfuse to discuss how we can help your business.",
   alternates: { canonical: "/contact/" },
-};
+});
 
 const details = [
   {
     icon: Phone,
     label: "Call us",
-    value: "+91-9515017555",
-    href: "tel:+919515017555",
+    value: site.phone,
+    href: `tel:${site.telephone}`,
   },
   {
     icon: Mail,
     label: "Email us",
-    value: "info@boldfuse.in",
-    href: "mailto:info@boldfuse.in",
+    value: site.email,
+    href: `mailto:${site.email}`,
   },
   {
     icon: MapPin,
     label: "Visit us",
-    value: "Lanco hills road, Gachibowli, Hyd 500089",
+    value: site.address,
     href: "https://maps.google.com/?q=Lanco+hills+road,+Gachibowli,+Hyderabad+500089",
   },
 ];

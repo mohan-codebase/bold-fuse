@@ -1,12 +1,8 @@
 "use client";
 import { useRef } from "react";
 import Image from "next/image";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { EASE } from "@/lib/editorial/motion";
 
 import { heroBanner } from "@/content/editorial/data";
@@ -23,7 +19,7 @@ export default function Hero() {
   const reduced = useReducedMotion();
   // Hold the entrance until the preloader curtain starts lifting
   const ready = true;
-  const enter = reduced ? {} : ready ? { opacity: 1, y: 0 } : undefined;
+  const enter = ready ? { opacity: 1, y: 0 } : undefined;
 
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -59,9 +55,10 @@ export default function Hero() {
                 height={941}
                 sizes="(min-width: 1024px) 100vw, 200vw"
                 className={`h-full w-full object-cover max-lg:absolute max-lg:right-0 max-lg:bottom-[10%] max-lg:h-auto max-lg:w-[200%] max-lg:max-w-none max-lg:[mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] sm:max-lg:bottom-0 sm:max-lg:w-[150%] ${slide.position || "object-center"}`}
-                loading="eager"
-                decoding="async"
+                unoptimized
+                preload
                 fetchPriority="high"
+                decoding="async"
               />
             </picture>
           </div>
@@ -75,15 +72,21 @@ export default function Hero() {
 
       {/* ---- Content Block ---- */}
       <motion.div
+        data-motion-reveal
         className="relative z-10 flex w-full flex-col items-start px-5 pt-[5.5rem] pb-14 min-[400px]:pt-24 sm:px-8 sm:pt-32 sm:pb-16 lg:px-10 lg:pt-36"
         style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
       >
         <div className="w-full max-w-3xl text-left [text-shadow:0_2px_14px_rgba(0,0,0,0.85)] lg:w-[52%] lg:max-w-[52rem]">
           <motion.p
+            data-motion-reveal
             className="eyebrow text-accent-soft"
             initial={reduced ? false : { opacity: 0, y: 12 }}
             animate={enter}
-            transition={{ duration: 0.8, delay: 0.55, ease: EASE }}
+            transition={{
+              duration: reduced ? 0 : 0.8,
+              delay: reduced ? 0 : 0.55,
+              ease: EASE,
+            }}
           >
             {slide.eyebrow}
           </motion.p>
@@ -98,10 +101,15 @@ export default function Hero() {
           </h1>
 
           <motion.div
+        data-motion-reveal
             className="mt-4 sm:mt-6"
             initial={reduced ? false : { opacity: 0, y: 10 }}
             animate={enter}
-            transition={{ duration: 0.9, delay: 1.05, ease: EASE }}
+            transition={{
+              duration: reduced ? 0 : 0.9,
+              delay: reduced ? 0 : 1.05,
+              ease: EASE,
+            }}
           >
             <p className="lede max-w-xl text-left font-medium text-ivory [text-shadow:0_1px_8px_rgba(0,0,0,0.85)] max-[400px]:text-[0.9375rem] max-[400px]:leading-relaxed">
               <span className="sm:hidden">

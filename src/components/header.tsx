@@ -68,6 +68,7 @@ export function Header() {
             sizes="(min-width: 768px) 208px, 176px"
             width={208}
             height={59}
+            loading="eager"
             className={cn(
               "h-auto w-32 md:w-40",
               transparent && "brightness-0 invert",
@@ -97,7 +98,7 @@ export function Header() {
                   <button
                     type="button"
                     onClick={() => setServicesOpen((prev) => !prev)}
-                    className="flex items-center p-1 text-current/70 hover:text-current cursor-pointer transition-colors"
+                    className="flex cursor-pointer items-center p-1 text-current/70 hover:text-current"
                     aria-label="Toggle services menu"
                     aria-expanded={servicesOpen}
                   >
@@ -113,10 +114,10 @@ export function Header() {
                 </div>
                 <div
                   className={cn(
-                    "absolute top-full -left-6 w-80 rounded-2xl border border-brand-950/15 bg-white p-3 text-brand-950 shadow-xl transition-all duration-200 z-50",
+                    "absolute top-full -left-6 z-50 w-80 rounded-2xl border border-brand-950/15 bg-white p-3 text-brand-950 shadow-xl transition-all duration-200",
                     servicesOpen
-                      ? "opacity-100 visible pointer-events-auto translate-y-0"
-                      : "opacity-0 invisible pointer-events-none -translate-y-1",
+                      ? "pointer-events-auto visible translate-y-0 opacity-100"
+                      : "pointer-events-none invisible -translate-y-1 opacity-0",
                   )}
                 >
                   {serviceNavigation.map((route) => (
@@ -223,8 +224,9 @@ export function Header() {
                     <button
                       type="button"
                       onClick={() => setMobileServicesOpen((prev) => !prev)}
-                      className="p-1 text-forest/70 hover:text-forest cursor-pointer"
+                      className="cursor-pointer p-1 text-forest/70 hover:text-forest"
                       aria-label="Toggle services list"
+                      aria-expanded={mobileServicesOpen}
                     >
                       <ChevronDown
                         className={cn(
@@ -263,7 +265,7 @@ export function Header() {
           </nav>
           <a
             href={`tel:${site.telephone}`}
-            className="mt-3 rounded-xl bg-cream p-4 text-sm font-medium"
+            className="mt-3 rounded-xl bg-white p-4 text-sm font-medium"
           >
             {ui.talk}
             <span className="mt-2 block font-medium">{site.phone}</span>

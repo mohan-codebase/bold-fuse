@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CalendarCheck, Mail, MessageCircle, Phone } from "lucide-react";
@@ -5,17 +6,17 @@ import BookingForm from "@/components/booking/BookingForm";
 import { site } from "@/content/site";
 import { routes } from "@/config/routes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Book an Appointment",
   description:
     "Book a counselling or consultation appointment with Boldfuse in seconds via WhatsApp, email or phone.",
   alternates: { canonical: routes["book-appointment"].path },
-};
+});
 
 export default async function BookAppointmentPage({
   searchParams,
 }: {
-  searchParams: Promise<{ service?: string }>;
+  searchParams: Promise<{ service?: string | string[] }>;
 }) {
   const { service } = await searchParams;
 
@@ -90,7 +91,9 @@ export default async function BookAppointmentPage({
               confirm your slot shortly.
             </p>
             <div className="mt-8">
-              <BookingForm initialService={service ?? ""} />
+              <BookingForm
+                initialService={typeof service === "string" ? service : ""}
+              />
             </div>
           </div>
 

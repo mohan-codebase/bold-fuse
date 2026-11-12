@@ -1,15 +1,16 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { CalendarClock } from "lucide-react";
 import UtilityPage from "@/components/booking/UtilityPage";
 import { site } from "@/content/site";
 import { routes } from "@/config/routes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "My Bookings",
   description:
     "View or manage your Boldfuse appointments via WhatsApp, email or phone.",
   alternates: { canonical: routes["my-bookings"].path },
-};
+});
 
 export default function Page() {
   return (

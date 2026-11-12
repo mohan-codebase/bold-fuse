@@ -1,7 +1,8 @@
 "use client";
 import { home } from "@/content/home";
 import { Phone } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { EASE, viewportOnce } from "@/lib/editorial/motion";
 import { site } from "@/content/editorial/data";
 import Reveal from "./Reveal";
@@ -19,7 +20,11 @@ export default function CTA({
 }) {
   const reduced = useReducedMotion();
   const enter = reduced
-    ? {}
+    ? {
+        initial: false,
+        animate: { opacity: 1, scale: 1, y: 0 },
+        transition: { duration: 0 },
+      }
     : {
         initial: { opacity: 0, scale: 0.94, y: 24 },
         whileInView: { opacity: 1, scale: 1, y: 0 },
@@ -31,6 +36,7 @@ export default function CTA({
     <section id="contact" className="bg-ivory py-10 sm:py-12 lg:py-14 xl:py-16">
       <div className="shell">
         <motion.div
+          data-motion-reveal
           {...enter}
           className="relative isolate overflow-hidden rounded-3xl border border-forest-soft/40 bg-forest px-6 py-10 text-center shadow-[0_20px_50px_-15px_rgba(23,63,53,0.3)] sm:rounded-[2.25rem] sm:px-10 sm:py-12 lg:py-14"
         >

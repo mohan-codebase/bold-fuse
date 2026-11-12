@@ -1,15 +1,18 @@
-import type { NextConfig } from "next";
-import "./src/config/site.ts";
+import "./src/config/site.js";
 const production = process.env.NODE_ENV === "production";
 const csp =
-  "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests";
-const config: NextConfig = {
+  "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests";
+/** @type {import("next").NextConfig} */
+const config = {
   allowedDevOrigins: ["192.168.1.4", "localhost"],
   trailingSlash: true,
   poweredByHeader: false,
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
-  images: { dangerouslyAllowSVG: false },
+  images: {
+    dangerouslyAllowSVG: false,
+    formats: ["image/avif", "image/webp"],
+  },
   async redirects() {
     return [
       { source: "/home1/", destination: "/", permanent: true },

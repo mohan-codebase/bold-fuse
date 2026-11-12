@@ -8,7 +8,7 @@ export default function ClientLoops({ clients, quotes }) {
     <div className="mt-10">
       <div className="space-y-4" aria-label="Our clients">
         {rows.map((row, index) => (
-          <div className="client-loop" key={index}>
+          <div className="client-loop" key={index} tabIndex={0} role="region" aria-label={`Client logos, row ${index + 1}`}>
             <div className={`client-loop-track ${index === 1 ? "client-loop-reverse" : ""}`}>
               {[0, 1].map((copy) => (
                 <div className="client-loop-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
@@ -23,7 +23,7 @@ export default function ClientLoops({ clients, quotes }) {
           </div>
         ))}
       </div>
-      <div id="testimonials" className="client-loop mt-10" aria-label="Client testimonials">
+      <div id="testimonials" className="client-loop mt-10" tabIndex={0} role="region" aria-label="Client testimonials">
         <div className="client-loop-track testimonial-loop-track">
           {[0, 1].map((copy) => (
             <div className="client-loop-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>

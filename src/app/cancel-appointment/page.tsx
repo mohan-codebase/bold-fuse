@@ -1,25 +1,26 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { CalendarX } from "lucide-react";
 import UtilityPage from "@/components/booking/UtilityPage";
 import { site } from "@/content/site";
 import { routes } from "@/config/routes";
 
-export const metadata: Metadata = {
-  title: "Appointment canceled",
+export const metadata: Metadata = pageMetadata({
+  title: "Cancel an Appointment",
   description: "Cancel an existing Boldfuse appointment via WhatsApp or phone.",
   alternates: { canonical: routes["cancel-appointment"].path },
-};
+});
 
 export default function Page() {
   return (
     <UtilityPage
       eyebrow="Appointments"
-      title="Appointment canceled"
-      heading="Appointment canceled"
+      title="Cancel an Appointment"
+      heading="Cancel an appointment"
       icon={CalendarX}
       message={[
-        "Sorry to hear that you have requested to cancel the appointment.",
-        "We have sent an email notification for your cancellation request. Click the button below to confirm the cancellation with our team.",
+        "To cancel an existing appointment, contact our team with your booking details.",
+        "Use WhatsApp or call us to request a cancellation. Visiting this page does not cancel an appointment.",
       ]}
       actions={[
         {

@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,12 +24,12 @@ import traumaImg from "@/assets/services/de-addiction-services/trauma-informed-c
 import medicationDevImg from "@/assets/services/de-addiction-services/medication-development-and-personalized-treatment.png";
 import culturalImg from "@/assets/services/de-addiction-services/culturally-tailored-interventions.png";
 
-export const metadata: Metadata = {
-  title: "De-addiction Services - Boldfuse",
+export const metadata: Metadata = pageMetadata({
+  title: "De-addiction Services",
   description:
     "De-addiction services help individuals overcome substance and behavioural addictions through treatment and support.",
   alternates: { canonical: "/de-addiction-services/" },
-};
+});
 
 const deAddictionServices = [
   {
