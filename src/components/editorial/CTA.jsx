@@ -9,14 +9,15 @@ import Reveal from "./Reveal";
 import Button from "./Button";
 import SectionHeading from "./SectionHeading";
 
-/**
- * The single dark moment on an otherwise light site — deep forest, used once,
- * as the closing anchor.
- */
 export default function CTA({
-  eyebrow = home.cta.title,
-  title = home.cta.body,
-  body,
+  id = "",
+  contained = false,
+  compactBottom = false,
+  actionHref = "/contact/",
+  actionLabel = "Get Started",
+  opensContactModal = false,
+  secondaryHref = "",
+  secondaryLabel = "",
 }) {
   const reduced = useReducedMotion();
   const enter = reduced
@@ -33,12 +34,15 @@ export default function CTA({
       };
 
   return (
-    <section id="contact" className="bg-ivory py-10 sm:py-12 lg:py-14 xl:py-16">
-      <div className="shell">
+    <section
+      id={id || undefined}
+      className={`bg-white pt-10 sm:pt-12 lg:pt-14 xl:pt-16 ${compactBottom ? "pb-6 sm:pb-8" : "pb-10 sm:pb-12 lg:pb-14 xl:pb-16"}`}
+    >
+      <div className={contained ? undefined : "shell"}>
         <motion.div
           data-motion-reveal
           {...enter}
-          className="relative isolate overflow-hidden rounded-3xl border border-forest-soft/40 bg-forest px-6 py-10 text-center shadow-[0_20px_50px_-15px_rgba(23,63,53,0.3)] sm:rounded-[2.25rem] sm:px-10 sm:py-12 lg:py-14"
+          className="relative isolate overflow-hidden rounded-3xl border border-forest-soft/40 bg-forest-surface px-6 py-10 text-center shadow-[0_20px_50px_-15px_rgba(23,63,53,0.3)] sm:rounded-[2.25rem] sm:px-10 sm:py-12 lg:py-14"
         >
           <div
             aria-hidden="true"
@@ -71,23 +75,29 @@ export default function CTA({
             </svg>
           </div>
 
-          <div className="relative mx-auto max-w-2xl">
+          <div className="relative mx-auto">
             <SectionHeading
-              eyebrow={eyebrow}
-              title={title}
-              titleClassName="text-[clamp(1.5rem,2.6vw,2rem)] leading-[1.3] tracking-[-0.02em]"
-              lede={body}
+              eyebrow={home.cta.title}
+              title={home.cta.body}
+              titleClassName="text-2xl leading-[1.3] tracking-[-0.02em]"
               tone="light"
             />
 
             <Reveal y={16} delay={0.24}>
               <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
-                <Button to="/contact/" variant="light">
-                  Get Started
+                <Button
+                  to={opensContactModal ? undefined : actionHref}
+                  data-open-contact-modal={
+                    opensContactModal ? "true" : undefined
+                  }
+                  variant="light"
+                >
+                  {actionLabel}
                 </Button>
                 <a
                   href={site.phoneHref}
-                  className="group inline-flex items-center gap-2.5 py-2 text-ivory/85 transition-colors duration-300 hover:text-ivory"
+                  data-button
+                  className="inline-flex items-center gap-2.5 py-2 font-medium text-ivory/85 hover:text-ivory focus-visible:outline-accent-soft"
                 >
                   <Phone
                     aria-hidden="true"
@@ -98,6 +108,15 @@ export default function CTA({
                     {site.phoneDisplay}
                   </span>
                 </a>
+                {secondaryHref && (
+                  <Button
+                    to={secondaryHref}
+                    variant="outlineLight"
+                    withArrow={false}
+                  >
+                    {secondaryLabel}
+                  </Button>
+                )}
               </div>
             </Reveal>
           </div>

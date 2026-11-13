@@ -33,43 +33,29 @@ export const about = {
   founder: {
     eyebrow: "FOUNDER & CEO",
     name: "Keerthy Reddy",
+    linkedinUrl: "https://www.linkedin.com/in/keerthy-reddy-51a012a7/",
     imageAlt: "Keerthy Reddy, Founder and CEO of BoldFuse",
+    healthcarePerspective: {
+      title: "Giving healthcare teams more time for patient care",
+      paragraphs: [
+        "Keerthy believes outdated systems and fragmented workflows hold healthcare teams back. At BoldFuse, she works to simplify operations and people management so doctors and healthcare leaders can spend more time improving patient care.",
+        "She sees thoughtfully applied technology as a way to tackle persistent operational challenges and better support professionals on the front lines of care.",
+        "Keerthy welcomes conversations with healthcare leaders about the future of medical infrastructure and operational excellence. She also wants to hear directly from doctors and practitioners about their day-to-day challenges and how BoldFuse can help. She shares insights on healthcare innovation and updates from BoldFuse on LinkedIn.",
+      ],
+      skills: [
+        "Leadership",
+        "Organizational psychology",
+        "Project management",
+        "HR consulting",
+        "Business strategy",
+      ],
+    },
     paragraphs: [
       "The 25 years of experience in leading corporations taught her the difference between ‘Labour’ & ‘Talent’. As an HR Head, she has worked on making workplaces more inspiring, collaborative, meaningful & enjoyable. She recently witnessed an at-scale shift to remote work, the dynamic reallocation of resources, extreme digitization & automation. There she found the need of reshaping the old business models & making them more flexible & responsive. Hence, Bold Fuse was born to help businesses in getting the best organized for the future.",
       "She has been the voice of employees in her entire professional journey and now she aims to create a workforce where leaders are approachable enough to have a direct conversation with their team and where ideas are converted into reality with teamwork.",
       "Keerthy Holds an MBA in HR & Marketing, and MS in Psychotherapy and counselling. She also carries her expertise in Design thinking and innovation,Change management, Lean six sigma black belt with Behavioural and organisational Psychology",
       "She is all ready with her unique solutions to create a sustainable competitive advantage for your business. We welcome you to meet her and see how she can indulge into those key business ingredients that leads to success.",
     ],
-  },
-  potential: {
-    headline: "At BoldFuse innovation meets human potential.",
-    lead: "we blend cutting-edge expertise with deep understanding of human behavior and organizational dynamics to drive transformative change. With a diverse background spanning multiple disciplines, our founder brings a unique blend of skills and knowledge to every project:",
-    points: [
-      {
-        title: "Strategic Management & Psychology",
-        text: "A solid foundation in strategic business management and marketing strategies. Extensive understanding of human psychology and therapeutic techniques, allowing us to foster positive workplace environments and individual growth.",
-      },
-      {
-        title: "Human-Centered Innovation",
-        text: "Empowering organizations to creatively solve complex problems and drive innovation through human-centered design approaches.",
-      },
-      {
-        title: "Organizational Behavior & Dynamics",
-        text: "In-depth knowledge of organizational behavior theories and principles, enabling us to optimize team dynamics and leadership effectiveness.",
-      },
-      {
-        title: "Change Implementation",
-        text: "Proven expertise in guiding organizations through transitions, ensuring smooth and successful change implementation.",
-      },
-      {
-        title: "Operational Efficiency",
-        text: "A mastery of process improvement methodologies, enhancing operational efficiency and driving bottom-line results.",
-      },
-    ],
-    closing:
-      "At BoldFuse, we are committed to delivering exceptional results by leveraging this diverse skill set to address the unique challenges faced by each client. Whether it’s optimizing processes, fostering a culture of innovation, or enhancing employee engagement, we have the expertise to help you achieve your goals.",
-    contactNote:
-      "Contact us today to learn more about how we can collaborate to unlock the full potential of your organization.",
   },
   visionMission: {
     vision: {
@@ -80,11 +66,6 @@ export const about = {
       title: "Our Mission",
       text: "To deliver pragmatic diverse solutions with effective restructuring strategies which sustain in the current and challenging environment",
     },
-  },
-  cta: {
-    heading:
-      "Meet our accomplished analysts, attentive listeners, and firm but tactful communicators.",
-    action: "GET STARTED",
   },
   // Retaining backwards-compatibility fields for any components referencing old keys
   eyebrow: "About Us",

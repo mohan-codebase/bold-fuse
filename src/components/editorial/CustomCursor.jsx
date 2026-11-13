@@ -16,7 +16,7 @@ function isDarkSurface(target) {
   if (!target || !(target instanceof Element)) return false;
   return Boolean(
     target.closest(
-      '[data-cursor-theme="dark"], section[aria-label*="Banner"], footer, .bg-forest, [class*="bg-[#091D17]"]',
+      '[data-cursor-theme="dark"], section[aria-label*="Banner"], footer, .bg-forest, .bg-forest-surface',
     ),
   );
 }

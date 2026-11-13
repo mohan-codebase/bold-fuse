@@ -1,4 +1,14 @@
 import { assets } from "@/assets";
+import airocLogo from "@/assets/clients/Airoc Hospitals.webp";
+import hydronLogo from "@/assets/clients/hydron.webp";
+import ishaLogo from "@/assets/clients/isha-netralaya.webp";
+import jadeLogo from "@/assets/clients/jade-clinics.webp";
+import preciseLogo from "@/assets/clients/precise-hospital.webp";
+import saanvisLogo from "@/assets/clients/saanvis.webp";
+import sindooriLogo from "@/assets/clients/sindoori-management-solutions.webp";
+import sakraLogo from "@/assets/clients/Sakra World Hospital.webp";
+import skinOriginsLogo from "@/assets/clients/skin-origins.webp";
+import smartvisionLogo from "@/assets/clients/smartvision.webp";
 import type { HomeContent } from "./types";
 export const home = {
   hero: {
@@ -206,6 +216,16 @@ export const home = {
         name: "SHLOK",
         image: assets.client18,
       },
+      { name: "Precise Hospital", image: preciseLogo },
+      { name: "Sindoori Management Solutions", image: sindooriLogo },
+      { name: "Jade Clinics", image: jadeLogo },
+      { name: "Skin Origins Clinic", image: skinOriginsLogo },
+      { name: "Saanvi’s Laser Skin and Hair Clinic", image: saanvisLogo },
+      { name: "Hydron", image: hydronLogo },
+      { name: "SmartVision Eye Hospitals", image: smartvisionLogo },
+      { name: "Isha Netralaya", image: ishaLogo },
+      { name: "Sakra World Hospital", image: sakraLogo },
+      { name: "Airoc Hospitals", image: airocLogo },
     ],
     quotes: [
       {
@@ -228,7 +248,7 @@ export const home = {
   },
   cta: {
     title: "We grow when you grow",
-    body: "We invest in your business knowing that we are pretty good at making our investment fruitful.",
+    body: "Build a stronger healthcare business.",
   },
   blog: {
     eyebrow: "From our blog",

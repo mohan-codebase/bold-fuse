@@ -176,20 +176,6 @@ export const servicesContent = {
     },
   ] satisfies ServiceItem[],
 
-  midCtas: {
-    cta1: {
-      eyebrow: "Every decision backed by insights & us turns out to be great",
-      title: "Let's fix the health-o-meter of your business.",
-      buttonText: "Talk to us",
-      link: "/contact/",
-    },
-    cta2: {
-      eyebrow: "The right move at the right time takes you in the right direction.",
-      title: "Get success tickets for your business.",
-      buttonText: "Talk to us",
-      link: "/contact/",
-    },
-  },
 
   itRecruitment: {
     eyebrow: "Careers & Staffing",
@@ -273,8 +259,6 @@ export const servicesContent = {
         label: "Happy Client",
       },
     ],
-    ctaText: "Talk to us",
-    ctaLink: "/contact/",
   },
 } as const;
 

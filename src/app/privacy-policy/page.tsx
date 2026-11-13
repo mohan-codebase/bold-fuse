@@ -1,26 +1,8 @@
+import CTA from "@/components/editorial/CTA";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ShieldCheck,
-  Lock,
-  FileText,
-  UserCheck,
-  Eye,
-  Cookie,
-  ExternalLink,
-  Clock,
-  Scale,
-  Baby,
-  RefreshCw,
-  Mail,
-  Phone,
-  MapPin,
-  Globe,
-  ArrowLeft,
-  CheckCircle2,
-  Calendar,
-} from "lucide-react";
+import { ShieldCheck, Lock, FileText, UserCheck, Eye, Cookie, ExternalLink, Clock, Scale, Baby, RefreshCw, Mail, Phone, MapPin, Globe, CheckCircle2, Calendar } from "lucide-react";
 import { site } from "@/content/site";
 import { siteUrl } from "@/config/site";
 import { routes } from "@/config/routes";
@@ -66,7 +48,7 @@ export default function PrivacyPolicyPage() {
         aria-labelledby="privacy-hero-heading"
         className="shell pt-8 pb-0 sm:pt-12"
       >
-        <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16">
+        <div className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16">
           {/* Subtle flowing SVG decoration — approved site direction */}
           <div
             aria-hidden="true"
@@ -922,39 +904,10 @@ export default function PrivacyPolicyPage() {
                 </div>
               </div>
             </article>
-
-            {/* Back to Home & Actions Footer Banner */}
-            <div className="rounded-3xl border border-line bg-white p-6 sm:p-8">
-              <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-                <div>
-                  <h4 className="font-heading text-lg font-bold text-forest">
-                    Ready to explore how Boldfuse can support you?
-                  </h4>
-                  <p className="mt-1 font-description text-sm font-medium text-muted">
-                    Reach out for counselling sessions, healthcare consulting, or general questions.
-                  </p>
-                </div>
-                <div className="flex flex-wrap items-center gap-3">
-                  <Link
-                    href={routes.home.path}
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-xs font-bold tracking-wider text-forest uppercase hover:bg-cream focus-visible:outline-2 focus-visible:outline-forest"
-                  >
-                    <ArrowLeft size={15} aria-hidden="true" />
-                    Back to Home
-                  </Link>
-                  <button
-                    type="button"
-                    data-open-contact-modal="true"
-                    className="inline-flex min-h-11 items-center justify-center rounded-full bg-forest px-6 text-xs font-bold tracking-wider text-white uppercase hover:bg-forest-soft focus-visible:outline-2 focus-visible:outline-forest"
-                  >
-                    Get in Touch
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+      <CTA opensContactModal actionLabel="Get in Touch" secondaryHref={routes.home.path} secondaryLabel="Back to Home" />
     </main>
   );
 }

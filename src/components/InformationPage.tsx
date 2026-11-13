@@ -1,3 +1,4 @@
+import CTA from "@/components/editorial/CTA";
 import Link from "next/link";
 import { site } from "@/content/site";
 
@@ -12,7 +13,7 @@ export default function InformationPage({
   return (
     <main id="main-content" className="bg-white">
       <div className="shell py-12 sm:py-20">
-        <header className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-12 text-white sm:px-12">
+        <header className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_60%)]"
@@ -70,6 +71,7 @@ export default function InformationPage({
           </p>
         </div>
       </div>
+      <CTA />
     </main>
   );
 }

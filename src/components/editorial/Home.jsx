@@ -51,7 +51,7 @@ export default function EditorialHome() {
         </div>
       </section>
       <FAQ />
-      <CTA />
+      <CTA id="contact" />
     </main>
   );
 }

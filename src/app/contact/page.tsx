@@ -1,3 +1,4 @@
+import CTA from "@/components/editorial/CTA";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
@@ -41,7 +42,7 @@ export default function ContactPage() {
   return (
     <main id="main-content" className="bg-white">
       <section className="shell pt-8 pb-12 sm:pt-12 lg:pb-20">
-        <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16">
+        <div className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
@@ -72,7 +73,7 @@ export default function ContactPage() {
           </p>
         </div>
         <div className="grid gap-5 pt-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6 lg:pt-16">
-          <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-7 py-10 text-white sm:px-10 lg:px-12 lg:py-12">
+          <div className="relative isolate overflow-hidden rounded-3xl bg-forest-surface px-7 py-10 text-white sm:px-10 lg:px-12 lg:py-12">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.3),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.2),transparent_50%)]"
@@ -126,7 +127,7 @@ export default function ContactPage() {
               ))}
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-[#cfe2d8] bg-white p-6 sm:p-9 lg:p-12">
+          <div id="contact-form" className="relative scroll-mt-24 overflow-hidden rounded-3xl border border-[#cfe2d8] bg-white p-6 sm:p-9 lg:p-12">
             <div
               aria-hidden="true"
               className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#008e68] via-[#75c8aa] to-[#e0f3e9]"
@@ -174,7 +175,7 @@ export default function ContactPage() {
                 allowFullScreen
               />
             </div>
-            <div className="relative isolate overflow-hidden bg-forest px-6 py-7 text-white sm:px-8 lg:absolute lg:right-6 lg:bottom-6 lg:w-[360px] lg:rounded-2xl">
+            <div className="relative isolate overflow-hidden bg-forest-surface px-6 py-7 text-white sm:px-8 lg:absolute lg:right-6 lg:bottom-6 lg:w-[360px] lg:rounded-2xl">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.3),transparent_65%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.2),transparent_55%)]"
@@ -219,6 +220,7 @@ export default function ContactPage() {
           </div>
         </section>
       </section>
+      <CTA actionHref="#contact-form" />
     </main>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, type FormEvent } from "react";
-import { X, CheckCircle2, AlertCircle } from "lucide-react";
+import { X, CheckCircle2, AlertCircle, ChevronDown } from "lucide-react";
 
 interface CountryCode {
   code: string;
@@ -432,7 +432,7 @@ export function ContactModal() {
                       onChange={(e) =>
                         setFormData({ ...formData, countryCode: e.target.value })
                       }
-                      className="h-full rounded-xl border border-line bg-white px-3 py-3 font-description text-sm font-medium text-forest outline-none focus:border-accent-ink focus:ring-2 focus:ring-accent-ink/20"
+                      className="h-full appearance-none rounded-xl border border-line bg-white py-3 pr-9 pl-3 font-description text-sm font-medium text-forest outline-none focus:border-accent-ink focus:ring-2 focus:ring-accent-ink/20"
                     >
                       {COUNTRY_CODES.map((item) => (
                         <option key={item.code} value={item.code}>
@@ -440,6 +440,10 @@ export function ContactModal() {
                         </option>
                       ))}
                     </select>
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-forest"
+                    />
                   </div>
                   <input
                     id="contact-phone"
@@ -452,7 +456,7 @@ export function ContactModal() {
                       setFormData({ ...formData, phone: e.target.value });
                       if (errors.phone) setErrors({ ...errors, phone: "" });
                     }}
-                    className={`flex-1 rounded-xl border bg-white px-4 py-3 font-description text-sm font-medium text-forest outline-none placeholder:text-muted/60 focus:ring-2 focus:ring-accent-ink/20 ${
+                    className={`min-w-0 flex-1 rounded-xl border bg-white px-4 py-3 font-description text-sm font-medium text-forest outline-none placeholder:text-muted/60 focus:ring-2 focus:ring-accent-ink/20 ${
                       errors.phone
                         ? "border-red-500 focus:border-red-500"
                         : "border-line focus:border-accent-ink"

@@ -1,9 +1,9 @@
+import CTA from "@/components/editorial/CTA";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Phone } from "lucide-react";
-import { site } from "@/content/site";
+import { ArrowUpRight } from "lucide-react";
 import { counsellingDetails } from "@/content/counselling-details";
 import { routes } from "@/config/routes";
 
@@ -24,7 +24,7 @@ export default function CounsellingServicesPage() {
         aria-labelledby="counselling-hero-heading"
         className="shell pt-8 pb-0 sm:pt-12"
       >
-        <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16">
+        <div className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16">
           {/* Subtle flowing SVG background decoration - approved site direction */}
           <div
             aria-hidden="true"
@@ -239,67 +239,7 @@ export default function CounsellingServicesPage() {
       {/* ================================================================ */}
       {/* 4. CALL TO ACTION SECTION (FROM REFERENCE WEBSITE)               */}
       {/* ================================================================ */}
-      <section
-        aria-labelledby="counselling-cta-heading"
-        className="shell pb-16 sm:pb-20 lg:pb-24"
-      >
-        <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-14 text-center text-white sm:px-12 sm:py-20 lg:px-16">
-          {/* Subtle flowing curved decoration */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.30),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.20),transparent_50%)]"
-          >
-            <svg
-              viewBox="0 0 1200 400"
-              preserveAspectRatio="none"
-              className="absolute inset-0 h-full w-full text-accent-soft"
-              fill="none"
-            >
-              <path
-                d="M500 380C720 340 700 180 900 210S1050 80 1100 20M600 420C800 380 780 220 980 250S1130 120 1200 60"
-                stroke="currentColor"
-                strokeWidth="1"
-                opacity="0.14"
-              />
-            </svg>
-          </div>
-
-          <p className="text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase">
-            Every decision backed by insights &amp; us turns out to be great
-          </p>
-
-          <h2
-            id="counselling-cta-heading"
-            className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl"
-          >
-            Let&apos;s fix the health-o-meter of your business.
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-2xl font-description text-base leading-relaxed font-medium text-white/80 sm:text-lg">
-            Ready to prioritize your mental health? Take the first step towards
-            a happier, healthier you by scheduling a consultation with one of
-            our experienced therapists today. Your journey to wellness starts
-            here.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact/"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest transition-colors hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Talk to us
-              <ArrowUpRight size={17} aria-hidden="true" />
-            </Link>
-            <a
-              href={`tel:${site.telephone}`}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              <Phone size={16} aria-hidden="true" />
-              {site.phone}
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTA />
     </main>
   );
 }

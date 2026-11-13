@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 export default function ServiceCard({ service, featured = false }) {
   return (
     <article
-      className={`service-card relative isolate flex h-full flex-col overflow-hidden rounded-[1.5rem] border p-5 ${featured ? "service-card-featured border-forest bg-forest text-white" : "border-line/80 bg-white text-forest"}`}
+      className={`service-card relative isolate flex h-full flex-col overflow-hidden rounded-[1.5rem] border p-5 ${featured ? "service-card-featured border-forest bg-forest-surface text-white" : "border-line/80 bg-white text-forest"}`}
     >
       {service.image && (
         <div className="service-card-image relative -mx-2 -mt-2 mb-5 overflow-hidden rounded-2xl">

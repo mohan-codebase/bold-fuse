@@ -1,7 +1,8 @@
+import CTA from "@/components/editorial/CTA";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CalendarCheck, Mail, MessageCircle, Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import BookingForm from "@/components/booking/BookingForm";
 import { site } from "@/content/site";
 import { routes } from "@/config/routes";
@@ -24,7 +25,7 @@ export default async function BookAppointmentPage({
     <main id="main-content" className="bg-white">
       {/* Hero */}
       <section className="shell pt-8 pb-0 sm:pt-12">
-        <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
+        <div className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
@@ -168,32 +169,7 @@ export default async function BookAppointmentPage({
         </div>
       </section>
 
-      {/* CTA strip */}
-      <section className="shell pb-16 sm:pb-24">
-        <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-10 text-white sm:px-10 sm:py-12">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.2),transparent_60%)]"
-          />
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase">
-                Not sure which service?
-              </p>
-              <h2 className="mt-3 font-heading text-2xl font-bold text-white sm:text-3xl">
-                Explore our counselling services
-              </h2>
-            </div>
-            <Link
-              href={routes["counselling-services"].path}
-              className="inline-flex min-h-12 items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold text-forest hover:bg-[#e8f5ef] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-            >
-              <CalendarCheck size={17} aria-hidden="true" />
-              View services
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CTA actionHref={routes["counselling-services"].path} actionLabel="View counselling services" />
     </main>
   );
 }

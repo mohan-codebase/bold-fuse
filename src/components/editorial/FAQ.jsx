@@ -54,7 +54,7 @@ export default function FAQ() {
               </details>
             ))}
           </div>
-          <Reveal className="relative isolate overflow-hidden rounded-3xl border border-forest-soft bg-forest p-7 text-white sm:p-8">
+          <Reveal className="relative isolate overflow-hidden rounded-3xl border border-forest-soft bg-forest-surface p-7 text-white sm:p-8">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.3),transparent_70%)]"

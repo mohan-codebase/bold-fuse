@@ -2,6 +2,7 @@
 
 import { Briefcase, MapPin, TrendingUp, Users } from "lucide-react";
 import { stats } from "@/content/editorial/data";
+import { ForestCardBackdrop, forestCardClass, forestCardIconClass } from "./ForestCard";
 import CountUp from "./CountUp";
 import { RevealGroup, RevealItem } from "./Reveal";
 
@@ -28,30 +29,9 @@ export default function Stats() {
                 key={stat.label}
                 data-cursor-theme="dark"
                 y={18}
-                className="relative isolate flex flex-col overflow-hidden rounded-[1.5rem] border border-forest-soft/60 bg-forest p-5 shadow-[0_18px_40px_-22px_rgba(23,63,53,0.55)] sm:p-7"
+                className={forestCardClass}
               >
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.3),transparent_70%)]"
-                >
-                  <svg
-                    viewBox="0 0 300 200"
-                    preserveAspectRatio="none"
-                    className="absolute inset-0 h-full w-full text-accent-soft"
-                    fill="none"
-                  >
-                    <path
-                      d="M70 230C180 215 160 125 250 140S310 75 340 40"
-                      stroke="currentColor"
-                      opacity="0.14"
-                    />
-                    <path
-                      d="M120 235C215 220 200 160 280 170S335 120 355 90"
-                      stroke="currentColor"
-                      opacity="0.09"
-                    />
-                  </svg>
-                </div>
+                <ForestCardBackdrop />
                 <dt className="relative order-2 mt-5 text-xs leading-relaxed font-medium tracking-[0.1em] text-white/80 uppercase">
                   {stat.label}
                 </dt>
@@ -63,7 +43,7 @@ export default function Stats() {
                   />
                   <span
                     aria-hidden="true"
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-accent-soft"
+                    className={forestCardIconClass}
                   >
                     <Icon size={20} strokeWidth={1.5} />
                   </span>

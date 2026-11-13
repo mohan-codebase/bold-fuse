@@ -70,7 +70,7 @@ export default function About() {
           {tiles.map((tile) => (
             <RevealItem
               key={tile.title}
-              className="relative isolate flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-5 sm:p-6"
+              className="relative isolate flex h-full flex-col overflow-hidden rounded-2xl border-2 border-forest/20 bg-white p-5 sm:p-6"
             >
               <div
                 aria-hidden="true"
@@ -85,12 +85,12 @@ export default function About() {
                   <path
                     d="M60 220C160 205 140 120 230 135S295 75 330 40"
                     stroke="currentColor"
-                    opacity="0.12"
+                    opacity="0.18"
                   />
                 </svg>
               </div>
-              <h3 className="text-lg text-forest">{tile.title}</h3>
-              <p className="mt-2.5 font-description text-sm font-medium leading-relaxed text-muted">
+              <h3 className="font-heading text-xl font-bold tracking-tight text-forest">{tile.title}</h3>
+              <p className="mt-2.5 font-description text-sm font-medium leading-relaxed text-forest/85">
                 {tile.text}
               </p>
             </RevealItem>

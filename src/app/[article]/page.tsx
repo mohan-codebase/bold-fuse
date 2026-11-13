@@ -1,15 +1,9 @@
+import CTA from "@/components/editorial/CTA";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  Calendar,
-  Clock,
-  Tag,
-  UserRound,
-} from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Calendar, Clock, Tag, UserRound } from "lucide-react";
 import {
   blogArticles,
   getArticleBySlug,
@@ -140,7 +134,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <main id="main-content" className="bg-white">
       <div className="shell pt-8 pb-16 sm:pt-12 lg:pb-24">
-        <section className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
+        <section className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
@@ -294,32 +288,7 @@ export default async function ArticlePage({ params }: Props) {
           </section>
         )}
 
-        <section className="relative isolate mt-16 overflow-hidden rounded-3xl bg-forest px-6 py-10 text-white sm:px-10 sm:py-12 lg:mt-24">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.2),transparent_60%)]"
-          />
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase">
-                Let’s talk
-              </p>
-              <h2 className="mt-3 font-heading text-2xl font-bold text-white sm:text-3xl">
-                Ready to take the next step?
-              </h2>
-              <p className="mt-3 max-w-xl font-description leading-relaxed font-medium text-white/80">
-                Let’s discuss the opportunities and challenges facing your
-                business.
-              </p>
-            </div>
-            <Link
-              href="/contact/"
-              className="inline-flex min-h-12 items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold text-forest hover:bg-[#e8f5ef] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-            >
-              Contact us <ArrowUpRight size={17} aria-hidden="true" />
-            </Link>
-          </div>
-        </section>
+        <CTA contained />
       </div>
       <script
         type="application/ld+json"

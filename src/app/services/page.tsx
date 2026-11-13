@@ -1,5 +1,7 @@
+import CTA from "@/components/editorial/CTA";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,14 +12,12 @@ import {
   Cpu,
   Mail,
   MapPin,
-  Phone,
   Server,
   ShieldCheck,
   Sparkles,
   Users2,
 } from "lucide-react";
 import { servicesContent } from "@/content/services";
-import { site } from "@/content/site";
 import CounsellingReadMoreModal from "@/components/CounsellingReadMoreModal";
 
 export const metadata: Metadata = pageMetadata({
@@ -27,17 +27,37 @@ export const metadata: Metadata = pageMetadata({
   alternates: { canonical: "/services/" },
 });
 
-const itCategoryIcons = [
-  Code2,
-  Server,
-  BarChart3,
-  ShieldCheck,
-  Users2,
-  Cpu,
-];
+const itCategoryIcons = [Code2, Server, BarChart3, ShieldCheck, Users2, Cpu];
+
+function ServiceReadMore({
+  description,
+  children,
+}: {
+  description: string;
+  children?: ReactNode;
+}) {
+  const intro = description.match(/^.+?[.!?](?=\s|$)/)?.[0] ?? description;
+  const remainder = description.slice(intro.length).trim();
+
+  return (
+    <div className="mt-5 font-description text-base leading-relaxed font-medium text-muted sm:text-lg">
+      <p>{intro}</p>
+      {(remainder || children) && (
+        <details className="group mt-3">
+          <summary className="w-fit cursor-pointer rounded-full border border-line px-4 py-2 text-sm font-semibold text-forest hover:border-forest">
+            <span className="group-open:hidden">Read more</span>
+            <span className="hidden group-open:inline">Read less</span>
+          </summary>
+          {remainder && <p className="mt-4">{remainder}</p>}
+          {children}
+        </details>
+      )}
+    </div>
+  );
+}
 
 export default function ServicesPage() {
-  const { hero, services, midCtas, itRecruitment, raiseTheBar } = servicesContent;
+  const { hero, services, itRecruitment, raiseTheBar } = servicesContent;
 
   return (
     <main id="main-content" className="bg-white">
@@ -47,7 +67,7 @@ export default function ServicesPage() {
         {/* ========================================================= */}
         <section
           aria-labelledby="services-hero-heading"
-          className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16"
+          className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16"
         >
           {/* Subtle flowing SVG background decoration - matching Contact page */}
           <div
@@ -81,14 +101,15 @@ export default function ServicesPage() {
           </h1>
 
           <p className="mt-5 max-w-2xl font-description text-base leading-relaxed font-medium text-white/80 sm:text-lg">
-            We empower leaders with practical solutions that build resilience, streamline operations, and drive sustainable business growth.
+            We empower leaders with practical solutions that build resilience,
+            streamline operations, and drive sustainable business growth.
           </p>
         </section>
 
         {/* ========================================================= */}
         {/* 2. SERVICES LIST (SECTIONS 01 TO 07)                      */}
         {/* ========================================================= */}
-        <div className="pt-16 sm:pt-20 lg:pt-28 space-y-20 sm:space-y-24 lg:space-y-32">
+        <div className="space-y-20 pt-16 sm:space-y-24 sm:pt-20 lg:space-y-32 lg:pt-28">
           {/* ------------------------------------------------------- */}
           {/* SERVICE 01: PEOPLE MANAGEMENT / HR                      */}
           {/* ------------------------------------------------------- */}
@@ -97,7 +118,7 @@ export default function ServicesPage() {
             aria-labelledby={`service-title-${services[0].id}`}
             className="scroll-mt-28"
           >
-            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
               {/* Text Left */}
               <div>
                 <div className="flex items-center gap-3">
@@ -117,37 +138,35 @@ export default function ServicesPage() {
                   {services[0].title}
                 </h2>
 
-                <p className="mt-3 font-heading text-xl font-bold leading-snug text-accent-ink sm:text-2xl">
+                <p className="mt-3 font-heading text-xl leading-snug font-bold text-accent-ink sm:text-2xl">
                   {services[0].tagline}
                 </p>
 
-                <p className="mt-5 font-description text-base leading-[1.8] font-medium text-muted sm:text-lg">
-                  {services[0].description}
-                </p>
-
-                {/* 16 HR Capability Areas Grid */}
-                {services[0].offerings && (
-                  <div className="mt-8">
-                    <p className="text-xs font-semibold tracking-wider text-forest uppercase">
-                      HR & People Competencies:
-                    </p>
-                    <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                      {services[0].offerings.map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center gap-2 rounded-xl border border-line bg-cream/50 px-3.5 py-2 font-description text-sm font-semibold text-forest"
-                        >
-                          <CheckCircle2
-                            size={15}
-                            className="shrink-0 text-accent"
-                            aria-hidden="true"
-                          />
-                          <span className="truncate">{item}</span>
-                        </div>
-                      ))}
+                <ServiceReadMore description={services[0].description}>
+                  {/* 16 HR Capability Areas Grid */}
+                  {services[0].offerings && (
+                    <div className="mt-8">
+                      <p className="text-xs font-semibold tracking-wider text-forest uppercase">
+                        HR & People Competencies:
+                      </p>
+                      <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                        {services[0].offerings.map((item, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center gap-2 rounded-xl border border-line bg-white px-3.5 py-2 font-description text-sm font-semibold text-forest"
+                          >
+                            <CheckCircle2
+                              size={15}
+                              className="shrink-0 text-accent"
+                              aria-hidden="true"
+                            />
+                            <span className="min-w-0">{item}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </ServiceReadMore>
 
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
@@ -161,12 +180,12 @@ export default function ServicesPage() {
               </div>
 
               {/* Image Right */}
-              <div className="relative overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm lg:-translate-y-10">
+              <div className="relative overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm">
                 <Image
                   src={services[0].image}
                   alt={services[0].imageAlt}
                   sizes="(min-width: 1024px) 480px, 92vw"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
                 />
               </div>
             </div>
@@ -180,14 +199,14 @@ export default function ServicesPage() {
             aria-labelledby={`service-title-${services[1].id}`}
             className="scroll-mt-28"
           >
-            <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
               {/* Image Left */}
-              <div className="order-2 lg:order-1 relative overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm">
+              <div className="relative order-2 overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm lg:order-1">
                 <Image
                   src={services[1].image}
                   alt={services[1].imageAlt}
                   sizes="(min-width: 1024px) 480px, 92vw"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
                 />
               </div>
 
@@ -210,14 +229,18 @@ export default function ServicesPage() {
                   {services[1].title}
                 </h2>
 
-                <p className="mt-3 font-heading text-xl font-bold leading-snug text-accent-ink sm:text-2xl">
+                <p className="mt-3 font-heading text-xl leading-snug font-bold text-accent-ink sm:text-2xl">
                   {services[1].tagline}
                 </p>
 
-                {services[1].previewParagraphs && services[1].modalParagraphs ? (
+                {services[1].previewParagraphs &&
+                services[1].modalParagraphs ? (
                   <CounsellingReadMoreModal
                     tagline={services[1].tagline}
-                    previewParagraphs={services[1].previewParagraphs}
+                    previewParagraphs={services[1].previewParagraphs.slice(
+                      0,
+                      1,
+                    )}
                     paragraphs={services[1].modalParagraphs}
                   />
                 ) : (
@@ -238,22 +261,23 @@ export default function ServicesPage() {
                           item === "Counselling Services"
                             ? "/counselling-services/"
                             : item === "Therapy"
-                            ? "/therapy/"
-                            : item === "Parenting"
-                            ? "/parenting/"
-                            : item.toLowerCase() === "de-addiction services"
-                            ? "/de-addiction-services/"
-                            : item.toLowerCase() === "psychosis treatment"
-                            ? "/psychosis-treatment/"
-                            : item.toLowerCase() === "psychological testing"
-                            ? "/psychological-testing/"
-                            : null;
+                              ? "/therapy/"
+                              : item === "Parenting"
+                                ? "/parenting/"
+                                : item.toLowerCase() === "de-addiction services"
+                                  ? "/de-addiction-services/"
+                                  : item.toLowerCase() === "psychosis treatment"
+                                    ? "/psychosis-treatment/"
+                                    : item.toLowerCase() ===
+                                        "psychological testing"
+                                      ? "/psychological-testing/"
+                                      : null;
 
                         return offeringHref ? (
                           <Link
                             key={idx}
                             href={offeringHref}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-white px-4 py-1.5 font-description text-sm font-semibold text-forest hover:bg-forest hover:text-white hover:border-forest"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-white px-4 py-1.5 font-description text-sm font-semibold text-forest hover:border-forest hover:bg-forest hover:text-white"
                           >
                             <CheckCircle2
                               size={14}
@@ -296,42 +320,7 @@ export default function ServicesPage() {
           {/* ------------------------------------------------------- */}
           {/* MID-PAGE CTA 1                                          */}
           {/* ------------------------------------------------------- */}
-          <section className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-10 text-center text-white sm:px-12 sm:py-14 lg:px-16">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
-            >
-              <svg
-                viewBox="0 0 1200 320"
-                preserveAspectRatio="none"
-                focusable="false"
-                className="absolute inset-0 h-full w-full text-accent-soft"
-                fill="none"
-              >
-                <path
-                  d="M400 320C650 280 750 140 1000 160S1150 70 1200 20"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  opacity="0.14"
-                />
-              </svg>
-            </div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase">
-              {midCtas.cta1.eyebrow}
-            </p>
-            <h3 className="mx-auto mt-3 max-w-2xl font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              {midCtas.cta1.title}
-            </h3>
-            <div className="mt-6 flex justify-center">
-              <Link
-                href={midCtas.cta1.link}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest hover:bg-white/90"
-              >
-                {midCtas.cta1.buttonText}
-                <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-            </div>
-          </section>
+          <CTA contained />
 
           {/* ------------------------------------------------------- */}
           {/* SERVICE 03: DIGITAL MARKETING / CREATIVE BRANDING AND PR */}
@@ -341,7 +330,7 @@ export default function ServicesPage() {
             aria-labelledby={`service-title-${services[2].id}`}
             className="scroll-mt-28"
           >
-            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
               {/* Text Left */}
               <div>
                 <div className="flex items-center gap-3">
@@ -361,18 +350,20 @@ export default function ServicesPage() {
                   {services[2].title}
                 </h2>
 
-                <p className="mt-3 font-heading text-xl font-bold leading-snug text-accent-ink sm:text-2xl">
+                <p className="mt-3 font-heading text-xl leading-snug font-bold text-accent-ink sm:text-2xl">
                   {services[2].tagline}
                 </p>
 
-                <p className="mt-5 font-description text-base leading-[1.8] font-medium text-muted sm:text-lg">
-                  {services[2].description}
-                </p>
+                <ServiceReadMore description={services[2].description} />
 
                 {/* Sub-brand highlight */}
                 {services[2].subBrand && (
                   <div className="mt-6 inline-flex items-center gap-2 rounded-2xl border border-line bg-white px-5 py-3 shadow-xs">
-                    <Sparkles size={18} className="text-accent" aria-hidden="true" />
+                    <Sparkles
+                      size={18}
+                      className="text-accent"
+                      aria-hidden="true"
+                    />
                     <span className="font-heading text-base font-bold text-forest">
                       {services[2].subBrand}
                     </span>
@@ -396,7 +387,7 @@ export default function ServicesPage() {
                   src={services[2].image}
                   alt={services[2].imageAlt}
                   sizes="(min-width: 1024px) 480px, 92vw"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
                 />
               </div>
             </div>
@@ -410,14 +401,14 @@ export default function ServicesPage() {
             aria-labelledby={`service-title-${services[3].id}`}
             className="scroll-mt-28"
           >
-            <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
               {/* Image Left */}
-              <div className="order-2 lg:order-1 relative overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm">
+              <div className="relative order-2 overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm lg:order-1">
                 <Image
                   src={services[3].image}
                   alt={services[3].imageAlt}
                   sizes="(min-width: 1024px) 480px, 92vw"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
                 />
               </div>
 
@@ -440,13 +431,11 @@ export default function ServicesPage() {
                   {services[3].title}
                 </h2>
 
-                <p className="mt-3 font-heading text-xl font-bold leading-snug text-accent-ink sm:text-2xl">
+                <p className="mt-3 font-heading text-xl leading-snug font-bold text-accent-ink sm:text-2xl">
                   {services[3].tagline}
                 </p>
 
-                <p className="mt-5 font-description text-base leading-[1.8] font-medium text-muted sm:text-lg">
-                  {services[3].description}
-                </p>
+                <ServiceReadMore description={services[3].description} />
 
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
@@ -464,42 +453,7 @@ export default function ServicesPage() {
           {/* ------------------------------------------------------- */}
           {/* MID-PAGE CTA 2                                          */}
           {/* ------------------------------------------------------- */}
-          <section className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-10 text-center text-white sm:px-12 sm:py-14 lg:px-16">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
-            >
-              <svg
-                viewBox="0 0 1200 320"
-                preserveAspectRatio="none"
-                focusable="false"
-                className="absolute inset-0 h-full w-full text-accent-soft"
-                fill="none"
-              >
-                <path
-                  d="M500 320C750 290 850 160 1050 180S1180 80 1220 30"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  opacity="0.14"
-                />
-              </svg>
-            </div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase">
-              {midCtas.cta2.eyebrow}
-            </p>
-            <h3 className="mx-auto mt-3 max-w-2xl font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              {midCtas.cta2.title}
-            </h3>
-            <div className="mt-6 flex justify-center">
-              <Link
-                href={midCtas.cta2.link}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest hover:bg-white/90"
-              >
-                {midCtas.cta2.buttonText}
-                <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-            </div>
-          </section>
+          <CTA contained />
 
           {/* ------------------------------------------------------- */}
           {/* SERVICE 05: FINANCE AND ADVISORY SERVICES               */}
@@ -509,7 +463,7 @@ export default function ServicesPage() {
             aria-labelledby={`service-title-${services[4].id}`}
             className="scroll-mt-28"
           >
-            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
               {/* Text Left */}
               <div>
                 <div className="flex items-center gap-3">
@@ -529,13 +483,11 @@ export default function ServicesPage() {
                   {services[4].title}
                 </h2>
 
-                <p className="mt-3 font-heading text-xl font-bold leading-snug text-accent-ink sm:text-2xl">
+                <p className="mt-3 font-heading text-xl leading-snug font-bold text-accent-ink sm:text-2xl">
                   {services[4].tagline}
                 </p>
 
-                <p className="mt-5 font-description text-base leading-[1.8] font-medium text-muted sm:text-lg">
-                  {services[4].description}
-                </p>
+                <ServiceReadMore description={services[4].description} />
 
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
@@ -554,7 +506,7 @@ export default function ServicesPage() {
                   src={services[4].image}
                   alt={services[4].imageAlt}
                   sizes="(min-width: 1024px) 480px, 92vw"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
                 />
               </div>
             </div>
@@ -568,14 +520,14 @@ export default function ServicesPage() {
             aria-labelledby={`service-title-${services[5].id}`}
             className="scroll-mt-28"
           >
-            <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
               {/* Image Left */}
-              <div className="order-2 lg:order-1 relative overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm">
+              <div className="relative order-2 overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm lg:order-1">
                 <Image
                   src={services[5].image}
                   alt={services[5].imageAlt}
                   sizes="(min-width: 1024px) 480px, 92vw"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
                 />
               </div>
 
@@ -598,35 +550,37 @@ export default function ServicesPage() {
                   {services[5].title}
                 </h2>
 
-                <p className="mt-3 font-heading text-xl font-bold leading-snug text-accent-ink sm:text-2xl">
+                <p className="mt-3 font-heading text-xl leading-snug font-bold text-accent-ink sm:text-2xl">
                   {services[5].tagline}
                 </p>
 
-                <p className="mt-5 font-description text-base leading-[1.8] font-medium text-muted sm:text-lg">
-                  {services[5].description}
-                </p>
-
-                {/* Four Transformation Pillars */}
-                {services[5].pillars && (
-                  <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                    {services[5].pillars.map((pillar, idx) => (
-                      <div
-                        key={idx}
-                        className="rounded-2xl border border-line bg-white p-5 shadow-xs"
-                      >
-                        <div className="flex items-center gap-2 text-forest">
-                          <CheckCircle2 size={18} className="text-accent" aria-hidden="true" />
-                          <h4 className="font-heading text-base font-bold">
-                            {pillar.title}
-                          </h4>
+                <ServiceReadMore description={services[5].description}>
+                  {/* Four Transformation Pillars */}
+                  {services[5].pillars && (
+                    <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                      {services[5].pillars.map((pillar, idx) => (
+                        <div
+                          key={idx}
+                          className="rounded-2xl border border-line bg-white p-5 shadow-xs"
+                        >
+                          <div className="flex items-center gap-2 text-forest">
+                            <CheckCircle2
+                              size={18}
+                              className="text-accent"
+                              aria-hidden="true"
+                            />
+                            <h4 className="font-heading text-base font-bold">
+                              {pillar.title}
+                            </h4>
+                          </div>
+                          <p className="mt-2 font-description text-sm leading-relaxed font-medium text-muted">
+                            {pillar.text}
+                          </p>
                         </div>
-                        <p className="mt-2 font-description text-sm leading-relaxed font-medium text-muted">
-                          {pillar.text}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                      ))}
+                    </div>
+                  )}
+                </ServiceReadMore>
 
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
@@ -649,7 +603,7 @@ export default function ServicesPage() {
             aria-labelledby={`service-title-${services[6].id}`}
             className="scroll-mt-28"
           >
-            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
               {/* Text Left */}
               <div>
                 <div className="flex items-center gap-3">
@@ -669,13 +623,11 @@ export default function ServicesPage() {
                   {services[6].title}
                 </h2>
 
-                <p className="mt-3 font-heading text-xl font-bold leading-snug text-accent-ink sm:text-2xl">
+                <p className="mt-3 font-heading text-xl leading-snug font-bold text-accent-ink sm:text-2xl">
                   {services[6].tagline}
                 </p>
 
-                <p className="mt-5 font-description text-base leading-[1.8] font-medium text-muted sm:text-lg">
-                  {services[6].description}
-                </p>
+                <ServiceReadMore description={services[6].description} />
 
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
@@ -694,7 +646,7 @@ export default function ServicesPage() {
                   src={services[6].image}
                   alt={services[6].imageAlt}
                   sizes="(min-width: 1024px) 480px, 92vw"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
                 />
               </div>
             </div>
@@ -707,10 +659,10 @@ export default function ServicesPage() {
         <section
           id="it-recruitment"
           aria-labelledby="it-recruitment-heading"
-          className="mt-20 pt-16 sm:mt-24 sm:pt-20 lg:mt-32 lg:pt-28 border-t border-line"
+          className="mt-20 border-t border-line pt-16 sm:mt-24 sm:pt-20 lg:mt-32 lg:pt-28"
         >
           {/* Header Banner */}
-          <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-12 text-white sm:px-10 sm:py-16 lg:px-14">
+          <div className="relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 py-12 text-white sm:px-10 sm:py-16 lg:px-14">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
@@ -797,9 +749,9 @@ export default function ServicesPage() {
           </div>
 
           {/* Locations & How to Apply split */}
-          <div className="mt-12 grid gap-8 lg:grid-cols-2 sm:mt-16">
+          <div className="mt-12 grid gap-8 sm:mt-16 lg:grid-cols-2">
             {/* Locations */}
-            <div className="flex flex-col justify-between rounded-3xl border border-line bg-white p-6 sm:p-8 shadow-xs">
+            <div className="flex flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-xs sm:p-8">
               <div>
                 <div className="flex items-center gap-2.5 text-accent-ink">
                   <MapPin size={22} aria-hidden="true" />
@@ -813,7 +765,11 @@ export default function ServicesPage() {
                       key={idx}
                       className="flex items-start gap-4 rounded-2xl border border-line bg-white p-4"
                     >
-                      <span className="text-3xl" role="img" aria-label={loc.country}>
+                      <span
+                        className="text-3xl"
+                        role="img"
+                        aria-label={loc.country}
+                      >
                         {loc.flag}
                       </span>
                       <div>
@@ -831,7 +787,7 @@ export default function ServicesPage() {
             </div>
 
             {/* How to Apply */}
-            <div className="flex flex-col justify-between rounded-3xl border border-line bg-white p-6 sm:p-8 shadow-xs">
+            <div className="flex flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-xs sm:p-8">
               <div>
                 <div className="flex items-center gap-2.5 text-accent-ink">
                   <Mail size={22} aria-hidden="true" />
@@ -857,7 +813,9 @@ export default function ServicesPage() {
                     </a>
                   </p>
                   <p>
-                    <span className="font-semibold text-forest">Connect with us: </span>
+                    <span className="font-semibold text-forest">
+                      Connect with us:{" "}
+                    </span>
                     Follow us on LinkedIn{" "}
                     <a
                       href={itRecruitment.howToApply.linkedinUrl}
@@ -901,7 +859,7 @@ export default function ServicesPage() {
           aria-labelledby="raise-the-bar-heading"
           className="mt-20 pt-16 sm:mt-24 sm:pt-20 lg:mt-32 lg:pt-28"
         >
-          <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16">
+          <div className="relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.30),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.20),transparent_50%)]"
@@ -934,22 +892,6 @@ export default function ServicesPage() {
                 >
                   {raiseTheBar.title}
                 </h2>
-                <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Link
-                    href={raiseTheBar.ctaLink}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest hover:bg-white/90"
-                  >
-                    {raiseTheBar.ctaText}
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </Link>
-                  <a
-                    href={`tel:${site.telephone}`}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white hover:bg-white/10"
-                  >
-                    <Phone size={16} aria-hidden="true" />
-                    Call {site.telephone}
-                  </a>
-                </div>
               </div>
 
               {/* Right Column: Statistics */}
@@ -972,6 +914,7 @@ export default function ServicesPage() {
           </div>
         </section>
       </div>
+      <CTA />
     </main>
   );
 }

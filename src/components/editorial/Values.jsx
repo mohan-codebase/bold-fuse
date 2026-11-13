@@ -37,7 +37,7 @@ export default function Values() {
     >
       <div className="shell">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.65fr] lg:gap-7">
-          <Reveal className="relative isolate flex flex-col overflow-hidden rounded-[1.75rem] border border-forest bg-forest p-7 sm:p-9 lg:p-8 xl:p-9">
+          <Reveal className="relative isolate flex flex-col overflow-hidden rounded-[1.75rem] border border-forest bg-forest-surface p-7 sm:p-9 lg:p-8 xl:p-9">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.32),transparent_70%)]"

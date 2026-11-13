@@ -34,12 +34,12 @@ export default function Hero() {
       id="home"
       ref={sectionRef}
       data-cursor-theme="dark"
-      className="relative isolate flex h-dvh min-h-[50rem] w-full items-start overflow-hidden sm:min-h-[64rem] lg:min-h-[42rem] lg:items-center"
+      className="relative isolate flex min-h-dvh w-full items-start overflow-hidden max-sm:min-h-[calc(100dvh-4rem)] lg:items-center"
     >
       {/* ---- Background banner image ---- */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="h-full w-full">
-          <div className="relative h-full w-full max-lg:bg-[#0b261d]">
+          <div className="relative h-full w-full max-lg:bg-forest-surface">
             <picture className="block h-full w-full">
               {slide.mobileSrc && (
                 <source
@@ -53,8 +53,8 @@ export default function Hero() {
                 alt={slide.alt}
                 width={1672}
                 height={941}
-                sizes="(min-width: 1024px) 100vw, 200vw"
-                className={`h-full w-full object-cover max-lg:absolute max-lg:right-0 max-lg:bottom-[10%] max-lg:h-auto max-lg:w-[200%] max-lg:max-w-none max-lg:[mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] sm:max-lg:bottom-0 sm:max-lg:w-[150%] ${slide.position || "object-center"}`}
+                sizes="(min-width: 1024px) 100vw, (min-width: 640px) 150vw, 175vw"
+                className={`h-full w-full object-cover max-lg:absolute max-lg:right-0 max-lg:bottom-0 max-lg:h-auto max-lg:w-[175%] max-lg:max-w-none max-lg:[mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] sm:max-lg:w-[150%] ${slide.position || "object-center"}`}
                 unoptimized
                 preload
                 fetchPriority="high"
@@ -66,17 +66,17 @@ export default function Hero() {
         {/* Small screens: the headline sits over the photo, so shade the top half */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 via-45% to-transparent to-60% lg:hidden"
+          className="absolute inset-0 bg-gradient-to-b from-forest/60 via-forest/50 via-55% to-transparent to-78% lg:hidden"
         />
       </div>
 
       {/* ---- Content Block ---- */}
       <motion.div
         data-motion-reveal
-        className="relative z-10 flex w-full flex-col items-start px-5 pt-[5.5rem] pb-14 min-[400px]:pt-24 sm:px-8 sm:pt-32 sm:pb-16 lg:px-10 lg:pt-36"
+        className="relative z-10 flex w-full flex-col items-start px-5 pt-[5.5rem] pb-10 min-[400px]:pt-24 sm:px-8 sm:pt-28 sm:pb-12 lg:px-10"
         style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
       >
-        <div className="w-full max-w-3xl text-left [text-shadow:0_2px_14px_rgba(0,0,0,0.85)] lg:w-[52%] lg:max-w-[52rem]">
+        <div className="w-full max-w-3xl text-left [text-shadow:0_2px_14px_rgba(0,0,0,0.85)] lg:ml-14 lg:w-[52%] lg:max-w-[52rem]">
           <motion.p
             data-motion-reveal
             className="eyebrow text-accent-soft"

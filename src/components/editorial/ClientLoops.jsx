@@ -2,24 +2,48 @@ import Image from "next/image";
 import { Quote } from "lucide-react";
 
 export default function ClientLoops({ clients, quotes }) {
+  const rows = Array.from({ length: 3 }, (_, row) =>
+    clients.slice(
+      Math.ceil((row * clients.length) / 3),
+      Math.ceil(((row + 1) * clients.length) / 3),
+    ),
+  );
+
   return (
     <div className="mt-8 sm:mt-10 lg:mt-12">
-      {/* 1. Clients: Static Logo Collage */}
       <div
-        className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6 lg:gap-4"
+        className="grid gap-3 sm:gap-4"
+        role="group"
         aria-label="Our client logos"
       >
-        {clients.map((client) => (
+        {rows.map((row, index) => (
           <div
-            key={client.name}
-            className="flex h-24 items-center justify-center rounded-2xl border border-line/80 bg-white p-4 shadow-xs transition-colors duration-200 hover:border-accent/40 sm:h-28 sm:p-5"
+            key={index}
+            className="min-w-0 overflow-hidden motion-reduce:overflow-x-auto"
           >
-            <Image
-              src={client.image}
-              alt={client.name}
-              sizes="(min-width: 1024px) 160px, (min-width: 640px) 200px, 150px"
-              className="max-h-12 w-auto max-w-[85%] object-contain sm:max-h-14"
-            />
+            <div className="animate-marquee">
+              {[false, true].map((duplicate) => (
+                <ul
+                  key={String(duplicate)}
+                  aria-hidden={duplicate || undefined}
+                  className={`flex shrink-0 gap-3 pr-3 sm:gap-4 sm:pr-4 ${duplicate ? "motion-reduce:hidden" : ""}`}
+                >
+                  {row.map((client) => (
+                    <li
+                      key={client.name}
+                      className="flex h-24 w-36 shrink-0 items-center justify-center rounded-2xl border border-line/80 bg-white p-4 sm:h-28 sm:w-44 sm:p-5"
+                    >
+                      <Image
+                        src={client.image}
+                        alt={duplicate ? "" : client.name}
+                        sizes="112px"
+                        className="h-12 w-28 max-w-full object-contain sm:h-14"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
           </div>
         ))}
       </div>

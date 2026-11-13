@@ -1,22 +1,10 @@
+import CTA from "@/components/editorial/CTA";
+import { ForestCardBackdrop, forestCardClass, forestCardIconClass } from "@/components/editorial/ForestCard";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Brain,
-  CheckCircle2,
-  Compass,
-  Eye,
-  Layers,
-  Lightbulb,
-  Phone,
-  RefreshCw,
-  Sparkles,
-  Target,
-  TrendingUp,
-  Zap,
-} from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Compass, Eye, Phone, Sparkles, Target, Zap } from "lucide-react";
 import aboutImage from "@/assets/about-healthcare-team-v1.jpg";
 import founderImage from "@/assets/founder-keerthy-reddy.jpeg";
 import { about } from "@/content/about";
@@ -31,20 +19,13 @@ export const metadata: Metadata = pageMetadata({
 
 const pillarIcons = [Compass, Zap, Sparkles];
 
-const potentialIcons = [
-  Brain,
-  Lightbulb,
-  Layers,
-  RefreshCw,
-  TrendingUp,
-];
 
 export default function AboutPage() {
   return (
     <main id="main-content" className="bg-white">
-      <div className="shell pt-8 pb-16 sm:pt-12 lg:pb-24">
+      <div className="shell pt-8 sm:pt-12">
         {/* 1. Top Banner */}
-        <section className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16">
+        <section className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
@@ -78,15 +59,15 @@ export default function AboutPage() {
         {/* 2. Who We Are */}
         <section
           aria-labelledby="who-we-are"
-          className="pt-14 sm:pt-18 lg:pt-24"
+          className="pt-9 sm:pt-12 lg:pt-16"
         >
           <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-            <div className="relative overflow-hidden rounded-3xl border border-line bg-white p-3">
+            <div className="relative overflow-hidden rounded-3xl border border-line bg-white p-3 lg:self-stretch">
               <Image
                 src={aboutImage}
                 alt={about.whoWeAre.imageAlt}
                 sizes="(min-width: 1280px) 520px, (min-width: 1024px) 45vw, 92vw"
-                className="aspect-[4/3] w-full rounded-2xl object-cover lg:aspect-[4/3]"
+                className="aspect-[4/3] w-full rounded-2xl object-cover lg:absolute lg:inset-3 lg:aspect-auto lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
                 priority
               />
             </div>
@@ -121,21 +102,25 @@ export default function AboutPage() {
           </div>
 
           {/* Three Pillars */}
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <div className="mt-8 grid gap-4 md:grid-cols-3 lg:gap-6">
             {about.whoWeAre.pillars.map((pillar, idx) => {
               const Icon = pillarIcons[idx] ?? CheckCircle2;
               return (
                 <div
                   key={pillar.title}
-                  className="flex flex-col rounded-3xl border border-line bg-white p-7 transition-all sm:p-8"
+                  data-cursor-theme="dark"
+                  className={forestCardClass}
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-forest/5 text-forest">
-                    <Icon size={24} aria-hidden="true" />
+                  <ForestCardBackdrop />
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="self-center font-heading text-xl font-bold text-white">
+                      {pillar.title}
+                    </h3>
+                    <span className={forestCardIconClass} aria-hidden="true">
+                      <Icon size={20} strokeWidth={1.5} />
+                    </span>
                   </div>
-                  <h3 className="mt-5 font-heading text-xl font-bold text-forest">
-                    {pillar.title}
-                  </h3>
-                  <p className="mt-3 font-description text-sm leading-relaxed font-medium text-muted">
+                  <p className="mt-5 font-description text-sm leading-relaxed font-medium text-white/85">
                     {pillar.text}
                   </p>
                 </div>
@@ -147,17 +132,17 @@ export default function AboutPage() {
         {/* 3. Founder & CEO: Keerthy Reddy */}
         <section
           aria-labelledby="founder-section"
-          className="pt-16 sm:pt-20 lg:pt-28"
+          className="pt-9 sm:pt-12 lg:pt-16"
         >
           <div className="rounded-3xl border border-[#dbe9e1] bg-white p-6 sm:p-10 lg:p-14">
             <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
               {/* Left: Founder Image */}
-              <div className="relative mx-auto flex w-full max-w-md overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm lg:max-w-none">
+              <div className="relative mx-auto flex w-full max-w-md overflow-hidden rounded-3xl border border-line bg-white p-3 shadow-sm lg:max-w-none lg:self-stretch">
                 <Image
                   src={founderImage}
                   alt={about.founder.imageAlt}
                   sizes="(min-width: 1024px) 440px, 92vw"
-                  className="h-[480px] w-full rounded-2xl object-cover object-top sm:h-[560px] lg:h-[620px]"
+                  className="h-[480px] w-full rounded-2xl object-cover object-top sm:h-[560px] lg:absolute lg:inset-3 lg:h-[calc(100%-1.5rem)] lg:w-[calc(100%-1.5rem)]"
                   priority
                 />
               </div>
@@ -189,187 +174,108 @@ export default function AboutPage() {
                   ))}
                 </div>
 
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Link
-                    href="/contact/"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-forest-soft"
-                  >
-                    Connect with Keerthy
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </Link>
-                  <a
-                    href={`tel:${site.telephone}`}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line px-7 py-3 text-sm font-semibold text-forest transition-colors hover:bg-forest/5"
-                  >
-                    <Phone size={16} aria-hidden="true" />
-                    {site.telephone}
-                  </a>
+                <div className="@container mt-8">
+                  <div className="grid gap-3 @min-[28rem]:grid-cols-[auto_auto_auto] @min-[28rem]:justify-start">
+                    <Link
+                      href="/contact/"
+                      className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-forest px-3 py-3 text-sm font-semibold text-white hover:bg-forest-soft"
+                    >
+                      Connect with Keerthy
+                      <ArrowUpRight size={17} aria-hidden="true" />
+                    </Link>
+                    <a
+                      href={`tel:${site.telephone}`}
+                      className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-line px-3 py-3 text-sm font-semibold text-forest hover:bg-forest/5"
+                    >
+                      <Phone size={16} aria-hidden="true" />
+                      {site.telephone}
+                    </a>
+                    <a
+                      href={about.founder.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Keerthy Reddy on LinkedIn"
+                      className="inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-line px-3 py-3 text-sm font-semibold text-forest hover:bg-forest/5"
+                    >
+                      LinkedIn
+                      <ArrowUpRight size={17} aria-hidden="true" />
+                    </a>
+                  </div>
                 </div>
+              </div>
+            </div>
+            <div className="mt-6 grid gap-6 border-t border-line pt-6 sm:mt-8 sm:pt-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] lg:gap-10">
+              <div>
+                <h3 className="font-heading text-xl font-bold text-forest sm:text-2xl">
+                  {about.founder.healthcarePerspective.title}
+                </h3>
+                <div className="mt-4 max-w-3xl space-y-4 font-description text-base leading-[1.8] font-medium text-muted">
+                  {about.founder.healthcarePerspective.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+              <div className="self-start rounded-2xl border border-line p-5">
+                <h3 className="font-heading text-base font-bold text-forest">
+                  Top skills
+                </h3>
+                <ul className="mt-3 list-disc space-y-2 pl-5 font-description text-sm font-medium text-muted marker:text-accent-ink">
+                  {about.founder.healthcarePerspective.skills.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 4. Innovation Meets Human Potential */}
-        <section
-          aria-labelledby="potential-section"
-          className="pt-16 sm:pt-20 lg:pt-28"
-        >
-          <div className="border-b border-[#dbe9e1] pb-6">
-            <p className="text-xs font-semibold tracking-[0.2em] text-accent-ink uppercase">
-              Transformative Change
-            </p>
-            <h2
-              id="potential-section"
-              className="mt-3 font-heading text-3xl font-bold tracking-tight text-forest sm:text-4xl"
-            >
-              {about.potential.headline}
-            </h2>
-            <p className="mt-4 max-w-3xl font-description text-base leading-relaxed font-medium text-muted">
-              {about.potential.lead}
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {about.potential.points.map((pt, idx) => {
-              const Icon = potentialIcons[idx] ?? CheckCircle2;
-              return (
-                <div
-                  key={pt.title}
-                  className="flex flex-col rounded-3xl border border-line bg-white p-7 transition-all sm:p-8"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-forest/5 text-forest">
-                    <Icon size={24} aria-hidden="true" />
-                  </div>
-                  <h3 className="mt-5 font-heading text-lg font-bold text-forest">
-                    {pt.title}
-                  </h3>
-                  <p className="mt-3 font-description text-sm leading-relaxed font-medium text-muted">
-                    {pt.text}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-10 rounded-2xl border border-line/80 bg-white p-6 sm:p-8">
-            <p className="font-description text-base leading-relaxed font-medium text-forest">
-              {about.potential.closing}
-            </p>
-            <p className="mt-3 font-description text-sm font-semibold text-accent-ink">
-              {about.potential.contactNote}
-            </p>
-          </div>
-        </section>
-
-        {/* 5. Our Vision & Mission */}
+        {/* 4. Our Vision & Mission */}
         <section
           aria-labelledby="vision-mission-heading"
-          className="pt-16 sm:pt-20 lg:pt-28"
+          className="pt-9 sm:pt-12 lg:pt-16"
         >
-          <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
-            >
-              <svg
-                viewBox="0 0 1000 350"
-                preserveAspectRatio="none"
-                className="absolute inset-0 h-full w-full text-accent-soft"
-                fill="none"
-              >
-                <path
-                  d="M500 380C720 340 700 180 900 210S1050 80 1100 20"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  opacity=".14"
-                />
-              </svg>
-            </div>
-            <p
+          <div
+            className="relative isolate overflow-hidden rounded-3xl border border-forest-soft/60 bg-forest-soft px-6 py-7 sm:px-9 sm:py-9 lg:px-12"
+            data-cursor-theme="dark"
+          >
+            <ForestCardBackdrop />
+            <h2
               id="vision-mission-heading"
-              className="text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase"
+              className="font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl"
             >
               Our Direction
-            </p>
-            <div className="mt-8 grid gap-8 border-t border-white/15 pt-8 md:grid-cols-2 md:gap-12">
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 text-accent-soft">
-                  <Eye size={24} aria-hidden="true" />
-                  <h3 className="font-heading text-2xl font-bold text-white">
-                    {about.visionMission.vision.title}
-                  </h3>
+            </h2>
+            <div className="mt-5 grid border-t border-white/20 md:grid-cols-2">
+              {[
+                { ...about.visionMission.vision, Icon: Eye },
+                { ...about.visionMission.mission, Icon: Target },
+              ].map(({ title, text, Icon }, index) => (
+                <div
+                  key={title}
+                  className={
+                    index === 0
+                      ? "pt-5 pb-5 md:pr-8 md:pb-0"
+                      : "border-t border-white/20 pt-5 md:border-t-0 md:border-l md:pl-8"
+                  }
+                >
+                  <div className="flex items-center gap-3">
+                    <span className={forestCardIconClass} aria-hidden="true">
+                      <Icon size={20} strokeWidth={1.5} />
+                    </span>
+                    <h3 className="font-heading text-xl font-bold text-white">
+                      {title}
+                    </h3>
+                  </div>
+                  <p className="mt-3 max-w-[52ch] font-description text-base leading-relaxed font-medium text-white/90">
+                    {text}
+                  </p>
                 </div>
-                <p className="mt-4 font-description text-lg leading-relaxed font-medium text-white/90">
-                  {about.visionMission.vision.text}
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 text-accent-soft">
-                  <Target size={24} aria-hidden="true" />
-                  <h3 className="font-heading text-2xl font-bold text-white">
-                    {about.visionMission.mission.title}
-                  </h3>
-                </div>
-                <p className="mt-4 font-description text-lg leading-relaxed font-medium text-white/90">
-                  {about.visionMission.mission.text}
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* 6. Bottom Banner / CTA */}
-        <section
-          aria-labelledby="about-bottom-cta"
-          className="pt-16 sm:pt-20 lg:pt-28"
-        >
-          <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-14 text-center text-white sm:px-12 sm:py-20 lg:px-16">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.3),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.2),transparent_50%)]"
-            >
-              <svg
-                viewBox="0 0 800 300"
-                preserveAspectRatio="none"
-                className="absolute inset-0 h-full w-full text-accent-soft"
-                fill="none"
-              >
-                <path
-                  d="M100 300C300 240 400 120 700 160"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  opacity=".14"
-                />
-              </svg>
-            </div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase">
-              Get in touch
-            </p>
-            <h2
-              id="about-bottom-cta"
-              className="mx-auto mt-4 max-w-3xl font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl"
-            >
-              {about.cta.heading}
-            </h2>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="/contact/"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest transition-colors hover:bg-white/90"
-              >
-                {about.cta.action}
-                <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-              <a
-                href={`tel:${site.telephone}`}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-              >
-                <Phone size={16} aria-hidden="true" />
-                Call {site.telephone}
-              </a>
-            </div>
-          </div>
-        </section>
+        <CTA contained compactBottom />
       </div>
     </main>
   );

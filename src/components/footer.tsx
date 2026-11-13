@@ -9,62 +9,45 @@ import { navigation, routes, serviceNavigation } from "@/config/routes";
 import { AppLink } from "./ui";
 
 const linkClass =
-  "inline-flex min-h-9 items-center gap-2 text-sm leading-relaxed text-white/75 transition-colors hover:text-accent-soft";
+  "inline-flex min-h-9 items-center gap-2 py-1 text-sm leading-relaxed font-medium text-white/75 hover:text-accent-soft";
 const titleClass =
-  "mb-5 text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase";
+  "mb-3 text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t-2 border-accent/30 bg-[#091d17] text-white">
+    <footer className="relative overflow-hidden border-t-2 border-accent/30 bg-forest-surface text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-forest-soft/25 to-transparent"
       />
       <div className="shell relative">
-        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8 lg:py-16">
-          <div className="lg:col-span-4">
+        <div className="grid items-start gap-x-8 gap-y-8 pt-10 pb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.2fr_1.1fr_0.7fr_1.1fr] lg:pt-12">
+          <div className="min-w-0 sm:col-span-2 md:col-span-3 lg:col-span-1">
             <AppLink route="home" className="inline-block max-w-full">
               <Image
                 src={headerLogo}
                 alt={site.name}
                 width={208}
                 height={59}
-                sizes="(min-width: 640px) 320px, 280px"
-                className="h-auto w-[280px] max-w-full brightness-0 invert sm:w-80"
+                sizes="256px"
+                className="h-auto w-64 max-w-full brightness-0 invert"
               />
             </AppLink>
-            <p className="mt-5 max-w-sm font-display text-2xl leading-snug text-white">
+            <p className="mt-3 max-w-sm font-display text-xl leading-snug font-medium text-white">
               {site.tagline}
             </p>
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-              <p className="text-xs tracking-wider text-accent-soft uppercase">
+            <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <p className="text-xs font-semibold tracking-wider text-accent-soft uppercase">
                 {home.experience.missionTitle}
               </p>
-              <p className="mt-3 font-description text-sm leading-relaxed text-white/75">
+              <p className="mt-2 font-description text-sm leading-relaxed font-medium text-white/75">
                 {home.experience.mission}
               </p>
             </div>
-            <p className="mt-6 text-xs tracking-[0.18em] text-accent-soft uppercase">
-              {site.socialTitle}
-            </p>
-            <div className="mt-3 flex flex-wrap gap-3">
-              {site.socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-1 rounded-full border border-white/20 px-3 text-xs hover:bg-white hover:text-forest"
-                >
-                  {s.label}
-                  <ArrowUpRight size={14} aria-hidden="true" />
-                </a>
-              ))}
-            </div>
           </div>
-          <nav aria-label={footerContent.services} className="lg:col-span-3">
+          <nav aria-label={footerContent.services} className="min-w-0">
             <h2 className={titleClass}>{footerContent.services}</h2>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {serviceNavigation.map((key) => (
                 <li key={key}>
                   <AppLink route={key} className={linkClass}>
@@ -74,9 +57,9 @@ export function Footer() {
               ))}
             </ul>
           </nav>
-          <nav aria-label={footerContent.company} className="lg:col-span-2">
+          <nav aria-label={footerContent.company} className="min-w-0">
             <h2 className={titleClass}>{footerContent.company}</h2>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {navigation.map((key) => (
                 <li key={key}>
                   <AppLink route={key} className={linkClass}>
@@ -85,30 +68,34 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <h2 className={`${titleClass} mt-7`}>{site.otherBrands}</h2>
-            {footerContent.brands.map((brand) => (
-              <AppLink
-                key={brand.route}
-                route={brand.route}
-                className={linkClass}
-              >
-                {brand.label}
-                <ArrowUpRight size={14} aria-hidden="true" />
-              </AppLink>
-            ))}
+            <h2 className={`${titleClass} mt-5`}>{site.otherBrands}</h2>
+            <ul className="space-y-1">
+              {footerContent.brands.map((brand) => (
+                <li key={brand.route}>
+                  <AppLink route={brand.route} className={linkClass}>
+                    {brand.label}
+                    <ArrowUpRight
+                      size={14}
+                      className="shrink-0"
+                      aria-hidden="true"
+                    />
+                  </AppLink>
+                </li>
+              ))}
+            </ul>
           </nav>
-          <div className="lg:col-span-3">
+          <div className="min-w-0 sm:col-span-2 md:col-span-1">
             <h2 className={titleClass}>{site.reach}</h2>
-            <div className="flex flex-col items-start gap-4">
+            <div className="flex flex-col items-start gap-1">
               <a href={`tel:${site.telephone}`} className={linkClass}>
-                <Phone size={17} aria-hidden="true" />
+                <Phone size={17} className="shrink-0" aria-hidden="true" />
                 {site.phone}
               </a>
               <a href={`mailto:${site.email}`} className={linkClass}>
-                <Mail size={17} aria-hidden="true" />
+                <Mail size={17} className="shrink-0" aria-hidden="true" />
                 {site.email}
               </a>
-              <address className="flex items-start gap-3 text-sm leading-relaxed text-white/75 not-italic">
+              <address className="flex min-h-9 items-start gap-2 py-1 text-sm leading-relaxed font-medium text-white/75 not-italic">
                 <MapPin
                   size={18}
                   className="mt-1 shrink-0"
@@ -117,14 +104,29 @@ export function Footer() {
                 {site.address}
               </address>
             </div>
+            <h2 className={`${titleClass} mt-5`}>{site.socialTitle}</h2>
+            <div className="flex flex-wrap gap-2">
+              {site.socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-1 rounded-full border border-white/20 px-2.5 text-xs font-medium hover:bg-white hover:text-forest"
+                >
+                  {s.label}
+                  <ArrowUpRight size={12} aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
         <nav
           aria-label={footerContent.explore}
-          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 sm:px-5"
         >
           <h2 className={titleClass}>{footerContent.explore}</h2>
-          <div className="flex flex-wrap gap-x-7 gap-y-2">
+          <div className="flex flex-wrap gap-x-6 gap-y-1">
             {footerContent.sections.map((s) => (
               <Link key={s.id} href={`/#${s.id}`} className={linkClass}>
                 {s.label}
@@ -132,13 +134,13 @@ export function Footer() {
             ))}
           </div>
         </nav>
-        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-white/10 py-6 text-xs text-white/65 sm:flex-row sm:items-center">
+        <div className="mt-6 flex flex-col justify-between gap-2 border-t border-white/10 py-4 text-xs font-medium text-white/65 sm:flex-row sm:items-center">
           <p>
             © {new Date().getFullYear()} {site.name}
           </p>
           <nav
             aria-label={footerContent.legal}
-            className="flex flex-wrap gap-6"
+            className="flex flex-wrap gap-x-6 gap-y-1"
           >
             <AppLink route="privacy" className={linkClass}>
               {routes.privacy.label}

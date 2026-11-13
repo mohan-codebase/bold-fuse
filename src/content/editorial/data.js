@@ -8,7 +8,7 @@ import serviceImage6 from "@/assets/services/people-learning-v1.webp";
 import { home } from "@/content/home";
 import { site as brand } from "@/content/site";
 import { routes } from "@/config/routes";
-import banner from "@/assets/banner-healthcare-team-v2.avif";
+import banner from "@/assets/banner-clinicians.avif";
 
 // The reference supplies presentation; business content stays Boldfuse's.
 export const site = {
@@ -18,14 +18,14 @@ export const site = {
 };
 export const heroBanner = {
   src: banner.src,
-  alt: "Two doctors collaborating over a tablet in a modern hospital, with a dark forest-green background",
+  alt: "Two clinicians reviewing a paper chart together in a clinic",
   eyebrow: home.hero.eyebrow,
   title: home.hero.title,
   description:
     "We help doctors and healthcare leaders build stronger teams, streamline daily operations and grow sustainable practices. From automation and branding to financial and legal advisory, we connect your people, processes and business goals.",
   mobileDescription:
     "Stronger teams. Smarter operations. Sustainable growth. Practical business support for doctors and healthcare leaders.",
-  position: "object-[68%_center] lg:object-center",
+  position: "object-right",
   primaryCta: {
     to: "/#services",
     label: "Explore Our Services",

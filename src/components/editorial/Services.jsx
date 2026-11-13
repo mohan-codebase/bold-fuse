@@ -1,127 +1,338 @@
 "use client";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { home } from "@/content/home";
 import { services } from "@/content/editorial/data";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import SectionHeading from "./SectionHeading";
 import Button from "./Button";
-import Reveal, { RevealGroup, RevealItem } from "./Reveal";
+import ServicePreview from "./ServicePreview";
+import styles from "./Services.module.css";
 
-// Display order and names requested for the homepage service list.
-const LIST = [
-  ["service6", "People Management / HR"],
-  ["service1", "Wellness and Mental Health"],
-  ["service3", "Digital Marketing / Creative Branding and PR"],
-  ["service0", "Business Automation"],
-  ["service2", "Finance and Advisory Services"],
-  ["service4", "Business Process Excellence"],
-  ["service5", "Legal and Advisory Services"],
-];
+const items = [
+  [
+    "service6",
+    "Build a stronger team with practical HR support that helps employees grow and prepare for what’s next.",
+  ],
+  [
+    "service1",
+    "Support mental health and well-being for individuals and help teams build healthier workplaces.",
+  ],
+  [
+    "service3",
+    "Reach customers where they spend time online with digital marketing, creative branding and PR.",
+  ],
+  [
+    "service0",
+    "Use automation and AI to simplify daily workflows and give your team more time for creative work.",
+  ],
+  [
+    "service2",
+    "Review your financial plans and get practical advice to make better decisions as your business grows.",
+  ],
+  [
+    "service4",
+    "Improve daily operations by giving teams better ways to work together and respond to changing customer needs.",
+  ],
+  [
+    "service5",
+    "Work with independent legal consultants for help with a specific matter or ongoing business advice.",
+  ],
+].map(([slug, description]) => ({
+  ...services.find((service) => service.slug === slug),
+  description,
+}));
 
-export default function Services({ withCta = true, background = "bg-white" }) {
-  const items = LIST.map(([slug, title]) => ({
-    ...services.find((s) => s.slug === slug),
-    title,
-  }));
+export default function Services({ withCta = true }) {
+  const [position, setPosition] = useState(0);
+  const [dragPosition, setDragPosition] = useState(null);
+  const [autoAdvancing, setAutoAdvancing] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const stageRef = useRef(null);
+  const gesture = useRef(null);
+  const suppressClick = useRef(false);
+  const resumeAfter = useRef(0);
+  const active = ((position % items.length) + items.length) % items.length;
+  const move = (direction) => {
+    resumeAfter.current = performance.now() + 2200;
+    setAutoAdvancing(false);
+    setPosition((current) => current + direction);
+  };
 
-  const hero = items[0];
+  useEffect(() => {
+    if (reducedMotion) return;
+
+    const stage = stageRef.current;
+    const backdrop = stage.parentElement;
+    let visible = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.intersectionRatio >= 0.25;
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(stage);
+
+    let frame;
+    let previousTime = null;
+    let advancing = false;
+    let offset = 0;
+    let nearest = 0;
+
+    function advance(time) {
+      frame = requestAnimationFrame(advance);
+      if (!visible || document.hidden || gesture.current) {
+        previousTime = null;
+        return;
+      }
+      if (
+        time < resumeAfter.current ||
+        (backdrop.contains(document.activeElement) &&
+          document.activeElement.matches(":focus-visible"))
+      ) {
+        if (advancing) setAutoAdvancing(false);
+        advancing = false;
+        previousTime = null;
+        return;
+      }
+
+      if (!advancing) {
+        offset = Number(
+          stage.style.getPropertyValue("--services-manual-position"),
+        );
+        nearest = Math.round(offset);
+        advancing = true;
+        setAutoAdvancing(true);
+      }
+
+      if (previousTime !== null)
+        offset += Math.min(time - previousTime, 50) / 8500;
+      previousTime = time;
+      stage.style.setProperty("--services-auto-position", offset);
+
+      const next = Math.round(offset);
+      if (next !== nearest) {
+        nearest = next;
+        setPosition(next);
+      }
+    }
+    frame = requestAnimationFrame(advance);
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+      stage.style.removeProperty("--services-auto-position");
+    };
+  }, [reducedMotion]);
+
+  function startGesture(event) {
+    if (!event.isPrimary || event.button !== 0) return;
+    const stage = event.currentTarget;
+    const card = stage.querySelector("[data-active='true']");
+    suppressClick.current = false;
+    gesture.current = {
+      id: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      lastX: event.clientX,
+      lastTime: event.timeStamp,
+      velocity: 0,
+      pitch: card.offsetWidth * 1.2,
+      origin: Number(
+        getComputedStyle(stage).getPropertyValue(
+          "--boldfuse-services-position",
+        ),
+      ),
+      dragging: false,
+    };
+  }
+
+  function trackGesture(event) {
+    const drag = gesture.current;
+    if (drag?.id !== event.pointerId) return;
+    const dx = event.clientX - drag.startX;
+    if (!drag.dragging) {
+      const dy = event.clientY - drag.startY;
+      if (Math.abs(dy) > 8 && Math.abs(dy) > Math.abs(dx)) {
+        gesture.current = null;
+        return;
+      }
+      if (Math.abs(dx) < 8) return;
+      event.currentTarget.setPointerCapture(event.pointerId);
+      drag.dragging = true;
+      setAutoAdvancing(false);
+      suppressClick.current = true;
+    }
+
+    const elapsed = event.timeStamp - drag.lastTime;
+    if (elapsed > 0) {
+      drag.velocity = (event.clientX - drag.lastX) / elapsed;
+    }
+    drag.lastX = event.clientX;
+    drag.lastTime = event.timeStamp;
+    setDragPosition(drag.origin - dx / drag.pitch);
+  }
+
+  function endGesture(event) {
+    const drag = gesture.current;
+    if (drag?.id !== event.pointerId) return;
+    gesture.current = null;
+    if (!drag.dragging) return;
+    resumeAfter.current = performance.now() + 2200;
+
+    const released = event.type === "pointerup";
+    const x = released ? event.clientX : drag.lastX;
+    const velocity =
+      released && event.timeStamp - drag.lastTime < 90 ? drag.velocity : 0;
+    const momentum = Math.max(-2, Math.min(2, (velocity * 240) / drag.pitch));
+    setAutoAdvancing(false);
+    setPosition(
+      Math.round(drag.origin - (x - drag.startX) / drag.pitch - momentum),
+    );
+    setDragPosition(null);
+  }
 
   return (
-    <section
-      id="services"
-      className={`section relative overflow-hidden ${background}`}
-    >
-      <div className="shell">
+    <section id="services" className={`section bg-white ${styles.section}`}>
+      <div className={styles.intro}>
         <SectionHeading
           prominent
+          className="max-w-full"
           eyebrow={home.services.eyebrow}
           title={home.services.title}
-          lede={"Practical expertise to strengthen your people, processes and healthcare business.\nExplore solutions that simplify operations and support lasting growth."}
+          lede={
+            "Practical expertise to strengthen your people, processes and healthcare business.\nExplore solutions that simplify operations and support lasting growth."
+          }
         />
-
-        <Reveal
-          y={24}
-          data-cursor-theme="dark"
-          className="relative isolate mt-8 overflow-hidden rounded-[2rem] border border-forest-soft/60 bg-forest p-4 sm:mt-10 sm:p-6 lg:mt-12 lg:p-8"
-        >
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.32),transparent_60%),radial-gradient(ellipse_at_100%_100%,rgba(169,233,217,0.14),transparent_60%)]"
-          >
-            <svg
-              viewBox="0 0 800 400"
-              preserveAspectRatio="none"
-              className="absolute inset-0 h-full w-full text-accent-soft"
-              fill="none"
-            >
-              <path d="M-20 380C200 360 260 220 440 250S700 120 840 60" stroke="currentColor" opacity="0.14" />
-              <path d="M60 420C260 390 340 290 500 310S740 210 860 150" stroke="currentColor" opacity="0.09" />
-            </svg>
-          </div>
-
-          <div className="grid items-center gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
-            <div className="relative overflow-hidden rounded-3xl">
-              <Image
-                src={hero.image}
-                alt={hero.imageAlt}
-                sizes="(min-width:1024px) 38vw, 90vw"
-                className="aspect-[4/3] w-full object-cover lg:aspect-[4/5]"
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest/85 via-forest/10 to-transparent"
-              />
-              <div className="absolute inset-x-5 bottom-5 text-white">
-                <p className="font-heading text-5xl leading-none font-bold tracking-[-0.04em]">
-                  {items.length}
-                  <span className="text-accent-soft">+</span>
-                </p>
-                <p className="mt-2 text-xs font-medium tracking-[0.12em] text-white/85 uppercase">
-                  Services built around your growth
-                </p>
-              </div>
-            </div>
-
-            <RevealGroup as="ul" className="flex flex-col gap-2.5 sm:gap-3" stagger={0.06} amount={0.12}>
-              {items.map((service, index) => (
-                <RevealItem
-                  as="li"
-                  key={service.slug}
-                  y={16}
-                  className="w-full"
-                >
-                  <Link
-                    href={service.path}
-                    className="group flex min-h-[3.25rem] w-full items-center gap-3.5 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2.5 text-white transition-colors duration-200 hover:border-accent-soft/50 hover:bg-white/[0.08] hover:text-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-soft focus-visible:ring-offset-2 focus-visible:ring-offset-forest sm:min-h-[3.5rem] sm:gap-4 sm:px-5 sm:py-3"
-                  >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 font-heading text-xs font-bold text-accent-soft tabular-nums transition-colors duration-200 group-hover:border-accent-soft/40 group-hover:bg-accent-soft/10 sm:h-10 sm:w-10 sm:text-sm">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="grow text-sm font-semibold leading-snug sm:text-base lg:text-[1.0625rem]">
-                      {service.title}
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/90 transition-colors duration-200 group-hover:border-accent-soft/40 group-hover:bg-accent-soft/10 group-hover:text-accent-soft sm:h-9 sm:w-9"
-                    >
-                      <ArrowUpRight size={16} />
-                    </span>
-                  </Link>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-          </div>
-        </Reveal>
-
-        {withCta && (
-          <Reveal y={16} className="mt-8 flex justify-center sm:mt-10 lg:mt-12">
-            <Button to="/services/" variant="secondary" withArrow={false}>
-              View All Services
-            </Button>
-          </Reveal>
-        )}
       </div>
+
+      <div className={styles.backdrop}>
+        <div aria-hidden="true" className={styles.curves}>
+          <svg
+            viewBox="0 0 1440 850"
+            preserveAspectRatio="none"
+            fill="none"
+            focusable="false"
+          >
+            <path d="M-180 700C180 760 220 440 440 510S720 260 780 170" />
+            <path d="M-200 780C180 840 270 520 490 580S780 340 840 250" />
+            <path d="M920-160C800 60 1220 20 1190 250S1480 440 1580 590" />
+          </svg>
+        </div>
+        <div
+          ref={stageRef}
+          className={styles.stage}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Our business services"
+          aria-describedby="services-instructions"
+          tabIndex={0}
+          data-dragging={dragPosition !== null}
+          data-auto-advancing={autoAdvancing && !reducedMotion}
+          style={{ "--services-manual-position": dragPosition ?? position }}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+              event.preventDefault();
+              event.currentTarget.focus({ preventScroll: true });
+              move(event.key === "ArrowLeft" ? -1 : 1);
+            }
+          }}
+          onPointerDown={startGesture}
+          onPointerMove={trackGesture}
+          onPointerUp={endGesture}
+          onPointerCancel={endGesture}
+          onLostPointerCapture={(event) => {
+            if (event.target === event.currentTarget) endGesture(event);
+          }}
+          onPointerLeave={(event) => {
+            if (!gesture.current?.dragging) endGesture(event);
+          }}
+          onClickCapture={(event) => {
+            if (suppressClick.current && event.detail > 0) {
+              event.preventDefault();
+              event.stopPropagation();
+              suppressClick.current = false;
+            }
+          }}
+        >
+          <p id="services-instructions" className="sr-only">
+            Use the left and right arrow keys, drag or swipe, or use the
+            controls below to explore all seven services.
+          </p>
+          {items.map((service, index) => {
+            return (
+              <article
+                key={service.slug}
+                className={styles.card}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${index + 1} of ${items.length}: ${service.title}`}
+                aria-hidden={index !== active}
+                data-active={index === active}
+                style={{ "--index": index, "--slide-count": items.length }}
+              >
+                <div className={styles.media}>
+                  <ServicePreview slug={service.slug} />
+                </div>
+                <h3 className={styles.title}>{service.title}</h3>
+                <p className={styles.description}>{service.description}</p>
+                <Link
+                  data-button
+                  href={service.path}
+                  className={styles.link}
+                  inert={index !== active}
+                >
+                  Explore service
+                  <span className="sr-only">: {service.title}</span>
+                  <ArrowRight size={14} aria-hidden="true" />
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+        <div
+          className={styles.controls}
+          role="group"
+          aria-label="Service carousel controls"
+        >
+          <button
+            type="button"
+            className={styles.control}
+            aria-label="Previous service"
+            onClick={() => move(-1)}
+          >
+            <ChevronLeft size={18} aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            className={styles.control}
+            aria-label="Next service"
+            onClick={() => move(1)}
+          >
+            <ChevronRight size={18} aria-hidden="true" />
+          </button>
+          <p
+            className="sr-only"
+            aria-live={autoAdvancing ? "off" : "polite"}
+            aria-atomic="true"
+          >
+            {items[active].title}, service {active + 1} of {items.length}
+          </p>
+        </div>
+      </div>
+      {withCta && (
+        <div className="mt-7 flex justify-center sm:mt-8">
+          <Button
+            to="/services/"
+            variant="secondary"
+            size="sm"
+            withArrow={false}
+          >
+            View All Services
+          </Button>
+        </div>
+      )}
     </section>
   );
 }

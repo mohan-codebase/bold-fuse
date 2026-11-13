@@ -1,7 +1,7 @@
+import CTA from "@/components/editorial/CTA";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { ArrowUpRight, Phone } from "lucide-react";
-import { site } from "@/content/site";
+import { ArrowUpRight } from "lucide-react";
 import { routes } from "@/config/routes";
 
 export type UtilityAction = {
@@ -30,7 +30,7 @@ export default function UtilityPage({
     <main id="main-content" className="bg-white">
       {/* Hero */}
       <section className="shell pt-8 pb-0 sm:pt-12">
-        <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
+        <div className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.28),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.18),transparent_50%)]"
@@ -136,51 +136,7 @@ export default function UtilityPage({
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="shell pt-16 pb-16 sm:pt-20 sm:pb-24">
-        <div className="relative isolate overflow-hidden rounded-3xl bg-forest px-6 py-12 text-center text-white sm:px-12 sm:py-16 lg:px-16">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_0%,rgba(2,170,119,0.30),transparent_55%),radial-gradient(ellipse_at_100%_100%,rgba(97,198,168,0.20),transparent_50%)]"
-          >
-            <svg
-              viewBox="0 0 1200 400"
-              preserveAspectRatio="none"
-              className="absolute inset-0 h-full w-full text-accent-soft"
-              fill="none"
-            >
-              <path
-                d="M500 380C720 340 700 180 900 210S1050 80 1100 20M600 420C800 380 780 220 980 250S1130 120 1200 60"
-                stroke="currentColor"
-                strokeWidth="1"
-                opacity="0.14"
-              />
-            </svg>
-          </div>
-          <p className="text-xs font-semibold tracking-[0.2em] text-accent-soft uppercase">
-            Need a hand?
-          </p>
-          <h2 className="mx-auto mt-4 max-w-2xl font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Our team is here to help
-          </h2>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href={routes.contact.path}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-forest hover:bg-[#e8f5ef] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Contact us
-              <ArrowUpRight size={17} aria-hidden="true" />
-            </Link>
-            <a
-              href={`tel:${site.telephone}`}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              <Phone size={16} aria-hidden="true" />
-              {site.phone}
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTA />
     </main>
   );
 }
