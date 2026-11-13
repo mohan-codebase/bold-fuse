@@ -61,7 +61,7 @@ export default function ServicesPage() {
 
   return (
     <main id="main-content" className="bg-white">
-      <div className="shell pt-8 pb-16 sm:pt-12 lg:pb-24">
+      <div className="shell pt-8 pb-0 sm:pt-12">
         {/* ========================================================= */}
         {/* 1. SERVICES HERO SECTION                                  */}
         {/* ========================================================= */}
@@ -320,7 +320,9 @@ export default function ServicesPage() {
           {/* ------------------------------------------------------- */}
           {/* MID-PAGE CTA 1                                          */}
           {/* ------------------------------------------------------- */}
-          <CTA contained />
+          <div className="-mt-14 mb-2 sm:-mt-[4.5rem] sm:mb-4 lg:-mt-24 lg:mb-6">
+            <CTA contained />
+          </div>
 
           {/* ------------------------------------------------------- */}
           {/* SERVICE 03: DIGITAL MARKETING / CREATIVE BRANDING AND PR */}
@@ -453,7 +455,9 @@ export default function ServicesPage() {
           {/* ------------------------------------------------------- */}
           {/* MID-PAGE CTA 2                                          */}
           {/* ------------------------------------------------------- */}
-          <CTA contained />
+          <div className="-mt-14 mb-2 sm:-mt-[4.5rem] sm:mb-4 lg:-mt-24 lg:mb-6">
+            <CTA contained />
+          </div>
 
           {/* ------------------------------------------------------- */}
           {/* SERVICE 05: FINANCE AND ADVISORY SERVICES               */}
@@ -857,7 +861,7 @@ export default function ServicesPage() {
         {/* ========================================================= */}
         <section
           aria-labelledby="raise-the-bar-heading"
-          className="mt-20 pt-16 sm:mt-24 sm:pt-20 lg:mt-32 lg:pt-28"
+          className="mt-12 sm:mt-14 lg:mt-16"
         >
           <div className="relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 py-14 text-white sm:px-12 sm:py-20 lg:px-16">
             <div

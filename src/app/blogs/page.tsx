@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMetadata({
 export default function BlogsPage() {
   return (
     <main id="main-content" className="bg-white">
-      <div className="shell pt-8 pb-16 sm:pt-12 lg:pb-24">
+      <div className="shell pt-8 pb-0 sm:pt-12">
         <section className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16">
           <div
             aria-hidden="true"

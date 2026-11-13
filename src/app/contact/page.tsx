@@ -144,7 +144,7 @@ export default function ContactPage() {
             <ContactForm />
           </div>
         </div>
-        <section className="mt-20 lg:mt-28" aria-labelledby="location-heading">
+        <section className="mt-12 lg:mt-14" aria-labelledby="location-heading">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-5">
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-accent-ink uppercase">
