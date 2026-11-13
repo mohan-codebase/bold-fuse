@@ -12,7 +12,7 @@ export default function FAQ() {
     <section
       id="faq"
       aria-label={faq.title}
-      className="section border-t border-line/60 bg-white"
+      className="section border-t border-line/60 bg-white pb-0"
     >
       <div className="shell">
         <SectionHeading

@@ -663,7 +663,7 @@ export default function ServicesPage() {
         <section
           id="it-recruitment"
           aria-labelledby="it-recruitment-heading"
-          className="mt-20 border-t border-line pt-16 sm:mt-24 sm:pt-20 lg:mt-32 lg:pt-28"
+          className="mt-12 border-t border-line pt-10 sm:mt-14 sm:pt-12 lg:mt-16 lg:pt-14"
         >
           {/* Header Banner */}
           <div className="relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 py-12 text-white sm:px-10 sm:py-16 lg:px-14">
