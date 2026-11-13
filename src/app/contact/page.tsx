@@ -41,7 +41,7 @@ const mapEmbedUrl = googleMapsApiKey
 export default function ContactPage() {
   return (
     <main id="main-content" className="bg-white">
-      <section className="shell pt-8 pb-12 sm:pt-12 lg:pb-20">
+      <section className="shell pt-8 pb-0 sm:pt-12">
         <div className="page-hero relative isolate overflow-hidden rounded-3xl bg-forest-surface px-6 text-white sm:px-12 lg:px-16">
           <div
             aria-hidden="true"
