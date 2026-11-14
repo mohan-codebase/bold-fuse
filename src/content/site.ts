@@ -12,7 +12,7 @@ export const site = {
     },
     {
       label: "Instagram",
-      href: "https://instagram.com/bold_fuse",
+      href: "https://www.instagram.com/boldfuse.healthcare.solutions",
     },
     {
       label: "Linkedin",
