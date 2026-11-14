@@ -103,9 +103,13 @@
   outline: 1px solid var(--color-line);
   opacity: clamp(0, (3 - abs(var(--offset))) * 2, 1);
   z-index: calc(4 - round(up, abs(var(--offset)), 1));
-  transform: translate(
+  /* Keep the artwork rasterized while the cards travel around the arc. */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translate3d(
       calc(var(--arc-radius) * sin(var(--angle))),
-      calc(var(--arc-radius) * (1 - cos(var(--angle))))
+      calc(var(--arc-radius) * (1 - cos(var(--angle)))),
+      0
     )
     rotate(var(--angle));
 }
@@ -690,5 +694,9 @@
   .stage,
   .stage[data-auto-advancing="true"]:not([data-dragging="true"]) {
     transition: none;
+  }
+
+  .card {
+    will-change: auto;
   }
 }

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { home } from "@/content/home";
@@ -9,6 +9,9 @@ import SectionHeading from "./SectionHeading";
 import Button from "./Button";
 import ServicePreview from "./ServicePreview";
 import styles from "./Services.module.css";
+
+const MemoServicePreview = memo(ServicePreview);
+const AUTO_ADVANCE_MS = 5500;
 
 const items = [
   [
@@ -107,7 +110,7 @@ export default function Services({ withCta = true }) {
       }
 
       if (previousTime !== null)
-        offset += Math.min(time - previousTime, 50) / 7000;
+        offset += Math.min(time - previousTime, 50) / AUTO_ADVANCE_MS;
       previousTime = time;
       stage.style.setProperty("--services-auto-position", offset);
 
@@ -273,7 +276,7 @@ export default function Services({ withCta = true }) {
                 style={{ "--index": index, "--slide-count": items.length }}
               >
                 <div className={styles.media}>
-                  <ServicePreview slug={service.slug} />
+                  <MemoServicePreview slug={service.slug} />
                 </div>
                 <h3 className={styles.title}>{service.title}</h3>
                 <p className={styles.description}>{service.description}</p>
