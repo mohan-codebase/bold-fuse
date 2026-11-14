@@ -107,7 +107,7 @@ export default function Services({ withCta = true }) {
       }
 
       if (previousTime !== null)
-        offset += Math.min(time - previousTime, 50) / 8500;
+        offset += Math.min(time - previousTime, 50) / 7000;
       previousTime = time;
       stage.style.setProperty("--services-auto-position", offset);
 

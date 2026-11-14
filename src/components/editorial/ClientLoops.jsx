@@ -21,7 +21,10 @@ export default function ClientLoops({ clients, quotes }) {
             key={index}
             className="min-w-0 overflow-hidden motion-reduce:overflow-x-auto"
           >
-            <div className="animate-marquee">
+            <div
+              className="animate-marquee"
+              style={{ "--marquee-duration": ["24s", "28s", "26s"][index] }}
+            >
               {[false, true].map((duplicate) => (
                 <ul
                   key={String(duplicate)}
